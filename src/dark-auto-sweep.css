@@ -1,0 +1,616 @@
+/* ===== مسح آلي موحّد لأسطح ونصوص الوضع الداكن (مولَّد: gen-dark-sweep.mjs) =====
+   الخلفيات: شبه بيضاء → surface-raised، ملوّنة فاتحة → surface، وردي → طبقة حمراء.
+   النصوص: داكن جدًا → dark-body، ثانوي → dark-muted، ذهبي → gold-ink، أحمر → وردي فاتح.
+   محتوى المصحف/الكتب مستثنى (له نهاره الخاص). */
+[data-theme="dark"] .quran-intro{background:linear-gradient(135deg,var(--dark-surface-raised),var(--dark-surface))}
+[data-theme="dark"] .quran-section-grid button:hover{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-surah-filter{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-surah-scroll button:hover{background:var(--dark-surface)}
+[data-theme="dark"] .quran-surah-number{background:var(--dark-surface)}
+[data-theme="dark"] .quran-search{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-search label{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-search li button{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-search li button:hover{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-inline-form{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-practice-verse{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-blank input{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-wrong{background:color-mix(in srgb,#A64137 12%,var(--dark-surface-raised))}
+[data-theme="dark"] .quran-order{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-order-chips button{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-presets label{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-days label{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-plan-list li{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-passage-list li > button:first-child:hover{background:var(--dark-surface)}
+[data-theme="dark"] .quran-passage-index{background:var(--dark-surface)}
+[data-theme="dark"] .quran-progress-track{background:var(--dark-surface)}
+[data-theme="dark"] .quran-separation-columns div{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-reflection-list li{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-private{background:var(--dark-surface)}
+[data-theme="dark"] .quran-today-list li{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-today-list li.done{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .quran-routine-list > li{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-hadith-summary span{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-blocked{background:color-mix(in srgb,#A64137 12%,var(--dark-surface-raised));border-color:var(--dark-line-card)}
+[data-theme="dark"] .quran-hadith-search input{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-hadith-list li{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-hadith-book-name{background:var(--dark-surface)}
+[data-theme="dark"] .quran-hadith-reference{background:var(--dark-surface)}
+[data-theme="dark"] .azkar-lang button{background:var(--dark-surface-raised)}
+[data-theme="dark"] .azkar-search{background:var(--dark-surface-raised)}
+[data-theme="dark"] .azkar-category-head:hover{background:var(--dark-surface-raised)}
+[data-theme="dark"] .azkar-count{background:var(--dark-surface)}
+[data-theme="dark"] .azkar-items li{background:var(--dark-surface-raised)}
+[data-theme="dark"] .azkar-items li.done{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .azkar-repeat{background:var(--dark-surface)}
+[data-theme="dark"] .azkar-progress{background:var(--dark-surface)}
+[data-theme="dark"] .quran-hadith-book-grid button{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-hadith-book-grid button:hover{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-journey-stats>div{background:var(--dark-surface-raised)}
+[data-theme="dark"] .main-learning{background:var(--dark-surface)}
+[data-theme="dark"] .main-learning .topbar{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .learning-toolbar button:hover{border-color:var(--dark-line-card)}
+[data-theme="dark"] .learning-overview .learning-toolbar button.primary{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .learning-overview .learning-toolbar button.primary:hover{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .learning-journey>.hint{background:var(--dark-surface)}
+[data-theme="dark"] .path-roadmap{border-color:var(--dark-line-card)}
+[data-theme="dark"] .path-station{background:var(--dark-surface)}
+[data-theme="dark"] .path-station::before{background:var(--dark-surface)}
+[data-theme="dark"] .path-station:hover:not(:disabled){background:var(--dark-surface)}
+[data-theme="dark"] .path-station:disabled:hover{background:var(--dark-surface)}
+[data-theme="dark"] .path-station-icon{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .path-station.open .path-station-icon{background:var(--dark-surface-raised)}
+[data-theme="dark"] .path-station.locked .path-station-icon{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .learning-journey .learning-hero{border-color:var(--dark-line-card)}
+[data-theme="dark"] .learning-meter progress{background:var(--dark-surface)}
+[data-theme="dark"] .learning-meter progress::-webkit-progress-bar{background:var(--dark-surface)}
+[data-theme="dark"] .learning-stations{border-color:var(--dark-line-card)}
+[data-theme="dark"] .learning-stations button.selected{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .learning-stations button>span:first-child{background:var(--dark-surface)}
+[data-theme="dark"] .station-sources{border-color:var(--dark-line-card)}
+[data-theme="dark"] .station-video-groups{border-color:var(--dark-line-card)}
+[data-theme="dark"] .resource-symbol{background:var(--dark-surface)}
+[data-theme="dark"] .learning-journey .learning-inline-reader{background:var(--dark-surface-raised)}
+[data-theme="dark"] .station-video-group{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .station-pager button:hover:not(:disabled){background:var(--dark-surface)}
+[data-theme="dark"] .journey-library-jump{background:var(--dark-surface-raised)}
+[data-theme="dark"] .journey-library-jump:hover{background:var(--dark-surface)}
+[data-theme="dark"] .journey-library-card{background:var(--dark-surface-raised)}
+[data-theme="dark"] .editor-unit>button.selected{background:var(--dark-surface)}
+[data-theme="dark"] .resource-editor[open]{background:var(--dark-surface-raised)}
+[data-theme="dark"] .resource-count{background:var(--dark-surface)}
+[data-theme="dark"] .review-record{background:var(--dark-surface)}
+[data-theme="dark"] .curriculum-archive-actions{background:var(--dark-surface-raised)}
+[data-theme="dark"] .curriculum-archive-actions button{background:var(--dark-surface-raised)}
+[data-theme="dark"] .curriculum-archive-list button{background:var(--dark-surface-raised)}
+[data-theme="dark"] .curriculum-archive-list>div{background:var(--dark-surface)}
+[data-theme="dark"] .goal-period-icon{background:var(--dark-surface)}
+[data-theme="dark"] .goal-period-count{background:var(--dark-surface)}
+[data-theme="dark"] .goal-step-number{background:var(--dark-surface)}
+[data-theme="dark"] .goal-summary-count{background:var(--dark-surface)}
+[data-theme="dark"] .goal-meta span{background:var(--dark-surface-raised)}
+[data-theme="dark"] .goal-meta span:last-child{background:var(--dark-surface)}
+[data-theme="dark"] .goal-plan-body{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .goal-period-badge{background:var(--dark-surface)}
+[data-theme="dark"] .goal-step-edit{background:var(--dark-surface)}
+[data-theme="dark"] .goal-edit-form{background:var(--dark-surface)}
+[data-theme="dark"] .goal-history{background:var(--dark-surface-raised)}
+[data-theme="dark"] .goal-history-icon{background:var(--dark-surface)}
+[data-theme="dark"] .goal-history-total{background:var(--dark-surface)}
+[data-theme="dark"] .goal-history-filters button{background:var(--dark-surface-raised)}
+[data-theme="dark"] .goal-history-period-picker{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .goal-history-period-picker input{background:var(--dark-surface-raised)}
+[data-theme="dark"] .goal-history-period-picker select{background:var(--dark-surface-raised)}
+[data-theme="dark"] .goal-history-empty{background:var(--dark-surface-raised)}
+[data-theme="dark"] .goal-history-list li{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .intention-prompts span{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .schedule-warning{background:var(--dark-surface-raised)}
+[data-theme="dark"] .day-timeline:before{background:var(--dark-surface)}
+[data-theme="dark"] .slot-marker{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .slot-body{border-color:var(--dark-line-card)}
+[data-theme="dark"] .prayer-slot .slot-body{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .slot-add input{background:var(--dark-surface-raised)}
+[data-theme="dark"] .activity-schedule select{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .activity-schedule input{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-review{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-review-mark{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-review-fields textarea{background:var(--dark-surface-raised)}
+[data-theme="dark"] .day-message-dialog{background:var(--dark-surface-raised);border-color:var(--dark-line-card);--day-message-surface:var(--dark-surface-raised)}
+[data-theme="dark"] .tracking-message{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-view-switch{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-start-bar{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .tracking-header{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .prayer-log{border-color:var(--dark-line-card)}
+[data-theme="dark"] .prayer-log-row{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .prayer-chip{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .prayer-chip:hover{background:var(--dark-surface)}
+[data-theme="dark"] .tracking-progress{border-color:var(--dark-line-card)}
+[data-theme="dark"] .tracking-progress progress{background:var(--dark-surface)}
+[data-theme="dark"] .tracking-progress progress::-webkit-progress-bar{background:var(--dark-surface)}
+[data-theme="dark"] .tracking-item{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .tracking-status{background:var(--dark-surface)}
+[data-theme="dark"] .tracking-done{background:var(--dark-surface)}
+[data-theme="dark"] .tracking-deferred .tracking-status{background:var(--dark-surface)}
+[data-theme="dark"] .tracking-empty{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-planner .day-settings{border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-planner .slot-marker{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-planner .slot-body{background:var(--dark-surface-raised)}
+[data-theme="dark"] .day-planner .prayer-slot .slot-body{background:linear-gradient(100deg,var(--dark-surface-raised),var(--dark-surface));border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-planner .slot-activity{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-planner .slot-activity:hover{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-planner .slot-activity>.icon-btn:hover{background:var(--dark-surface)}
+[data-theme="dark"] .day-planner .slot-activity>.danger:hover{background:var(--dark-surface)}
+[data-theme="dark"] .day-planner .activity-duration{background:var(--dark-surface)}
+[data-theme="dark"] .day-planner .activity-complete{background:var(--dark-surface-raised)}
+[data-theme="dark"] .day-planner .slot-add input{background:var(--dark-surface-raised)}
+[data-theme="dark"] .day-planner .slot-add .soft-btn{background:var(--dark-surface)}
+[data-theme="dark"] .day-planner .reflection-link{background:var(--dark-surface)}
+[data-theme="dark"] .sunrise-marker{background:var(--dark-surface)}
+[data-theme="dark"] .day-plan-content .prayer-interval{background:var(--dark-surface-raised)}
+[data-theme="dark"] .day-plan-content .half-hour-row{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-plan-content .planned-activity-card{background:var(--dark-surface-raised)}
+[data-theme="dark"] .day-plan-content .schedule-badge.initial{background:var(--dark-surface)}
+[data-theme="dark"] .day-plan-content .schedule-badge.confirmed{background:var(--dark-surface)}
+[data-theme="dark"] .day-plan-content .planned-activity-controls input[type=time]{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-plan-content .planned-activity-add input{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-plan-content .add-half-hour:hover{background:var(--dark-surface)}
+[data-theme="dark"] .day-plan-content .planned-activity-add{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-plan-content .rename-activity input{border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-plan-content .sunrise-in-slot{background:var(--dark-surface)}
+[data-theme="dark"] .day-plan-content .prayer-bar-kicker{border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-plan-content .fixed-prayer-bar time{background:var(--dark-surface-raised)}
+[data-theme="dark"] .day-plan-content .prayer-bar-duration{background:var(--dark-surface)}
+[data-theme="dark"] .day-plan-content .prayer-interval{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-plan-content .fixed-prayer-bar>.prayer-bar-duration{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-plan-content .prayer-interval-heading{background:var(--dark-surface)}
+[data-theme="dark"] .day-plan-content .prayer-note.sunrise-marker{background:var(--dark-surface-raised)}
+[data-theme="dark"] .day-plan-content .half-hour-row:has(.planned-activity-add){background:var(--dark-surface-raised)}
+[data-theme="dark"] .day-plan-content .prayer-grid .prayer-tag{background:var(--dark-surface)}
+[data-theme="dark"] .day-plan-content .prayer-grid .prayer-sunrise{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-plan-content .day-start-bar{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-plan-content .planned-activity-card{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .day-plan-content .group-add-trigger{background:var(--dark-surface-raised)}
+[data-theme="dark"] .prayer-city-results button{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .prayer-city-selected{background:var(--dark-surface)}
+[data-theme="dark"] #root .app .prayer-city-results button{background:#29483B;border-color:#527C6A;color:#EDEDED}
+[data-theme="dark"] #root .app .prayer-city-results button:hover{background:#315744;border-color:#79A98F}
+[data-theme="dark"] #root .app .prayer-city-results small{color:#C8D8CE}
+[data-theme="dark"] #root .app .prayer-city-selected{background:#213A32;border:1px solid #527C6A;color:#EDEDED}
+[data-theme="dark"] #root .app .prayer-city-selected select{background:#29483B;color:#EDEDED;border-color:#527C6A}
+[data-theme="dark"] .notif-error{background:var(--dark-surface)}
+
+/* «تذكير: لديك مهام مجدولة لليوم» في مخطط اليوم: بطاقة فاتحة بلا override
+   داكن، فكان النص الفاتح يُرسم فوق أخضر فاتح (تباين 1.07–1.29). */
+[data-theme="dark"] .weekly-due{
+  background:color-mix(in srgb,#3B8061 16%,var(--dark-surface-raised));
+  border-color:color-mix(in srgb,#3B8061 40%,var(--dark-line-card));
+  border-inline-start-color:var(--dark-ink);
+  color:var(--dark-body);
+}
+[data-theme="dark"] .weekly-due h2,
+[data-theme="dark"] .weekly-due strong{color:var(--dark-ink)}
+[data-theme="dark"] .review-filter{background:var(--dark-surface-raised)}
+[data-theme="dark"] .platform-price-fields input{background:var(--dark-surface-raised)}
+[data-theme="dark"] .platform-price-fields select{background:var(--dark-surface-raised)}
+[data-theme="dark"] .platform-audit-list li{background:var(--dark-surface-raised)}
+[data-theme="dark"] .platform-audit-list li>span.granted{background:var(--dark-surface)}
+[data-theme="dark"] .platform-audit-list li>span.revoked{background:var(--dark-surface)}
+[data-theme="dark"] .platform-audit-list li>span.reset{background:var(--dark-surface)}
+[data-theme="dark"] .admin-page{background:var(--dark-surface)}
+[data-theme="dark"] .admin-header{background:var(--dark-surface)}
+[data-theme="dark"] .admin-header-actions a{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-header-actions button{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-save-controls button{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-save{background:var(--dark-surface)}
+[data-theme="dark"] .admin-save.saving{background:var(--dark-surface)}
+[data-theme="dark"] .admin-save.error{background:var(--dark-surface)}
+[data-theme="dark"] .admin-users{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-users-refresh{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-users-pagination button{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-user-stats>div{background:var(--dark-surface)}
+[data-theme="dark"] .admin-users-filters input{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-users-filters select{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-users-search>div{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-users-error{background:var(--dark-surface)}
+[data-theme="dark"] .admin-users-empty{background:var(--dark-surface)}
+[data-theme="dark"] .admin-users-table-wrap{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-users-table th{background:var(--dark-surface)}
+[data-theme="dark"] .admin-user-state{background:var(--dark-surface)}
+[data-theme="dark"] .admin-user-role{background:var(--dark-surface)}
+[data-theme="dark"] .admin-user-state.confirmed{background:var(--dark-surface)}
+[data-theme="dark"] .admin-user-role.admin{background:var(--dark-surface)}
+[data-theme="dark"] .admin-user-role.pending{background:var(--dark-surface)}
+[data-theme="dark"] .admin-user-role.member{background:var(--dark-surface)}
+[data-theme="dark"] .admin-user-manage{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-user-manage:hover{background:var(--dark-surface)}
+[data-theme="dark"] .admin-user-manage:focus-visible{background:var(--dark-surface)}
+[data-theme="dark"] .admin-user-permissions{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-permissions-close{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-permission-revoke{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-permission-reset{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-permission-select select{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-permission-state{background:var(--dark-surface)}
+[data-theme="dark"] .admin-users-success{background:var(--dark-surface)}
+[data-theme="dark"] .admin-permission-current{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .admin-permission-current-heading span{background:var(--dark-surface)}
+[data-theme="dark"] .admin-permission-history li>span{background:var(--dark-surface)}
+[data-theme="dark"] .admin-permission-current.is-available .admin-permission-current-heading span{background:var(--dark-surface)}
+[data-theme="dark"] .admin-permission-history li>span.granted{background:var(--dark-surface)}
+[data-theme="dark"] .admin-permission-current.is-unavailable .admin-permission-current-heading span{background:var(--dark-surface)}
+[data-theme="dark"] .admin-permission-history li>span.revoked{background:var(--dark-surface)}
+[data-theme="dark"] .admin-permission-history li{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .quran-admin-table th{background:var(--dark-surface-raised)}
+[data-theme="dark"] .quran-admin-table code{background:var(--dark-surface)}
+[data-theme="dark"] .quran-admin-badge{background:var(--dark-surface)}
+[data-theme="dark"] .quran-admin-badge.blocked{background:var(--dark-surface)}
+[data-theme="dark"] .quran-admin-badge.not_imported{background:var(--dark-surface)}
+[data-theme="dark"] .quran-admin-badge.pending{background:var(--dark-surface)}
+[data-theme="dark"] .quran-admin-badge.partial{background:var(--dark-surface)}
+[data-theme="dark"] .quran-admin-badge.approved{background:var(--dark-surface)}
+[data-theme="dark"] .quran-admin-badge.complete{background:var(--dark-surface)}
+[data-theme="dark"] .quran-admin-checks li{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .quran-admin-checks li.failed{background:color-mix(in srgb,#A64137 12%,var(--dark-surface-raised));border-color:var(--dark-line-card)}
+[data-theme="dark"] .quran-admin-note{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .quran-blocked strong{color:var(--color-gold-ink)}
+[data-theme="dark"] .quran-journey-head p{color:var(--dark-body)}
+[data-theme="dark"] .quran-journey-stats dt{color:var(--dark-body)}
+[data-theme="dark"] .quran-journey-stats small{color:var(--color-gold-ink)}
+[data-theme="dark"] .learning-overview .learning-toolbar button.primary{color:var(--dark-body)}
+[data-theme="dark"] .path-station.locked .path-station-icon{color:var(--dark-body)}
+[data-theme="dark"] .path-station-focus{color:var(--dark-body)}
+[data-theme="dark"] .path-station-summary{color:var(--dark-body)}
+[data-theme="dark"] .path-station.locked .path-station-name{color:var(--dark-body)}
+[data-theme="dark"] .path-station:disabled .path-station-name{color:var(--dark-body)}
+[data-theme="dark"] .path-station.locked .path-station-focus{color:var(--dark-body)}
+[data-theme="dark"] .path-station.locked .path-station-summary{color:var(--dark-body)}
+[data-theme="dark"] .path-station.locked .path-station-name small{color:var(--dark-body)}
+[data-theme="dark"] .learning-journey .lesson-prose{color:var(--dark-body)}
+[data-theme="dark"] .station-sources h3{color:var(--dark-body)}
+[data-theme="dark"] .station-video-groups h3{color:var(--dark-body)}
+[data-theme="dark"] .station-source-list li::marker{color:var(--dark-body)}
+[data-theme="dark"] .learning-journey .learning-resource small{color:var(--dark-body)}
+[data-theme="dark"] .day-settings summary{color:var(--dark-body)}
+[data-theme="dark"] .legacy-tasks summary{color:var(--dark-body)}
+[data-theme="dark"] .schedule-warning{color:var(--color-gold-ink)}
+[data-theme="dark"] .slot-marker{color:var(--dark-body)}
+[data-theme="dark"] .slot-time{color:var(--dark-body)}
+[data-theme="dark"] .prayer-note{color:var(--dark-body)}
+[data-theme="dark"] .slot-footnote{color:var(--dark-body)}
+[data-theme="dark"] .activity-schedule strong{color:var(--dark-body)}
+[data-theme="dark"] .activity-schedule label{color:var(--dark-body)}
+[data-theme="dark"] .day-review-mark{color:var(--color-gold-ink)}
+[data-theme="dark"] .day-review-heading h3{color:var(--dark-body)}
+[data-theme="dark"] .day-review>p{color:var(--dark-body)}
+[data-theme="dark"] .day-review-fields label{color:var(--dark-body)}
+[data-theme="dark"] .day-review-actions span{color:var(--dark-body)}
+[data-theme="dark"] .day-review>small{color:var(--dark-body)}
+[data-theme="dark"] .day-message-dialog{color:var(--dark-body)}
+[data-theme="dark"] .day-message-content{color:var(--dark-body)}
+[data-theme="dark"] .day-message-content h2{color:var(--dark-body)}
+[data-theme="dark"] .day-message-content h3{color:var(--dark-body)}
+[data-theme="dark"] .day-message-content strong{color:var(--dark-body)}
+[data-theme="dark"] .day-message-content em{color:var(--color-gold-ink)}
+[data-theme="dark"] .tracking-message summary{color:var(--dark-body)}
+[data-theme="dark"] .day-view-switch button{color:var(--dark-body)}
+[data-theme="dark"] .day-start-bar p{color:var(--dark-body)}
+[data-theme="dark"] .tracking-header h2{color:var(--dark-body)}
+[data-theme="dark"] .tracking-header p{color:var(--dark-body)}
+[data-theme="dark"] .tracking-header label{color:var(--dark-body)}
+[data-theme="dark"] .tracking-toolbar label{color:var(--dark-body)}
+[data-theme="dark"] .prayer-log h3{color:var(--dark-body)}
+[data-theme="dark"] .prayer-log-row>span{color:var(--dark-body)}
+[data-theme="dark"] .prayer-chip{color:var(--dark-body)}
+[data-theme="dark"] .tracking-progress strong{color:var(--dark-body)}
+[data-theme="dark"] .tracking-progress span{color:var(--dark-body)}
+[data-theme="dark"] .tracking-progress label{color:var(--dark-body)}
+[data-theme="dark"] .tracking-item .task-main strong{color:var(--dark-body)}
+[data-theme="dark"] .tracking-item .task-main small{color:var(--dark-body)}
+[data-theme="dark"] .tracking-status{color:var(--dark-body)}
+[data-theme="dark"] .tracking-item-footer>span{color:var(--dark-body)}
+[data-theme="dark"] .tracking-item-footer button{color:var(--color-gold-ink)}
+[data-theme="dark"] .tracking-done .task-main strong{color:var(--dark-body)}
+[data-theme="dark"] .tracking-deferred .tracking-status{color:var(--color-gold-ink)}
+[data-theme="dark"] .tracking-empty{color:var(--dark-body)}
+[data-theme="dark"] .day-planner .eyebrow{color:var(--color-gold-ink)}
+[data-theme="dark"] .day-planner .day-settings summary{color:var(--dark-body)}
+[data-theme="dark"] .day-planner .task-time-selects select{background:var(--dark-surface);border-color:var(--dark-line-card);color:var(--dark-body)}
+[data-theme="dark"] .day-planner .slot-marker{color:var(--color-gold-ink)}
+[data-theme="dark"] .day-planner .slot-heading h3{color:var(--dark-body)}
+[data-theme="dark"] .day-planner .prayer-note{color:var(--dark-body)}
+[data-theme="dark"] .day-planner .slot-activity .activity-title{color:var(--dark-body)}
+[data-theme="dark"] .day-planner .slot-activity>.icon-btn{color:var(--dark-body)}
+[data-theme="dark"] .day-planner .slot-activity>.danger:hover{color:var(--color-gold-ink)}
+[data-theme="dark"] .day-planner .activity-time svg{color:var(--dark-body)}
+[data-theme="dark"] .day-planner .activity-duration{color:var(--color-gold-ink)}
+[data-theme="dark"] .day-planner .activity-schedule>.icon-btn{color:var(--dark-body)}
+[data-theme="dark"] .day-planner .activity-duration-edit label{color:var(--dark-body)}
+[data-theme="dark"] .day-planner .activity-complete .activity-title.completed{color:var(--dark-body)}
+[data-theme="dark"] .day-planner .slot-footnote{color:var(--dark-body)}
+[data-theme="dark"] .day-planner .reflection-link{color:var(--color-gold-ink)}
+[data-theme="dark"] .day-plan-content .half-hour-time{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .half-hour-time span{color:var(--dark-muted)}
+[data-theme="dark"] .day-plan-content .schedule-badge.initial{color:var(--color-gold-ink)}
+[data-theme="dark"] .day-plan-content .schedule-badge.confirmed{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .planned-activity-controls label{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .planned-activity-add label{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .empty-slot-note{color:var(--dark-muted)}
+[data-theme="dark"] .day-plan-content .add-half-hour{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .sunrise-in-slot{color:var(--color-gold-ink)}
+[data-theme="dark"] .day-plan-content .prayer-bar-duration{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .prayer-interval-heading h3{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .prayer-interval-heading span{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .prayer-note.sunrise-marker{color:var(--color-gold-ink)}
+[data-theme="dark"] .day-plan-content .half-hour-time strong{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .prayer-grid .prayer-tag{color:var(--color-gold-ink)}
+[data-theme="dark"] .day-plan-content .prayer-grid .prayer-sunrise .prayer-name{color:var(--color-gold-ink)}
+[data-theme="dark"] .day-plan-content .day-start-bar strong{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .day-start-bar p{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .day-start-bar label{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .planned-activity-controls>label{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .prayer-grid .prayer-name{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .prayer-grid .prayer-time-text{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .prayer-grid .prayer-sunrise .prayer-time-text{color:var(--color-gold-ink)}
+[data-theme="dark"] .day-plan-content .planned-activity-controls>label .time-text{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .planned-activity-controls>label .time-label{color:var(--dark-body)}
+[data-theme="dark"] .prayer-city-results small{color:var(--dark-body)}
+[data-theme="dark"] .goal-period-card-head small{color:var(--dark-body)}
+[data-theme="dark"] .goal-period-count span{color:var(--dark-body)}
+[data-theme="dark"] .goal-period-empty{color:var(--dark-body)}
+[data-theme="dark"] .goal-period-item small{color:var(--dark-body)}
+[data-theme="dark"] .goal-step-number{color:var(--dark-body)}
+[data-theme="dark"] .goal-summary-count{color:var(--color-gold-ink)}
+[data-theme="dark"] .goal-meta span{color:var(--dark-body)}
+[data-theme="dark"] .goal-meta span:last-child{color:var(--color-gold-ink)}
+[data-theme="dark"] .goal-period-badge{color:var(--dark-body)}
+[data-theme="dark"] .goal-step-history{color:var(--dark-body)}
+[data-theme="dark"] .goal-history-list li>span{color:var(--dark-body)}
+[data-theme="dark"] :root{color:var(--dark-body)}
+[data-theme="dark"] .brand{color:var(--dark-body)}
+[data-theme="dark"] .brand small{color:var(--dark-body)}
+[data-theme="dark"] .sidebar nav button{color:var(--dark-body)}
+[data-theme="dark"] .side-bottom button{color:var(--dark-body)}
+[data-theme="dark"] .sidebar nav button.active{color:var(--dark-body)}
+[data-theme="dark"] .side-bottom p{color:var(--dark-body)}
+[data-theme="dark"] .side-bottom p span{color:var(--dark-muted)}
+[data-theme="dark"] .crumb{color:var(--dark-muted)}
+[data-theme="dark"] .crumb strong{color:var(--dark-body)}
+[data-theme="dark"] .top-date{color:var(--dark-body)}
+[data-theme="dark"] .section-title p{color:var(--dark-body)}
+[data-theme="dark"] .feature-icon{color:var(--dark-body)}
+[data-theme="dark"] .icon-1{color:var(--color-gold-ink)}
+[data-theme="dark"] .icon-2{color:var(--dark-body)}
+[data-theme="dark"] .icon-3{color:var(--color-gold-ink)}
+[data-theme="dark"] .feature-card>span:nth-of-type(2){color:var(--dark-muted)}
+[data-theme="dark"] .feature-arrow{color:var(--dark-muted)}
+[data-theme="dark"] .wide-icon{color:var(--dark-body)}
+[data-theme="dark"] .wide-icon.blush{color:var(--color-gold-ink)}
+[data-theme="dark"] .wide-card p{color:var(--dark-muted)}
+[data-theme="dark"] .inline-link{color:var(--dark-body)}
+[data-theme="dark"] .quote{color:var(--dark-body)}
+[data-theme="dark"] .quote span{color:var(--dark-muted)}
+[data-theme="dark"] .back{color:var(--dark-body)}
+[data-theme="dark"] .page-intro p{color:var(--dark-muted)}
+[data-theme="dark"] .panel-head{color:var(--dark-body)}
+[data-theme="dark"] .panel-head h3{color:var(--dark-body)}
+[data-theme="dark"] .muted{color:var(--dark-muted)}
+[data-theme="dark"] .completed{color:var(--dark-muted)}
+[data-theme="dark"] .icon-btn{color:var(--dark-muted)}
+[data-theme="dark"] .danger:hover{color:#E9B4A8}
+[data-theme="dark"] .add-row input{color:var(--dark-body)}
+[data-theme="dark"] input:not([type=checkbox]){color:var(--dark-body)}
+[data-theme="dark"] select{color:var(--dark-body)}
+[data-theme="dark"] textarea{color:var(--dark-body)}
+[data-theme="dark"] .hint{color:var(--dark-body)}
+[data-theme="dark"] .goal-item p{color:var(--dark-body)}
+[data-theme="dark"] .goal-item small{color:var(--color-gold-ink)}
+[data-theme="dark"] .soft-btn{color:var(--dark-body)}
+[data-theme="dark"] .station{color:var(--dark-muted)}
+[data-theme="dark"] .station.current{color:var(--dark-body)}
+[data-theme="dark"] .station.finished{color:var(--dark-body)}
+[data-theme="dark"] .success-text{color:var(--dark-body)}
+[data-theme="dark"] .subtle-tag{color:var(--dark-body)}
+[data-theme="dark"] .switch-row button{color:var(--dark-body)}
+[data-theme="dark"] .reflection-entry small{color:var(--dark-muted)}
+[data-theme="dark"] .wird-card p{color:var(--dark-muted)}
+[data-theme="dark"] .count-row span{color:var(--dark-muted)}
+[data-theme="dark"] .counter-actions button{color:var(--dark-body)}
+[data-theme="dark"] .outline-danger{color:var(--color-gold-ink)}
+[data-theme="dark"] footer{color:var(--dark-muted)}
+[data-theme="dark"] .mobile-nav button{color:var(--dark-muted)}
+[data-theme="dark"] .mobile-nav button.active{color:var(--dark-body)}
+[data-theme="dark"] .admin-entry{color:var(--dark-body)}
+[data-theme="dark"] .top-date .hijri-inline{color:var(--dark-body)}
+[data-theme="dark"] .side-label{color:var(--color-gold-ink)}
+[data-theme="dark"] .crumb svg{color:var(--dark-body)}
+[data-theme="dark"] .home-admin-entry{color:var(--dark-body)}
+[data-theme="dark"] .home-admin-entry small{color:var(--dark-body)}
+[data-theme="dark"] .icon-3{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .day-timeline-column-heading{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .day-slot.prayer-slot .slot-heading h3{color:var(--dark-body)}
+[data-theme="dark"] .day-plan-content .day-slot.prayer-slot .prayer-note{color:var(--dark-body)}
+[data-theme="dark"] .notif-error{color:var(--color-gold-ink)}
+[data-theme="dark"] .notif-icon{color:var(--dark-body)}
+[data-theme="dark"] .notif-icon-system{color:var(--dark-body)}
+[data-theme="dark"] .notif-icon-reminder{color:var(--dark-body)}
+[data-theme="dark"] .soft-btn.danger{color:var(--color-gold-ink)}
+[data-theme="dark"] .platform-audit-list li>span.granted{color:var(--dark-body)}
+[data-theme="dark"] .platform-audit-list li>span.revoked{color:var(--color-gold-ink)}
+[data-theme="dark"] .platform-audit-list li>span.reset{color:var(--dark-body)}
+[data-theme="dark"] .admin-page{color:var(--dark-body)}
+[data-theme="dark"] .admin-identity small{color:var(--dark-body)}
+[data-theme="dark"] .admin-header-actions a{color:var(--dark-body)}
+[data-theme="dark"] .admin-header-actions button{color:var(--dark-body)}
+[data-theme="dark"] .admin-eyebrow{color:var(--color-gold-ink)}
+[data-theme="dark"] .admin-intro h1{color:var(--dark-body)}
+[data-theme="dark"] .admin-intro p{color:var(--dark-body)}
+[data-theme="dark"] .admin-save-controls button{color:var(--dark-body)}
+[data-theme="dark"] .admin-save{color:var(--dark-body)}
+[data-theme="dark"] .admin-save.saving{color:var(--color-gold-ink)}
+[data-theme="dark"] .admin-save.error{color:var(--color-gold-ink)}
+[data-theme="dark"] .admin-users-heading h2{color:var(--dark-body)}
+[data-theme="dark"] .admin-users-heading p{color:var(--dark-body)}
+[data-theme="dark"] .admin-users-refresh{color:var(--dark-body)}
+[data-theme="dark"] .admin-users-pagination button{color:var(--dark-body)}
+[data-theme="dark"] .admin-user-stats span{color:var(--dark-body)}
+[data-theme="dark"] .admin-user-stats strong{color:var(--dark-body)}
+[data-theme="dark"] .admin-users-filters label{color:var(--dark-body)}
+[data-theme="dark"] .admin-users-filters input{color:var(--dark-body)}
+[data-theme="dark"] .admin-users-filters select{color:var(--dark-body)}
+[data-theme="dark"] .admin-users-search>div{color:var(--dark-body)}
+[data-theme="dark"] .admin-users-privacy{color:var(--dark-body)}
+[data-theme="dark"] .admin-users-error{color:var(--dark-body)}
+[data-theme="dark"] .admin-users-empty{color:var(--dark-body)}
+[data-theme="dark"] .admin-users-error{color:var(--color-gold-ink)}
+[data-theme="dark"] .admin-users-table th{color:var(--dark-body)}
+[data-theme="dark"] .admin-user-email{color:var(--dark-body)}
+[data-theme="dark"] .admin-user-id{color:var(--dark-body)}
+[data-theme="dark"] .admin-user-id{color:var(--dark-muted)}
+[data-theme="dark"] .admin-user-state{color:var(--dark-body)}
+[data-theme="dark"] .admin-user-role{color:var(--dark-body)}
+[data-theme="dark"] .admin-user-state.confirmed{color:var(--dark-body)}
+[data-theme="dark"] .admin-user-role.admin{color:var(--color-gold-ink)}
+[data-theme="dark"] .admin-user-role.pending{color:var(--color-gold-ink)}
+[data-theme="dark"] .admin-user-role.member{color:var(--dark-body)}
+[data-theme="dark"] .admin-users-pagination{color:var(--dark-body)}
+[data-theme="dark"] .admin-user-manage{color:var(--dark-body)}
+[data-theme="dark"] .admin-user-permissions h3{color:var(--dark-body)}
+[data-theme="dark"] .admin-user-permissions h4{color:var(--dark-body)}
+[data-theme="dark"] .admin-user-permissions header bdi{color:var(--dark-body)}
+[data-theme="dark"] .admin-permissions-close{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-revoke{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-reset{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-select{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-select select{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-state{color:var(--dark-body)}
+[data-theme="dark"] .admin-users-success{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-current-heading strong{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-current-heading span{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-history li>span{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-current.is-available .admin-permission-current-heading span{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-history li>span.granted{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-current.is-unavailable .admin-permission-current-heading span{color:var(--color-gold-ink)}
+[data-theme="dark"] .admin-permission-history li>span.revoked{color:var(--color-gold-ink)}
+[data-theme="dark"] .admin-permission-current p{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-last-change span{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-last-change strong{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-help{color:var(--dark-body)}
+[data-theme="dark"] .admin-permission-history small{color:var(--dark-body)}
+[data-theme="dark"] .quran-admin-head p{color:var(--dark-body)}
+[data-theme="dark"] .quran-admin-table th{color:var(--color-gold-ink)}
+[data-theme="dark"] .quran-admin-table code{color:var(--dark-body)}
+[data-theme="dark"] .quran-admin-badge{color:var(--dark-body)}
+[data-theme="dark"] .quran-admin-badge.blocked{color:var(--color-gold-ink)}
+[data-theme="dark"] .quran-admin-badge.not_imported{color:var(--color-gold-ink)}
+[data-theme="dark"] .quran-admin-badge.pending{color:var(--color-gold-ink)}
+[data-theme="dark"] .quran-admin-badge.partial{color:var(--color-gold-ink)}
+[data-theme="dark"] .quran-admin-badge.approved{color:var(--dark-body)}
+[data-theme="dark"] .quran-admin-badge.complete{color:var(--dark-body)}
+[data-theme="dark"] .quran-admin-checks li.passed svg{color:var(--dark-body)}
+[data-theme="dark"] .quran-admin-checks li.failed svg{color:var(--color-gold-ink)}
+[data-theme="dark"] .quran-admin-note{color:var(--dark-body)}
+[data-theme="dark"] .quran-admin-note svg{color:var(--color-gold-ink)}
+[data-theme="dark"] .week-picker input{color:var(--dark-body)}
+[data-theme="dark"] .week-picker select{color:var(--dark-body)}
+[data-theme="dark"] .weekly-add input{color:var(--dark-body)}
+[data-theme="dark"] .weekly-add select{color:var(--dark-body)}
+[data-theme="dark"] .week-task-schedule input{color:var(--dark-body)}
+[data-theme="dark"] .week-task-schedule select{color:var(--dark-body)}
+[data-theme="dark"] .week-range{color:var(--dark-body)}
+[data-theme="dark"] .week-hijri{color:var(--dark-body)}
+[data-theme="dark"] .resource-manager .editor-title p{color:var(--dark-body)}
+[data-theme="dark"] .managed-resource-title small{color:var(--dark-body)}
+[data-theme="dark"] .resource-dialog{color:var(--dark-body)}
+[data-theme="dark"] .resource-dialog small{color:var(--dark-body)}
+
+/* Day planner dark-mode polish: separate the timeline layers without
+   sacrificing the calm palette or reducing text contrast. */
+[data-theme="dark"] #root .app .day-planner,
+[data-theme="dark"] #root .app .day-plan-content{
+  background:linear-gradient(160deg,color-mix(in srgb,var(--section-accent,#527F8B) 9%,var(--dark-surface-raised)) 0%,var(--dark-surface) 62%,var(--dark-surface-sunken) 100%);
+  border-color:color-mix(in srgb,var(--section-accent,#527F8B) 34%,var(--dark-line-card));
+}
+[data-theme="dark"] #root .app .day-planner .day-page-header,
+[data-theme="dark"] #root .app .day-planner .day-header-date{
+  background:linear-gradient(135deg,color-mix(in srgb,var(--section-accent,#527F8B) 22%,var(--dark-surface-raised)),var(--dark-surface));
+  border-color:color-mix(in srgb,var(--section-accent,#527F8B) 42%,var(--dark-line-card));
+}
+[data-theme="dark"] #root .app .day-planner .day-view-switch{
+  background:color-mix(in srgb,var(--section-accent,#527F8B) 10%,var(--dark-surface-sunken));
+  border-color:var(--dark-line-card);
+}
+[data-theme="dark"] #root .app .day-planner .day-view-switch button.active{
+  background:color-mix(in srgb,var(--section-accent,#527F8B) 32%,var(--dark-surface-raised));
+  color:var(--dark-body);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--section-accent,#527F8B) 60%,var(--dark-line-card));
+}
+[data-theme="dark"] #root .app .day-planner .slot-body,
+[data-theme="dark"] #root .app .day-planner .slot-activity,
+[data-theme="dark"] #root .app .day-plan-content .planned-activity-card{
+  background:linear-gradient(145deg,color-mix(in srgb,var(--section-accent,#527F8B) 8%,var(--dark-surface-raised)),var(--dark-surface-raised));
+  border-color:color-mix(in srgb,var(--section-accent,#527F8B) 28%,var(--dark-line-card));
+}
+[data-theme="dark"] #root .app .day-planner .prayer-slot .slot-body,
+[data-theme="dark"] #root .app .day-plan-content .fixed-prayer-bar{
+  background:linear-gradient(105deg,color-mix(in srgb,#527F8B 22%,var(--dark-surface-raised)),color-mix(in srgb,#2F7D72 16%,var(--dark-surface)));
+  border-color:color-mix(in srgb,#6FA7B0 48%,var(--dark-line-card));
+}
+[data-theme="dark"] #root .app .day-planner .slot-marker{
+  background:color-mix(in srgb,var(--section-accent,#527F8B) 18%,var(--dark-surface));
+  border-color:color-mix(in srgb,var(--section-accent,#527F8B) 44%,var(--dark-line-card));
+}
+[data-theme="dark"] #root .app .day-planner .slot-activity:hover,
+[data-theme="dark"] #root .app .day-plan-content .planned-activity-card:hover{
+  background:color-mix(in srgb,var(--section-accent,#527F8B) 18%,var(--dark-surface-raised));
+  border-color:color-mix(in srgb,var(--section-accent,#527F8B) 52%,var(--dark-line-card));
+}
+[data-theme="dark"] #root .app .day-plan-content .day-timeline > .day-slot:not(.prayer-slot):nth-child(4n+1){--slot-accent:#5B9276}
+[data-theme="dark"] #root .app .day-plan-content .day-timeline > .day-slot:not(.prayer-slot):nth-child(4n+2){--slot-accent:#78A88A}
+[data-theme="dark"] #root .app .day-plan-content .day-timeline > .day-slot:not(.prayer-slot):nth-child(4n+3){--slot-accent:#9AAA73}
+[data-theme="dark"] #root .app .day-plan-content .day-timeline > .day-slot:not(.prayer-slot):nth-child(4n){--slot-accent:#6A9B91}
+[data-theme="dark"] #root .app .day-plan-content .day-timeline > .day-slot:not(.prayer-slot) .slot-body{
+  border-inline-start:4px solid var(--slot-accent,#527F8B);
+  background:linear-gradient(145deg,color-mix(in srgb,var(--slot-accent,#527F8B) 13%,var(--dark-surface-raised)),var(--dark-surface-raised));
+}
+[data-theme="dark"] #root .app .day-plan-content .day-timeline > .day-slot:not(.prayer-slot) .slot-marker{
+  background:color-mix(in srgb,var(--slot-accent,#527F8B) 30%,var(--dark-surface));
+  border-color:var(--slot-accent,#527F8B);
+  color:var(--dark-body);
+}
+[data-theme="dark"] #root .app .day-plan-content .day-timeline > .day-slot:not(.prayer-slot) .slot-activity{
+  border-inline-start:3px solid color-mix(in srgb,var(--slot-accent,#527F8B) 78%,var(--dark-line-card));
+}
+[data-theme="dark"] #root .app .day-plan-content .day-timeline > .day-slot.prayer-slot .slot-body{
+  background:linear-gradient(115deg,color-mix(in srgb,#D4B678 22%,var(--dark-surface-raised)),color-mix(in srgb,#527F8B 14%,var(--dark-surface)));
+  border:1px solid color-mix(in srgb,#D4B678 55%,var(--dark-line-card));
+  border-inline-start:5px solid #D4B678;
+}
+[data-theme="dark"] #root .app .day-plan-content > .prayer-timeline .half-hour-row:nth-child(4n+1){border-inline-start:3px solid #5B9276}
+[data-theme="dark"] #root .app .day-plan-content > .prayer-timeline .half-hour-row:nth-child(4n+2){border-inline-start:3px solid #78A88A}
+[data-theme="dark"] #root .app .day-plan-content > .prayer-timeline .half-hour-row:nth-child(4n+3){border-inline-start:3px solid #9AAA73}
+[data-theme="dark"] #root .app .day-plan-content > .prayer-timeline .half-hour-row:nth-child(4n){border-inline-start:3px solid #6A9B91}
+[data-theme="dark"] #root .app .day-plan-content .prayer-interval{background:#1F3A32;border-color:#527C6A}
+[data-theme="dark"] #root .app .day-plan-content .half-hour-row{background:#29483B;border-color:#527C6A}
+[data-theme="dark"] #root .app .day-plan-content .half-hour-content{background:transparent}
+[data-theme="dark"] #root .app .day-plan-content .planned-activity-card{background:#315744;border-color:#6C9A78;border-inline-start-color:#9AAA73;color:#EDEDED}
+[data-theme="dark"] #root .app .day-plan-content .planned-activity-card:hover{background:#3A6650;border-color:#9BC5AA}
+[data-theme="dark"] #root .app .day-plan-content .task-time-selects select{background:#315744;border-color:#6C9A78;color:#EDEDED}
+
+/* ===== سحب يدوي إضافي: مركز المهام وسطوح بقيت بيضاء في الداكن =====
+   نفس عائلة البطاقات الخضراء الداكنة لمخطط اليوم (#29483B/#315744). */
+[data-theme="dark"] .today-task-list>li{background:#29483B;border-color:#527C6A;color:#EDEDED}
+[data-theme="dark"] .today-task-info strong{color:#F1F6F2}
+[data-theme="dark"] .today-task-source{color:#C8D8CE}
+[data-theme="dark"] .today-task-info small{color:#C8D8CE}
+[data-theme="dark"] .today-task-actions label{color:#C8D8CE}
+[data-theme="dark"] #root .app .today-task-actions .soft-btn{background:#24463C;border-color:#527C6A;min-height:42px;height:42px;border-radius:10px;color:#D9E5DC;white-space:nowrap}
+[data-theme="dark"] #root .app .today-task-actions .soft-btn:hover{background:#2E574A}
+[data-theme="dark"] #root .app .today-task-actions button.primary,[data-theme="dark"] #root .app .today-task-list>li button.primary{background:linear-gradient(160deg,#2C624E,#1E4D3D);border:1px solid #79A98F;border-radius:10px;color:#F4E8C7;min-height:42px;height:42px;white-space:nowrap}
+[data-theme="dark"] #root .app .today-task-filters button{min-height:42px;border-radius:10px}
+[data-theme="dark"] .today-task-actions select,[data-theme="dark"] .today-task-actions input[type=date]{background:#315744;border-color:#6C9A78;color:#EDEDED}
+[data-theme="dark"] .today-task-filters button{color:#D9E5DC}
+[data-theme="dark"] .today-task-filters button.soft-btn{background:#24463C;border-color:#527C6A;color:#D9E5DC}
+[data-theme="dark"] .today-task-filters button.soft-btn:hover{background:#2E574A}
+[data-theme="dark"] .today-task-actions select,[data-theme="dark"] .today-task-actions input[type=date]{background:#315744;border-color:#6C9A78;color:#EDEDED}
+[data-theme="dark"] .today-task-actions .task-time-selects select{background:#315744;border-color:#6C9A78;color:#EDEDED}
+[data-theme="dark"] .prayer-log{background:#29483B;color:#EDEDED}
+[data-theme="dark"] .tracking-progress{background:#29483B;color:#EDEDED}
+[data-theme="dark"] .tracking-message{color:#EDEDED}

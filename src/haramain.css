@@ -1,0 +1,66 @@
+/* قسم «من الحرمين الشريفين» — يستخدم متغيرات القسم المولَّدة من section-theme
+   (accent/soft/strong) لا قيمًا ثابتة، فتعمل مع النظام الفاتح والداكن تلقائيًا. */
+
+.haramain{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+
+.haramain-head{display:flex;flex-direction:column;gap:6px}
+.haramain-eyebrow{display:inline-flex;align-items:center;gap:7px;color:var(--section-strong);font-size:13px;font-weight:800}
+.haramain-head h1{margin:0;font-size:26px;color:var(--color-strong,inherit)}
+.haramain-head p{margin:0;color:var(--color-body);font-size:14.5px;max-width:70ch}
+
+/* تبويبات القنوات */
+.haramain-tabs{display:flex;gap:10px;flex-wrap:wrap}
+.haramain-tab{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid var(--border,rgba(0,0,0,.12));border-radius:14px;background:var(--surface-card,#fff);color:inherit;cursor:pointer;text-align:start;transition:border-color .15s,box-shadow .15s}
+.haramain-tab svg{color:var(--section-accent);flex:none}
+.haramain-tab span{display:flex;flex-direction:column;gap:1px}
+.haramain-tab strong{font-size:14.5px}
+.haramain-tab small{font-size:12px;color:var(--color-body);opacity:.85}
+.haramain-tab:hover{border-color:var(--section-accent)}
+.haramain-tab.active{border-color:var(--section-accent);box-shadow:inset 0 0 0 1.5px var(--section-accent)}
+
+/* الغلاف: 16:9 مع ذروة ارتفاع للشاشات الطويلة */
+.haramain-shell{display:flex;flex-direction:column;gap:10px}
+.haramain-screen{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:16px;overflow:hidden;max-height:78vh}
+.haramain-screen .haramain-frame{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;overflow:hidden}
+.haramain-screen .haramain-hls{position:absolute;inset:0}
+.haramain-screen .haramain-video{width:100%;height:100%;object-fit:contain;display:block;background:#000}
+
+/* وضع الشاشة الكاملة: الغلاف يملأ الشاشة والمشغّل يتمدد */
+.haramain-shell.fullscreen,.haramain-shell:fullscreen{background:#000;padding:0}
+.haramain-shell:fullscreen .haramain-screen{max-height:none;height:100%;border-radius:0;aspect-ratio:auto}
+.haramain-shell:fullscreen .haramain-screen-actions{position:fixed;inset-block-end:18px;inset-inline-start:18px;z-index:10}
+.haramain-shell:fullscreen .haramain-screen-actions .soft-btn{background:rgba(0,0,0,.55);color:#fff;border-color:rgba(255,255,255,.35)}
+
+.haramain-screen-actions{display:flex;justify-content:flex-end;gap:8px}
+
+/* حالات التحميل */
+.haramain-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#fff;background:rgba(0,0,0,.6);font-size:15px;font-weight:700}
+.haramain-loading .spin{animation:haramain-spin 1s linear infinite}
+@keyframes haramain-spin{to{transform:rotate(360deg)}}
+
+/* خطأ عام + ملاحظة الاحتياطي */
+.haramain-error{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:22px}
+.haramain-error svg{color:#9b493d}
+.haramain-error h2{margin:0}
+.haramain-error p{margin:0}
+.haramain-error-actions{display:flex;gap:10px;flex-wrap:wrap}
+.haramain-fallback-note{margin:0;font-size:13px;font-weight:700;color:var(--section-accent)}
+.haramain-hint{margin:-6px 0 0;font-size:12.5px;color:var(--color-body);opacity:.85}
+.haramain-hint strong{font-weight:800}
+
+/* أثناء عرض قسم الحرمين: السكرول داخل منطقة المحتوى (الـ widget) فقط،
+   وليس على مستوى المنصة (html/body مُقفلة من HaramainLive). */
+main[data-section="haramain"] .content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(100vh - 82px);
+  -webkit-overflow-scrolling: touch;
+}
+.haramain-attribution a{display:inline-flex;align-items:center;gap:5px;font-weight:800;color:var(--section-accent);text-decoration:none}
+.haramain-attribution a:hover{text-decoration:underline}
+
+@media(max-width:750px){
+  .haramain-head h1{font-size:22px}
+  .haramain-tab{padding:8px 12px}
+  .haramain-screen{border-radius:12px}
+}

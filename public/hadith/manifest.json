@@ -1,0 +1,29 @@
+{
+  "source": "fawazahmed0/hadith-api",
+  "sourceCommit": "df57907be35291c91ad6a6691180e22ca9920784",
+  "sourceUrl": "https://github.com/fawazahmed0/hadith-api/tree/df57907be35291c91ad6a6691180e22ca9920784",
+  "license": "Unverified; upstream Unlicense covers software, not explicitly the Hadith text or database",
+  "rightsStatus": "unverified",
+  "attribution": "النص العربي من fawazahmed0/hadith-api؛ حقوق النصوص الأصلية والطبعة غير موثقة بشكل مستقل.",
+  "generatedAt": "2026-11-02T02:04:42.608Z",
+  "files": {
+    "bukhari": {
+      "path": "hadith/bukhari.json",
+      "bytes": 10148167,
+      "sha256": "693dd55147382dc07b9d502915e4eac63f336f4e31c1f76ba49df8cd97d05f10",
+      "hadiths": 7580,
+      "sourceHadiths": 7589,
+      "omittedEmptyText": 9,
+      "books": 97
+    },
+    "muslim": {
+      "path": "hadith/muslim.json",
+      "bytes": 9018186,
+      "sha256": "4a4db61623c35c201a137f266baf7ed0a54ac196bc90370ccbafcd34d4029d3e",
+      "hadiths": 7360,
+      "sourceHadiths": 7563,
+      "omittedEmptyText": 203,
+      "books": 56
+    }
+  }
+}

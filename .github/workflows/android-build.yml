@@ -1,0 +1,75 @@
+# بناء تطبيق الأندرويد (Capacitor) — APK للتجربة و AAB للنشر على متجر Play
+# يعمل: يدويًا (workflow_dispatch) أو عند دفع وسم app-v* (مثل app-v1.0.0)
+# التوقيع: ضع هذه الأسرار في إعدادات المستودع (Settings → Secrets → Actions):
+#   KEYSTORE_BASE64  — ملف المفاتيح بترميز base64 (base64 -w0 release.keystore)
+#   KEYSTORE_PASSWORD، KEY_ALIAS، KEY_PASSWORD
+name: Android Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - hameed/mobile-app
+    tags:
+      - 'app-v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HAS_KEYSTORE: ${{ secrets.KEYSTORE_BASE64 != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify bundled Adhan audio assets
+        run: |
+          for f in adhan_ahmad.mp3 adhan_madinah.mp3 adhan_madinah2.mp3 adhan_mohammed.mp3 adhan_almulla.mp3 adhan_hamad.mp3 takbeerat_eid.mp3; do
+            test -s "public/sounds/adhan/$f"
+            test -s "android/app/src/main/res/raw/$f"
+          done
+
+      - name: Build web assets and sync (Local-Only)
+        env:
+          VITE_LOCAL_ONLY: 'true'
+        run: npm run build:android
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Make gradle executable
+        run: chmod +x android/gradlew
+
+      - name: Build debug APK (للتجربة الفورية)
+        run: cd android && ./gradlew assembleDebug
+
+      - name: Build release AAB (متطلب متجر Play)
+        if: env.HAS_KEYSTORE == 'true'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: cd android && ./gradlew bundleRelease
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Upload release AAB
+        if: env.HAS_KEYSTORE == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-aab
+          path: android/app/build/outputs/bundle/release/app-release.aab

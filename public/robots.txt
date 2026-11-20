@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /invite/
+Disallow: /reset-password
+
+Sitemap: https://alrabbaniyun.com/sitemap.xml

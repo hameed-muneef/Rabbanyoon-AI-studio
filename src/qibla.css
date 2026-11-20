@@ -1,0 +1,74 @@
+/* src/qibla.css */
+.qibla-page { display: grid; gap: 16px; padding: 8px 0 24px; max-width: 720px; margin: 0 auto; }
+.qibla-header h1 { display: flex; align-items: center; gap: 8px; font-size: 22px; margin: 0 0 4px; }
+.qibla-header p { margin: 0; }
+
+.qibla-steps { background: var(--surface-card, #fbf9f2); border: 1px solid var(--border-default, #c7c9bd); border-radius: 12px; padding: 12px 14px; }
+.qibla-steps-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.qibla-steps-close { border: 0; background: none; font-size: 16px; cursor: pointer; color: var(--text-muted); }
+.qibla-steps ol { margin: 0; padding-inline-start: 20px; display: grid; gap: 4px; font-size: 14px; }
+
+.qibla-card { background: var(--surface-card, #fbf9f2); border: 1px solid var(--border-default, #c7c9bd); border-radius: 16px; padding: 20px; display: grid; gap: 16px; justify-items: center; }
+
+.qibla-compass { position: relative; width: 260px; height: 260px; max-width: 80vw; }
+.qibla-dial { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--border-default, #c7c9bd); background: var(--surface-nested, #f3f0e7); transition: transform 0.05s linear; will-change: transform; }
+.qibla-tick { position: absolute; top: 0; left: 50%; width: 1px; height: 8px; background: var(--text-muted, #52686a); transform-origin: 50% 130px; margin-left: -0.5px; }
+.qibla-tick.major { height: 14px; width: 2px; background: var(--text-primary, #17313a); margin-left: -1px; }
+.qibla-cardinal { position: absolute; font-size: 13px; font-weight: 800; color: var(--text-primary, #17313a); }
+.qibla-cardinal.n { top: 8px; left: 50%; transform: translateX(-50%); }
+.qibla-cardinal.e { right: 10px; top: 50%; transform: translateY(-50%); }
+.qibla-cardinal.s { bottom: 8px; left: 50%; transform: translateX(-50%); }
+.qibla-cardinal.w { left: 10px; top: 50%; transform: translateY(-50%); }
+.qibla-kaaba { position: absolute; top: 50%; left: 50%; transform-origin: 50% 50%; }
+.qibla-kaaba-icon { display: block; font-size: 26px; transform: translate(-50%, -50%); }
+.qibla-marker-top { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 9px solid transparent; border-right: 9px solid transparent; border-bottom: 16px solid var(--accent-primary, #1d4d50); z-index: 2; }
+
+.qibla-status { font-size: 16px; font-weight: 700; min-height: 24px; text-align: center; }
+.qibla-status.aligned { color: #2f7a4a; }
+.qibla-aligned { color: #2f7a4a; }
+
+.qibla-info { width: 100%; display: grid; gap: 6px; }
+.qibla-info-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 14px; border-bottom: 1px dashed var(--border-subtle, #ddd9cc); padding-bottom: 4px; }
+.qibla-info-row span { color: var(--text-muted, #52686a); }
+.qibla-info-row strong { font-weight: 700; }
+.qibla-info-row small { font-size: 11px; color: var(--text-muted, #52686a); font-weight: 400; }
+
+.qibla-banner { padding: 10px 12px; border-radius: 10px; font-size: 13px; text-align: center; }
+.qibla-banner.warn { background: color-mix(in srgb, #b8860b 14%, var(--surface-card, #fbf9f2)); color: var(--text-primary, #17313a); }
+.qibla-banner.info { background: var(--surface-nested, #f3f0e7); color: var(--text-secondary, #304b50); }
+.qibla-calib-anim { width: 60px; height: 30px; margin: 6px auto 0; border: 2px dashed var(--accent-primary, #1d4d50); border-radius: 50%; animation: qibla-spin 2s linear infinite; }
+@keyframes qibla-spin { to { transform: rotate(360deg); } }
+
+.qibla-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.qibla-actions .soft-btn { min-height: 44px; }
+
+.qibla-picker { width: 100%; display: grid; gap: 8px; }
+.qibla-picker-input { min-height: 42px; padding: 8px 12px; border: 1px solid var(--border-default, #c7c9bd); border-radius: 8px; background: var(--surface-input, #fdfbf5); color: var(--text-primary, #17313a); font: inherit; }
+.qibla-picker-list { list-style: none; padding: 0; margin: 0; max-height: 240px; overflow: auto; display: grid; gap: 4px; }
+.qibla-picker-list li button { width: 100%; text-align: right; padding: 8px 10px; border: 1px solid var(--border-subtle, #ddd9cc); border-radius: 8px; background: var(--surface-card, #fbf9f2); color: var(--text-primary, #17313a); cursor: pointer; display: flex; justify-content: space-between; }
+.qibla-picker-list li button small { color: var(--text-muted, #52686a); }
+
+.qibla-reset { min-height: 44px; }
+.qibla-hint { text-align: center; }
+.qibla-note { text-align: center; max-width: 560px; margin: 0 auto; }
+
+.qibla-digital { display: grid; gap: 8px; padding: 16px; }
+.qibla-digital-row { display: flex; justify-content: space-between; font-size: 18px; }
+
+/* Dark mode */
+[data-theme="dark"] .qibla-card,
+[data-theme="dark"] .qibla-steps { background: var(--surface-card); border-color: var(--border-default); }
+[data-theme="dark"] .qibla-dial { background: var(--surface-nested); border-color: var(--border-default); }
+[data-theme="dark"] .qibla-tick { background: var(--text-muted); }
+[data-theme="dark"] .qibla-tick.major { background: var(--text-primary); }
+[data-theme="dark"] .qibla-cardinal { color: var(--text-primary); }
+[data-theme="dark"] .qibla-marker-top { border-bottom-color: var(--accent-primary); }
+[data-theme="dark"] .qibla-status.aligned,
+[data-theme="dark"] .qibla-aligned { color: #7fd39a; }
+[data-theme="dark"] .qibla-banner.warn { background: color-mix(in srgb, #b8860b 18%, var(--surface-card)); color: var(--text-primary); }
+[data-theme="dark"] .qibla-banner.info { background: var(--surface-nested); color: var(--text-secondary); }
+
+@media (max-width: 480px) {
+  .qibla-compass { width: 220px; height: 220px; }
+  .qibla-tick { transform-origin: 50% 110px; }
+}

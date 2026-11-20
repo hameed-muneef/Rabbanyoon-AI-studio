@@ -1,0 +1,9 @@
+/* تمييز الميزات التي تحتاج إنترنت عن الميزات التي تعمل محليًا */
+.internet-badge{display:inline-flex;align-items:center;gap:4px;margin-inline-start:8px;padding:1px 7px;border-radius:999px;font-size:10px;font-weight:600;line-height:1.6;letter-spacing:0;color:var(--badge-fg,#6b5a2e);background:var(--badge-bg,rgba(196,166,74,.16));border:1px solid var(--badge-border,rgba(196,166,74,.35));vertical-align:middle;white-space:nowrap}
+.internet-badge svg{opacity:.85}
+.offline-notice{display:grid;gap:10px;justify-items:start;text-align:start;padding:22px}
+.offline-notice h2{margin:0;font-size:18px}
+.offline-notice p{margin:0;color:var(--muted,#5b6b66);line-height:1.9}
+.offline-notice > svg{color:var(--warning,#b07d1e)}
+.quran-online-note{display:flex;align-items:center;gap:6px;margin:6px 0 0;font-size:12px;color:var(--muted,#5b6b66)}
+[data-theme="dark"] .internet-badge{--badge-fg:#e8cf8a;--badge-bg:rgba(196,166,74,.18);--badge-border:rgba(196,166,74,.4)}

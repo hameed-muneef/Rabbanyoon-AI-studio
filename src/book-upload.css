@@ -1,0 +1,7 @@
+.book-upload{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 8px}
+.book-upload-label{position:relative;display:inline-flex!important;align-items:center;gap:8px;width:auto!important;padding:10px 14px;border:1px solid #a9c6b1;border-radius:9px;background:#eef5ed;color:#174934;font-size:13px;font-weight:700;cursor:pointer}
+.book-upload-label:hover{background:#e2efe1}
+.book-upload-label:focus-within{outline:3px solid #786137;outline-offset:2px}
+.book-upload-label input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.book-upload small{color:#718078;font-size:11px}
+.book-upload-status{width:100%;font-size:12px;color:#244638}

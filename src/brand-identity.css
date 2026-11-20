@@ -1,0 +1,139 @@
+/* Shared visual identity: blue + forest green + teal + olive + sage + antique gold. */
+:root{
+  /* A. Blue family — بارز في الهوية */
+  --color-blue-deep:#1B2C2D;--color-blue-dusty:#527F8B;--color-blue-sky:#729EAA;
+  --color-blue-soft:#9BBEC5;--color-blue-powder:#C1D9DC;--color-blue-light:#DFE9E8;
+  /* B. Forest green / teal */
+  --color-forest-deep:#1D3E3C;--color-forest-dark:#294039;--color-stone-green:#31443D;
+  --color-teal-deep:#164F59;--color-teal-muted:#477A70;
+  /* C. Olive / sage */
+  --color-olive-dark:#283025;--color-olive:#32412F;--color-sage-muted:#273930;
+  --color-sage-soft:#A8B9A0;--color-sage-light:#D5DFD1;
+  /* D. Gold / neutrals */
+  --color-gold:#B99A5D;--color-bronze:#615A41;--color-ivory:#F3F0E7;
+  --color-stone:#D8D0BB;--color-charcoal:#172921;
+  /* tokens (light) */
+  --color-primary:#1B2C2D;--color-primary-hover:#132020;
+  --color-emerald:#1D3E3C;
+  --color-canvas:#E6EAF0;--color-surface:#FBF8F1;--color-surface-warm:#F5F1E7;
+  --color-surface-soft:#E3EAF0;--color-selected:#DCE8EC;
+  --color-ink:#172921;--color-body:#2E3A3D;--color-muted:#5A6B70;
+  --color-border:#C1D9DC;--color-border-strong:#9BBEC5;
+  --color-gold-ink:#615A41;--color-focus:#B99A5D;
+  --color-success:#164F59;--color-warning:#615A41;--color-error:#8B5A4A;
+  --color-accent:#527F8B;
+  --shadow-soft:0 8px 24px rgba(27,44,45,.07);
+  --shadow-raised:0 14px 34px rgba(27,44,45,.11);
+  /* أسطح الطبقة الراقية في النهاري (معرّفة هنا كانت مفقودة أصلًا) */
+  --surface-canvas:var(--color-canvas);--surface-page:#EEF2F6;--surface:var(--color-surface);--surface-raised:#FFFFFF;--surface-sunken:var(--color-surface-soft);
+  --surface-glass:rgba(251,248,241,.94);
+  --line-card:var(--color-border);--line-soft:#D5E3E0;--line-ornament:var(--color-gold);
+  --shadow-1:0 1px 2px rgba(27,44,45,.08),0 2px 8px rgba(27,44,45,.06);
+  --shadow-2:0 2px 4px rgba(27,44,45,.10),0 10px 26px rgba(27,44,45,.12);
+  --shadow-3:0 4px 10px rgba(27,44,45,.12),0 20px 44px rgba(27,44,45,.18);
+  --radius-control:10px;--radius-card:16px;
+  --grad-canvas:linear-gradient(180deg,#F4F0E6 0%,#E6EAF0 100%);
+  --grad-surface:linear-gradient(165deg,#FFFFFF 0%,#FBF8F1 100%);
+  --pattern-geometry:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23B99A5D' stroke-width='1' opacity='.12'%3E%3Cpath d='M80 8 91 39 119 20 111 51 145 53 119 79 145 107 111 109 119 140 91 121 80 152 69 121 41 140 49 109 15 107 41 79 15 53 49 51 41 20 69 39z'/%3E%3Cpath d='M80 25 96 64 135 80 96 96 80 135 64 96 25 80 64 64zM0 0l28 28M160 0l-28 28M0 160l28-28m132 28-28-28'/%3E%3Ccircle cx='80' cy='80' r='8'/%3E%3C/g%3E%3C/svg%3E");
+  --font-body:'IBM Plex Sans Arabic','Tajawal',Arial,sans-serif;
+  --font-heading:'Cairo','Tajawal',Arial,sans-serif;
+  --font-heritage:'Amiri',serif;
+  font-family:var(--font-body);
+  color:var(--color-ink);
+  background:var(--color-canvas);
+}
+html{scroll-behavior:auto;background:var(--color-canvas)}
+body{position:relative;isolation:isolate;background:var(--color-canvas);color:var(--color-body);font-family:var(--font-body);line-height:1.75}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.34;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%23B99A5D' stroke-width='1' opacity='.12'%3E%3Cpath d='M80 8 91 39 119 20 111 51 145 53 119 79 145 107 111 109 119 140 91 121 80 152 69 121 41 140 49 109 15 107 41 79 15 53 49 51 41 20 69 39z'/%3E%3Cpath d='M80 25 96 64 135 80 96 96 80 135 64 96 25 80 64 64zM0 0l28 28M160 0l-28 28M0 160l28-28m132 28-28-28'/%3E%3Ccircle cx='80' cy='80' r='8'/%3E%3C/g%3E%3C/svg%3E");background-size:160px 160px}
+button,input,select,textarea{font-family:var(--font-body)}
+h1,h2,h3,h4,h5,h6,.brand strong,.crumb strong,.hero h1,.section-title h2{font-family:var(--font-heading);color:var(--color-ink);letter-spacing:0}
+button{transition:background-color .18s,border-color .18s,color .18s,box-shadow .18s,transform .18s}
+:where(button,input,select,textarea,a,summary):focus-visible{outline:3px solid var(--color-focus);outline-offset:3px}
+#root .app{background:transparent}
+#root .app .sidebar{background:var(--color-surface-warm);border-color:var(--color-border);box-shadow:-3px 0 18px rgba(27,44,45,.04);padding:25px 18px}
+#root .app .brand{color:var(--color-primary)}
+#root .app .brand-mark{background:var(--color-primary);color:var(--color-gold);box-shadow:inset 0 0 0 1px rgba(185,154,93,.35)}
+#root .app .side-label{color:var(--color-gold-ink)}
+
+/* ---------- 19) الشريط الجانبي: لون مستقل (أزرق لازوردي) وحالات واضحة وخطوط أكبر ---------- */
+html #root .app .sidebar{
+  background:linear-gradient(180deg,#1E3146 0%,#162538 100%);
+  border-inline-start:1px solid rgba(214,183,123,.22);
+  box-shadow:-12px 0 32px rgba(8,14,26,.32);
+  color:#E8EDF5;
+}
+html #root .app .sidebar .brand,
+html #root .app .sidebar .brand strong{color:#EDEDED}
+html #root .app .sidebar .brand strong{font-size:26px}
+html #root .app .sidebar .brand small{color:#A9B7C9;font-size:13px}
+html #root .app .sidebar .side-label{color:#7A5A12;font-size:15px;letter-spacing:.3px}
+[data-theme="dark"] #root .app .sidebar .side-label{color:#E3C98F}
+html #root .app .sidebar nav button,
+html #root .app .sidebar .side-bottom button{
+  color:#C9D4E2;font-size:17px;font-weight:700;min-height:54px;
+  background:transparent;border-radius:12px;
+  transition:background-color .18s,color .18s,transform .18s;
+}
+html #root .app .sidebar nav button:hover,
+html #root .app .sidebar .side-bottom button:hover{
+  background:rgba(214,183,123,.12);color:#EDEDED;transform:translateX(-2px);
+}
+html #root .app .sidebar nav button svg,
+html #root .app .sidebar .side-bottom button svg{color:#7A5A12;width:20px;height:20px}
+html #root .app .sidebar nav button.active{
+  background:linear-gradient(90deg,rgba(214,183,123,.24),rgba(214,183,123,.08));
+  color:#EDEDED;box-shadow:inset -3px 0 0 #D9B777,0 6px 18px rgba(0,0,0,.22);
+}
+html #root .app .sidebar nav button.active svg{color:#F3D48E}
+html #root .app .sidebar .side-bottom p{color:#A9B7C9;font-size:14px;border-top-color:rgba(214,183,123,.2)}
+html #root .app .sidebar .side-bottom p span{color:#8C9BB0;font-size:12px}
+@media (prefers-reduced-motion:reduce){html #root .app .sidebar nav button{transition:none;transform:none}}
+
+[data-theme="dark"]{
+  --dark-surface-canvas:#08192B;--dark-surface-page:#0D2238;--dark-surface:#132D46;
+  --dark-surface-raised:#1B3A56;--dark-surface-sunken:#061321;
+  --dark-line-card:#31516B;--dark-line-soft:#24435C;--dark-line-ornament:#6B91AA;
+  --dark-body:#EDEDED;--dark-muted:#BDBDBD;--dark-ink:#F5F5F5;
+  --surface-canvas:var(--dark-surface-canvas);
+  --surface-page:var(--dark-surface-page);
+  --surface:var(--dark-surface);
+  --surface-raised:var(--dark-surface-raised);
+  --surface-sunken:var(--dark-surface-sunken);
+  --surface-glass:rgba(36,44,40,.88);
+  --grad-canvas:var(--dark-surface-canvas);
+  --grad-surface:linear-gradient(165deg,#1B3A56 0%,#132D46 100%);
+  --shadow-1:0 1px 2px rgba(0,0,0,.25),0 2px 8px rgba(0,0,0,.2);
+  --shadow-2:0 2px 4px rgba(0,0,0,.28),0 10px 26px rgba(0,0,0,.34);
+  --shadow-3:0 4px 10px rgba(0,0,0,.3),0 20px 44px rgba(0,0,0,.46);
+  --line-card:var(--dark-line-card);
+  --line-soft:var(--dark-line-soft);
+  --line-ornament:var(--dark-line-ornament);
+  --color-canvas:var(--surface-canvas);
+  --color-surface:var(--surface);
+  --color-surface-warm:var(--surface);
+  --color-surface-soft:#3A332B;
+  --color-selected:#433A2F;
+  --color-ink:var(--dark-ink);
+  --color-body:var(--dark-body);
+  --color-muted:var(--dark-muted);
+  --color-border:var(--dark-line-card);
+  --color-border-strong:var(--dark-line-ornament);
+  --color-gold:#D4B678;
+  --color-gold-ink:#E3C991;
+  --color-primary:#527F8B;--color-primary-hover:#729EAA;
+  --color-focus:#D9BC7E;
+  --shadow-soft:var(--shadow-1);
+  --color-blue-deep:#1B2C2D;--color-blue-dusty:#527F8B;--color-blue-sky:#729EAA;
+  --color-blue-soft:#9BBEC5;--color-blue-powder:#C1D9DC;--color-blue-light:#DFE9E8;
+  --color-forest-deep:#1D3E3C;--color-forest-dark:#294039;--color-stone-green:#31443D;
+  --color-teal-deep:#164F59;--color-teal-muted:#477A70;
+  --color-olive-dark:#283025;--color-olive:#32412F;--color-sage-muted:#273930;
+  --color-sage-soft:#A8B9A0;--color-sage-light:#D5DFD1;
+  --color-gold:#B99A5D;--color-bronze:#615A41;--color-ivory:#F2EBD9;
+  --color-stone:#D8D0BB;--color-charcoal:#172921;
+  --color-emerald:#1D3E3C;--color-success:#164F59;--color-warning:#B99A5D;--color-error:#C57F6B;
+  --color-accent:#3a6b64;
+  #root .app .page-intro h1,#root .app .section-title h2{color:var(--section-strong)}
+}
+[data-theme="dark"] .quran-reader{color:var(--dark-body)}
+[data-theme="dark"] img{filter:brightness(.94)}

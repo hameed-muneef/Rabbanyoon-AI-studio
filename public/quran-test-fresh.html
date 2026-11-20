@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>القرآن والسنة | Al-Rabbaniyyun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F1E4;--page:#F6F1E4;--surface:#FFFDF7;--surface-2:#F0E9D6;
+  --border:#D9CFB4;--border-strong:#8F8259;--text:#1F2633;--text-muted:#555F6E;
+  --gold:#7A5A12;--gold-accent:#C9A24A;--primary:#1F3A5F;--on-primary:#FFFFFF;
+  --success:#17703F;--danger:#B3382C;--focus:#1F3A5F;
+  --state-hover:color-mix(in srgb,var(--text) 6%,transparent);
+  --state-pressed:color-mix(in srgb,var(--text) 12%,transparent);
+  --shadow:0 8px 24px rgba(60,45,10,.08);--shadow-hover:0 16px 32px rgba(60,45,10,.14);
+  --radius:16px;--radius-sm:12px;
+  --gap:16px;--gap-sm:8px;--gap-lg:24px;
+  --font:'Cairo',sans-serif;--font-quran:'Amiri',serif;
+  color-scheme:light;
+}
+[data-theme="dark"]{
+  --bg:#0B1424;--page:#0B1424;--surface:#15233A;--surface-2:#1E3150;
+  --border:#2A4066;--border-strong:#6F8FBF;--text:#F4EFE3;--text-muted:#B8C4D6;
+  --gold:#E3C170;--gold-accent:#F0D58C;--primary:#9CC2FF;--on-primary:#0B1424;
+  --success:#6FD9A0;--danger:#F59A92;--focus:#F0D58C;
+  --state-hover:color-mix(in srgb,var(--text) 7%,transparent);
+  --state-pressed:color-mix(in srgb,var(--text) 12%,transparent);
+  --shadow:0 8px 24px rgba(0,0,0,.35);--shadow-hover:0 16px 32px rgba(0,0,0,.45);
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.7;-webkit-font-smoothing:antialiased}
+body{padding:0;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none}
+img,svg{max-width:100%}
+
+/* subtle geometric pattern */
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.04;
+  background-image:repeating-linear-gradient(45deg,transparent 0 20px,var(--gold) 20px 21px),
+    repeating-linear-gradient(-45deg,transparent 0 20px,var(--gold) 20px 21px);
+  mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);}
+
+.container{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:24px 20px 64px}
+
+/* Header */
+.header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap;padding:12px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--border)}
+.header-brand{display:flex;align-items:center;gap:14px}
+.header-mark{width:48px;height:48px;border-radius:14px;background:var(--surface-2);display:grid;place-items:center;color:var(--gold);box-shadow:inset 0 0 0 1px var(--border)}
+.header-mark svg{width:26px;height:26px}
+.header-title{font-size:clamp(22px,4vw,30px);font-weight:800;letter-spacing:-.5px;line-height:1.2}
+.header-subtitle{font-size:14px;color:var(--text-muted);margin-top:2px}
+.header-actions{display:flex;align-items:center;gap:10px}
+.theme-btn{width:44px;height:44px;border-radius:12px;background-color:#1E3150;border:1px solid var(--border);display:grid;place-items:center;color:var(--text);transition:background-color .2s,border-color .2s,transform .2s}
+.theme-btn:hover{background-color:var(--surface-2);border-color:var(--border-strong);transform:translateY(-2px)}
+.theme-btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;border-radius:20px;padding:clamp(24px,4vw,36px);margin-bottom:32px;
+  background:linear-gradient(135deg,var(--surface) 0%,var(--surface-2) 100%);
+  border:1px solid var(--border);box-shadow:var(--shadow)}
+.hero::after{content:'';position:absolute;inset-inline-end:-40px;top:-40px;width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,var(--gold-accent) 0%,transparent 70%);opacity:.15;pointer-events:none}
+.hero-eyebrow{font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.5px;margin-bottom:6px}
+.hero-title{font-size:clamp(26px,5vw,40px);font-weight:800;line-height:1.25;margin-bottom:8px;font-family:var(--font-quran)}
+.hero-desc{font-size:15px;color:var(--text-muted);max-width:60ch;line-height:1.8}
+
+/* Section */
+.section{margin-bottom:28px}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.section-icon{width:32px;height:32px;border-radius:10px;background:var(--surface-2);display:grid;place-items:center;color:var(--gold);flex:none}
+.section-icon svg{width:18px;height:18px}
+.section-title{font-size:18px;font-weight:700;color:var(--text)}
+.section-subtitle{font-size:13px;color:var(--text-muted);margin-inline-start:auto}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+
+/* Card */
+.card{position:relative;display:flex;flex-direction:column;gap:10px;padding:20px;border-radius:var(--radius);
+  background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow);
+  transition:transform .25s,box-shadow .25s,border-color .25s;
+  min-height:150px;overflow:hidden}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--border-strong)}
+.card:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.card:active{transform:translateY(-1px)}
+.card::before{content:'';position:absolute;inset-inline-start:0;top:12px;bottom:12px;width:3px;border-radius:3px;background:var(--gold-accent);opacity:.6}
+.card.featured{grid-column:1 / -1;background:linear-gradient(135deg,var(--surface) 0%,var(--surface-2) 100%);border-color:var(--gold-accent)}
+.card.featured::before{opacity:1;width:4px;background:var(--gold)}
+.card.featured .card-title{font-size:20px}
+.card.featured .card-desc{max-width:70ch}
+.card-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex:none;transition:transform .25s}
+.card:hover .card-icon{transform:scale(1.06)}
+.card-icon svg{width:22px;height:22px}
+.card-icon.emerald{background:color-mix(in srgb,var(--success) 14%,transparent);color:var(--success)}
+.card-icon.gold{background:color-mix(in srgb,var(--gold) 16%,transparent);color:var(--gold)}
+.card-icon.teal{background:color-mix(in srgb,var(--primary) 14%,transparent);color:var(--primary)}
+.card-title{font-size:17px;font-weight:700;color:var(--text);line-height:1.3}
+.card-desc{font-size:13.5px;color:var(--text-muted);line-height:1.7;flex:1}
+.card-affordance{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;color:var(--gold);margin-top:auto;opacity:.85;transition:opacity .2s,gap .2s}
+.card:hover .card-affordance{opacity:1;gap:6px}
+.card-affordance svg{width:14px;height:14px}
+
+/* Responsive */
+@media (max-width:1024px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card.featured{grid-column:1 / -1}}
+@media (max-width:640px){.grid{grid-template-columns:1fr}.header{flex-direction:column;align-items:flex-start}.hero{padding:20px}.card{min-height:120px}.theme-btn{width:40px;height:40px}}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;transform:none!important}}
+
+/* Fade-in stagger */
+.card{animation:fadeUp .5s ease both}
+.card:nth-child(1){animation-delay:.05s}
+.card:nth-child(2){animation-delay:.1s}
+.card:nth-child(3){animation-delay:.15s}
+.card:nth-child(4){animation-delay:.2s}
+.card:nth-child(5){animation-delay:.25s}
+.card:nth-child(6){animation-delay:.3s}
+.card:nth-child(7){animation-delay:.35s}
+.card:nth-child(8){animation-delay:.4s}
+.card:nth-child(9){animation-delay:.45s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.card{animation:none}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="header-brand">
+      <div class="header-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h6"/><path d="M8 11h8"/></svg></div>
+      <div>
+        <h1 class="header-title">القرآن والسنة</h1>
+        <p class="header-subtitle">رحلتك مع كتاب الله وسنة رسوله ﷺ</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="theme-btn" id="themeBtn" aria-label="تبديل المظهر" title="تبديل المظهر">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-eyebrow">القرآن والسنة</div>
+    <h2 class="hero-title">«احرص على ما ينفعك، واستعن بالله ولا تعجز»</h2>
+    <p class="hero-desc">منصة للتعلم والعمل بالقرآن والسنة، وبناء الإيمان، وتعلم العقيدة، وتزكية النفس، والسير في منهج متدرج يجمع بين العلم والعمل.</p>
+  </section>
+
+  <!-- القرآن الكريم -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div>
+      <h2 class="section-title">القرآن الكريم</h2>
+      <span class="section-subtitle">3 أقسام</span>
+    </div>
+    <div class="grid">
+      <a href="#" class="card featured">
+        <div class="card-icon emerald"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h6"/><path d="M8 11h8"/></svg></div>
+        <h3 class="card-title">المصحف الشريف</h3>
+        <p class="card-desc">قراءة بالرسم العثماني، بحث، علامات، ملاحظات وسجل قراءة.</p>
+        <span class="card-affordance">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></span>
+      </a>
+      <a href="#" class="card">
+        <div class="card-icon emerald"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><path d="M22 2 12 12"/></svg></div>
+        <h3 class="card-title">حفظ القرآن</h3>
+        <p class="card-desc">خطط مرنة وتمارين إخفاء وإكمال وترتيب واسترجاع.</p>
+        <span class="card-affordance">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></span>
+      </a>
+      <a href="#" class="card">
+        <div class="card-icon emerald"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3 class="card-title">مراجعة القرآن</h3>
+        <p class="card-desc">مراجعة متابعة تحفظ ما حفظته وتعيد المتعثر.</p>
+        <span class="card-affordance">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- السنة النبوية -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <h2 class="section-title">السنة النبوية</h2>
+      <span class="section-subtitle">3 أقسام</span>
+    </div>
+    <div class="grid">
+      <a href="#" class="card">
+        <div class="card-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div>
+        <h3 class="card-title">صحيح البخاري</h3>
+        <p class="card-desc">الجامع الصحيح للإمام البخاري.</p>
+        <span class="card-affordance">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></span>
+      </a>
+      <a href="#" class="card">
+        <div class="card-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3 class="card-title">صحيح مسلم</h3>
+        <p class="card-desc">الجامع الصحيح للإمام مسلم.</p>
+        <span class="card-affordance">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></span>
+      </a>
+      <a href="#" class="card">
+        <div class="card-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg></div>
+        <h3 class="card-title">حفظ السنة</h3>
+        <p class="card-desc">خطط وتمارين لحفظ الأحاديث.</p>
+        <span class="card-affordance">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- الممارسة اليومية -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/></svg></div>
+      <h2 class="section-title">الممارسة اليومية</h2>
+      <span class="section-subtitle">3 أقسام</span>
+    </div>
+    <div class="grid">
+      <a href="#" class="card">
+        <div class="card-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></div>
+        <h3 class="card-title">وردي اليوم</h3>
+        <p class="card-desc">جدولة القرآن والسنة داخل مهام اليوم.</p>
+        <span class="card-affordance">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></span>
+      </a>
+      <a href="#" class="card">
+        <div class="card-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3 class="card-title">أذكار</h3>
+        <p class="card-desc">حصن Muslim: أذكار الصباح والمساء وسائر الأوقات.</p>
+        <span class="card-affordance">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></span>
+      </a>
+      <a href="#" class="card">
+        <div class="card-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+        <h3 class="card-title">سجل الإنجاز</h3>
+        <p class="card-desc">قراءة وحفظ وإتقان وانتظام وتأملات خاصة.</p>
+        <span class="card-affordance">فتح <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></span>
+      </a>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  const KEY='rabbani-theme-v1';
+  const btn=document.getElementById('themeBtn');
+  const icon=document.getElementById('themeIcon');
+  const sunPath='<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+  const moonPath='<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>';
+  function apply(dark){
+    document.documentElement.setAttribute('data-theme',dark?'dark':'light');
+    document.documentElement.style.colorScheme=dark?'dark':'light';
+    icon.innerHTML=dark?moonPath:sunPath;
+  }
+  function init(){
+    let saved=null;try{saved=localStorage.getItem(KEY)}catch(e){}
+    const dark = saved==='dark' || (saved!=='light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    apply(dark);
+  }
+  init();
+  btn.addEventListener('click',()=>{
+    const isDark=document.documentElement.getAttribute('data-theme')==='dark';
+    const next=!isDark;
+    try{localStorage.setItem(KEY,next?'dark':'light')}catch(e){}
+    apply(next);
+  });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',e=>{
+    let saved=null;try{saved=localStorage.getItem(KEY)}catch(e){}
+    if(saved!=='light'&&saved!=='dark') apply(e.matches);
+  });
+})();
+</script>
+</body>
+</html>

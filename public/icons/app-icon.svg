@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="الربانيون">
+  <rect width="512" height="512" rx="96" fill="#173F35"/>
+  <path d="M256 150c-49-42-118-56-192-43v254c74-13 143 1 192 43 49-42 118-56 192-43V107c-74-13-143 1-192 43Z" fill="none" stroke="#B69A5C" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M256 151v251" fill="none" stroke="#B69A5C" stroke-width="20" stroke-linecap="round"/>
+</svg>

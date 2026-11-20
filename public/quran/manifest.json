@@ -1,0 +1,92 @@
+{
+  "version": "kfgqpc-hafs-v3.0",
+  "narration": "حفص عن عاصم",
+  "script": "الرسم العثماني",
+  "generatedAt": "2026-11-01T23:10:42.554Z",
+  "license": "محتوى قرآني رسمي من مجمع الملك فهد؛ يُحفظ الإسناد. التحقق المستقل بمرجع Tanzil (CC BY 3.0).",
+  "attribution": "نص المصحف: مجمع الملك فهد لطباعة المصحف الشريف (حفص، رسم عثماني). التحقق: Tanzil Project.",
+  "counts": {
+    "surahs": 114,
+    "verses": 6236,
+    "juz": 30,
+    "hizbs": 60,
+    "pages": 604
+  },
+  "files": {
+    "asset": {
+      "path": "public/quran/quran-hafs-uthmani.json",
+      "bytes": 2446335,
+      "sha256": "7d07a93a4caa556b1dce92fbac347ffc7e74da12c0480dc898880627a2a0554a",
+      "textSha256": "1d575cb795986c9290ae66fb93790494e539cdc6f7696962a59afa095b724e09"
+    },
+    "font": {
+      "path": "public/fonts/kfgqpc-hafs-v30.ttf",
+      "bytes": 301204,
+      "sha256": "9ccd82324319bfe9e57efd34c830770ce86655f01661ca06b50e3b0c20073c57",
+      "family": "KFGQPC HAFS Uthmanic Script"
+    }
+  },
+  "sources": {
+    "kfgqpcZip": {
+      "file": "kfgqpc_hafs_v30.zip",
+      "bytes": 10155774,
+      "sha256": "227e6b1564d980f2bd09c2c35ebfb0330ac268c79a7c247cd1ab665bc635f245"
+    },
+    "kfgqpcJson": {
+      "file": "kfgqpc_hafs_v30.json",
+      "bytes": 3691596,
+      "sha256": "d7adf8aeeef5a7b6798060706a55735dffbcdb542b290a3907bd9f70c498f4d3"
+    },
+    "tanzilMetadata": {
+      "file": "tanzil-quran-data.xml",
+      "bytes": 77234,
+      "sha256": "8867c1d88191472adec9db694b3cd9f135b1a2ef580574d32cf888dcb22c5c7a"
+    },
+    "tanzilText": {
+      "file": "tanzil-uthmani.txt",
+      "bytes": 1370878,
+      "sha256": "bf4f57b968d03f4131c070b1e285da9be0e0a108a21c910e872801ca273312c8"
+    }
+  },
+  "validation": {
+    "verseCount": 6236,
+    "surahCount": 114,
+    "boundaryPolicy": "حدود الأجزاء والصفحات المعتمدة للعرض هي قيم مصدر المجمع (jozz/page). فروق بدايات تنزيل مسجلة للمراجعة فقط لأنها تتبع طبعة مطبوعة مختلفة.",
+    "exactTextMatches": 54,
+    "normalizedMatches": 6221,
+    "normalizedRate": 0.9976,
+    "textDifferences": [
+      "10:15",
+      "15:7",
+      "16:90",
+      "20:130",
+      "24:11",
+      "28:30",
+      "30:8",
+      "30:16",
+      "35:43",
+      "42:51",
+      "52:21",
+      "56:23",
+      "70:38",
+      "74:52",
+      "80:37"
+    ],
+    "juzMismatches": 14,
+    "juzSample": [
+      "3:92 4≠3",
+      "9:93 10≠11",
+      "27:56 19≠20",
+      "27:57 19≠20",
+      "27:58 19≠20"
+    ],
+    "pageMismatches": 56,
+    "pageSample": [
+      "5:77 120≠121",
+      "5:83 121≠122",
+      "5:90 122≠123",
+      "6:131 145≠144",
+      "55:17 531≠532"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+node_modules/
+dist/
+output/
+tmp/
+*.tsbuildinfo
+.env.local
+.env.*.local
+*.local.png
+book-page-5.png
+book-reader-preview.png
+learning-preview.png
+
+# Capacitor Android (مخرجات البناء والملفات المولَّدة)
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/capacitor-cordova-android-plugins/
+android/app/src/main/assets/public/
+android/keystores/
+
+# QA artifacts (generated, not to be committed)
+qa/shots/
+qa/results.json
+qa/scan-log.txt
+qa/login-state.json
+qa/run*.log
+
+
+# Test artifacts
+test-results/
+playwright-report/
+
+
+# Playwright visual baselines & reports
+tests/e2e/*.spec.ts-snapshots/
+*.png
+*.mp3
+!public/sounds/adhan/*.mp3
+!android/app/src/main/res/raw/*.mp3
+_defs.sql
+*-redesign.html
+

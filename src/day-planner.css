@@ -1,0 +1,285 @@
+.day-intro{display:flex;align-items:center;justify-content:space-between;gap:20px}.day-intro a{text-decoration:none;font-size:12px}.intention-card{background:linear-gradient(120deg,var(--color-primary),var(--color-primary));color:#fff;border-radius:20px;padding:32px 36px;margin-bottom:24px}.intention-card h2{font-size:32px;margin:16px 0}.intention-card blockquote{font-size:23px;line-height:2;margin:0 0 6px;color:color-mix(in srgb,var(--color-warning) 18%,var(--color-surface))}.verse-source{color:color-mix(in srgb,var(--color-warning) 24%,var(--color-border));font-size:12px}.intention-card p{color:var(--color-selected);line-height:2;max-width:780px}.intention-card small{display:block;color:var(--color-border-strong);font-size:12px;line-height:1.9}.intention-prompts{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.intention-prompts span{background:color-mix(in srgb,#fff 5%,transparent);border:1px solid color-mix(in srgb,#fff 15%,transparent);border-radius:9px;padding:10px 13px;font-size:13px}.day-settings summary,.legacy-tasks summary{cursor:pointer;font-weight:700;color:var(--color-primary);line-height:1.8}.day-settings summary svg{vertical-align:middle;margin-left:6px}.day-settings .prayer-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.personal-times{margin-top:17px}.schedule-warning{color:var(--color-error);background:color-mix(in srgb,var(--color-warning) 8%,var(--color-surface));padding:12px;border-radius:8px;font-size:13px;line-height:1.8}.day-timeline{position:relative;margin-bottom:28px}.day-timeline:before{content:'';position:absolute;right:17px;top:20px;bottom:30px;width:1px;background:var(--color-canvas)}.day-slot{display:flex;gap:18px;position:relative;margin-bottom:18px;align-items:flex-start}.slot-marker{width:35px;height:35px;flex-shrink:0;background:var(--color-surface);border:1px solid var(--color-canvas);border-radius:50%;display:grid;place-items:center;color:var(--color-muted);font-size:11px;margin-top:20px;z-index:1}.slot-body{flex:1;min-width:0;background:white;border:1px solid var(--color-border);border-radius:15px;padding:21px 24px}.slot-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}.slot-heading h3{margin:0;font-size:18px}.slot-time{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--color-muted)}.prayer-slot .slot-marker{background:var(--color-primary);color:color-mix(in srgb,var(--color-warning) 18%,var(--color-surface));border-color:var(--color-primary)}.prayer-slot .slot-body{background:var(--color-selected);border-color:var(--color-border)}.prayer-slot .slot-heading{margin-bottom:4px}.prayer-note{color:var(--color-muted);font-size:12px;margin:8px 0 0;line-height:1.8}.slot-activity{display:flex;align-items:center;gap:6px;padding:10px 0;border-bottom:1px solid var(--color-surface);font-size:14px}.slot-activity .task-main{line-height:1.8;min-width:0}.slot-activity .task-main span{overflow-wrap:anywhere}.slot-activity input[type=checkbox]{flex-shrink:0}.slot-add{margin-top:14px}.slot-add input{font-size:12px;background:var(--color-surface);padding:10px}.slot-add button,.reflection-link{display:flex;align-items:center;gap:5px;font-size:12px}.slot-footnote{font-size:12px;color:var(--color-muted);line-height:1.9;margin-bottom:0}.reflection-link{margin-top:15px}.activity-edit{display:flex;gap:6px;flex-wrap:wrap;flex:1}.activity-edit input{width:100%;font-size:13px}.legacy-tasks .page-intro,.legacy-tasks .prayer-grid{display:none}.legacy-tasks .panel:has(.prayer-grid){display:none}.legacy-tasks .panel{border:0;padding:15px 0;margin:0}#day-timeline{scroll-margin-top:20px}@media(max-width:750px){.day-intro{align-items:flex-start;flex-direction:column}.intention-card{padding:24px 21px}.intention-card h2{font-size:27px}.intention-card blockquote{font-size:20px}.intention-prompts{flex-direction:column}.day-settings .prayer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.day-slot{gap:10px}.slot-body{padding:18px 14px}.slot-heading h3{font-size:16px}.slot-heading{align-items:flex-start;flex-direction:column}.slot-activity{flex-wrap:wrap}.slot-activity .task-main{flex-basis:65%}.slot-add{flex-wrap:wrap}.slot-add input{width:100%;flex-basis:100%}.slot-marker{width:30px;height:30px}.day-timeline:before{right:14px}.activity-edit{flex-basis:100%}}
+.prayer-location-controls{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:16px 0}.prayer-location-controls label{display:flex;align-items:center;gap:8px}.prayer-location-controls input{width:auto}.prayer-location-controls button:disabled{opacity:.6;cursor:wait}
+.slot-activity{flex-wrap:wrap}.activity-schedule{display:flex;align-items:center;gap:12px;flex-wrap:wrap;width:100%;padding:8px 0}.activity-schedule strong{display:flex;align-items:center;gap:6px;color:var(--color-primary);min-width:110px}.activity-schedule label{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--color-muted)}.activity-schedule select,.activity-schedule input{padding:6px;border:1px solid var(--color-canvas);border-radius:6px;background:var(--color-surface)}.activity-schedule input{width:80px}
+.activity-duration-edit{display:flex;align-items:center;gap:8px;flex-wrap:wrap;width:100%}.activity-duration-edit label{flex-wrap:wrap}
+
+/* The activity is the primary content; time and controls form a quiet second row. */
+.day-review{background:var(--color-surface);border:1px solid var(--color-border);border-radius:16px;padding:24px;margin:28px 0;box-shadow:0 4px 16px color-mix(in srgb,var(--color-primary) 3%,transparent)}
+.day-review-heading{display:flex;align-items:center;gap:13px}
+.day-review-mark{width:42px;height:42px;display:grid;place-items:center;background:var(--color-selected);border:1px solid var(--color-border);border-radius:13px;color:var(--color-warning);font-size:28px;line-height:1}
+.day-review-heading h3{display:flex;align-items:center;gap:8px;margin:3px 0 0;color:var(--color-primary);font-size:21px}
+.day-review>p{color:var(--color-muted);font-size:13px;line-height:1.9;margin:17px 0}
+.day-review-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.day-review-fields label{display:flex;flex-direction:column;gap:9px;font-size:14px;font-weight:700;color:var(--color-primary)}
+.day-review-fields textarea{background:var(--color-surface);min-height:115px;font-weight:400;font-size:14px}
+.day-review-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:18px 0 12px}
+.day-review-actions button:disabled{opacity:.55;cursor:not-allowed}
+.day-review-actions span,.day-review>small{color:var(--color-muted);font-size:12px;line-height:1.8}
+@media(max-width:750px){.day-review{padding:18px}.day-review-fields{grid-template-columns:1fr}}
+.day-message-dialog{position:fixed;inset:0;width:min(750px,calc(100vw - 30px));max-height:min(84vh,900px);border:1px solid var(--color-border);border-radius:18px;padding:0;color:var(--color-primary);background:var(--color-surface);--day-message-surface:var(--color-surface);box-shadow:0 25px 70px color-mix(in srgb,var(--color-primary) 33%,transparent);overflow:hidden}
+.day-message-dialog::backdrop{background:color-mix(in srgb,var(--color-primary) 76%,transparent)}
+.day-message-scroll{max-height:min(84vh,900px);overflow:auto;padding:30px clamp(20px,5vw,42px) 96px}
+.day-message-content{line-height:2;color:var(--color-ink);font-size:16px}
+.day-message-content h2{font-size:27px;color:var(--color-primary);line-height:1.5;margin:0 0 20px}
+.day-message-content h3{font-size:20px;color:var(--color-primary);line-height:1.6;margin:30px 0 10px}
+.day-message-content p{margin:0 0 18px;white-space:pre-line}
+.day-message-content strong{color:var(--color-primary)}
+.day-message-content em{color:var(--color-warning)}
+.day-message-actions{position:sticky;bottom:0;background:linear-gradient(transparent,var(--day-message-surface) 30%);padding:26px 0 4px;display:flex;justify-content:flex-end}
+.tracking-message{border:1px solid var(--color-border);border-radius:12px;background:var(--color-surface);margin:14px 0;padding:15px 20px}
+.tracking-message summary{cursor:pointer;color:var(--color-primary);font-weight:700}
+.tracking-message .day-message-content{padding-top:20px;font-size:14px}
+.tracking-message .day-message-content h2{font-size:23px}
+.tracking-message .day-message-content h3{font-size:18px}
+.day-view-switch{display:flex;gap:6px;background:var(--color-selected);border:1px solid var(--color-border);border-radius:12px;padding:5px;margin-bottom:24px;width:fit-content}
+.day-view-switch button{border:0;background:transparent;color:var(--color-muted);padding:11px 24px;border-radius:8px;font-weight:600}
+.day-view-switch button.selected{background:#e9f0e9;color:#244638;border-color:#b9cbbd}
+.day-start-bar{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;background:var(--color-surface);border:1px solid var(--color-border);border-radius:13px;padding:18px 22px;margin-bottom:22px}
+.day-start-bar p{font-size:13px;line-height:1.9;color:var(--color-muted);margin:6px 0 0;max-width:580px}
+.day-start-bar .primary{font-size:13px;flex-shrink:0}
+.day-start-bar .primary:disabled{opacity:.5;cursor:not-allowed}
+.tracking-header{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:var(--color-selected);border:1px solid var(--color-border);padding:24px;border-radius:16px}
+.tracking-header h2{display:flex;align-items:center;gap:10px;font-size:23px;line-height:1.8;color:var(--color-primary);margin:8px 0}
+.tracking-header p{font-size:13px;color:var(--color-muted);line-height:1.8;margin:0}
+.tracking-header label,.tracking-toolbar label{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--color-muted)}
+.tracking-toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:18px 0}
+.tracking-toolbar button{font-size:13px}
+.prayer-log{padding:20px;background:white;border:1px solid var(--color-border);border-radius:12px;margin:20px 0}
+.prayer-log h3{display:flex;align-items:center;gap:8px;margin:0 0 8px;font-size:17px;color:var(--color-primary)}
+.prayer-log p{margin:0 0 14px}
+.prayer-log-grid{display:grid;gap:10px}
+.prayer-log-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:var(--color-surface);border:1px solid var(--color-border);border-radius:10px;padding:10px 14px}
+.prayer-log-row>span{font-size:14px;font-weight:700;color:var(--color-ink)}
+.prayer-log-options{display:flex;gap:6px;flex-wrap:wrap}
+.prayer-chip{padding:5px 12px;border-radius:20px;border:1px solid var(--color-border);background:var(--color-surface);font-size:12px;color:var(--color-muted);cursor:pointer;transition:background .15s,border-color .15s}
+.prayer-chip:hover{background:var(--color-selected)}
+.prayer-chip.selected{background:#e9f0e9;border-color:#b9cbbd;color:#244638}
+@media(max-width:750px){.prayer-log{padding:15px}.prayer-log-row>span{flex-basis:100%}}
+.tracking-progress{padding:20px;background:white;border:1px solid var(--color-border);border-radius:12px;margin:20px 0}
+.tracking-progress>div{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tracking-progress strong{font-size:17px;color:var(--color-primary)}
+.tracking-progress span,.tracking-progress label{font-size:13px;color:var(--color-muted)}
+.tracking-progress progress{appearance:none;width:100%;height:7px;border:0;border-radius:8px;overflow:hidden;background:var(--color-border);margin:15px 0}
+.tracking-progress progress::-webkit-progress-bar{background:var(--color-border)}
+.tracking-progress progress::-webkit-progress-value{background:var(--color-primary);border-radius:8px}
+.tracking-progress progress::-moz-progress-bar{background:var(--color-primary)}
+.tracking-progress label{display:flex;align-items:center;gap:8px}
+.tracking-progress input{accent-color:var(--color-primary)}
+.tracking-list{list-style:none;padding:0;display:grid;gap:12px}
+.tracking-item{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--color-surface);border:1px solid var(--color-border);border-inline-start:2px solid var(--color-border-strong);border-radius:12px;padding:18px}
+.tracking-item .task-main{cursor:pointer;min-width:0;flex-basis:65%}
+.tracking-item .task-main strong{display:block;font-size:18px;font-weight:600;color:var(--color-primary);overflow-wrap:anywhere;line-height:1.8}
+.tracking-item .task-main small{display:block;font-size:12px;color:var(--color-muted);margin-top:4px}
+.tracking-item .task-main input{flex-shrink:0}
+.tracking-status{font-size:11px;padding:5px 10px;border-radius:20px;background:var(--color-selected);color:var(--color-muted)}
+.tracking-item-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding-inline-start:30px}
+.tracking-item-footer>span{display:flex;align-items:center;gap:6px;flex-wrap:wrap;color:var(--color-muted);font-size:12px;line-height:1.9}
+.tracking-item-footer button{font-size:12px;color:var(--color-warning)}
+.tracking-done{background:var(--color-selected);border-inline-start-color:var(--color-border-strong)}
+.tracking-done .task-main strong{text-decoration:line-through;color:var(--color-muted)}
+.tracking-deferred .tracking-status{background:color-mix(in srgb,var(--color-warning) 12%,var(--color-surface));color:var(--color-warning)}
+.tracking-empty{background:var(--color-surface);border:1px dashed var(--color-border);border-radius:15px;padding:32px;text-align:center;color:var(--color-muted);line-height:1.9}
+.tracking-empty .primary{margin:15px auto 0}
+@media(max-width:750px){.day-view-switch{width:100%}.day-view-switch button{flex:1;padding:11px}.tracking-header{padding:18px}.tracking-header h2{font-size:20px}.tracking-item{padding:15px}.tracking-item .task-main{flex-basis:100%}.tracking-status{margin-inline-start:30px}.tracking-item-footer{padding-inline-start:0}.tracking-item .task-main strong{font-size:17px}.day-start-bar{padding:16px}}
+.day-planner{--day-ink:var(--color-primary);--day-green:var(--color-primary);--day-gold:var(--color-warning);--day-muted:var(--color-muted);--day-line:var(--color-border);--day-ivory:var(--color-surface)}
+.day-planner .day-intro h1{color:var(--day-ink);font-size:36px;font-weight:800}
+.day-planner .eyebrow{color:var(--color-warning)}
+.day-planner .day-intro p{color:var(--day-muted)}
+.day-planner .intention-card{border:1px solid var(--color-primary);background:radial-gradient(ellipse at top left,var(--color-primary) 0,transparent 65%),linear-gradient(120deg,var(--color-primary),var(--color-primary));box-shadow:0 12px 30px color-mix(in srgb,var(--color-primary) 6%,transparent);padding:28px 32px;border-radius:22px}
+.day-planner .intention-card h2{font-size:29px}
+.day-planner .intention-card blockquote{border-inline-start:2px solid var(--color-warning);padding-inline-start:20px}
+.day-planner .day-settings{background:var(--day-ivory);border-color:var(--color-border);box-shadow:none}
+.day-planner .day-settings summary{color:var(--color-muted);font-size:14px}
+.day-planner #day-timeline{margin-top:36px;margin-bottom:24px}
+.day-planner #day-timeline h2{font-size:27px;color:var(--day-ink);line-height:1.6}
+.day-planner #day-timeline p{color:var(--day-muted);line-height:1.9}
+.day-planner .day-timeline:before{background:linear-gradient(var(--color-warning),var(--color-border-strong),var(--color-warning));width:2px}
+.day-planner .day-slot{margin-bottom:24px}
+.day-planner .slot-marker{background:var(--color-surface);color:var(--color-warning);border-color:var(--color-border-strong);font-weight:700;box-shadow:0 0 0 5px var(--color-surface)}
+.day-planner .slot-body{padding:24px;background:var(--color-surface);border-color:var(--day-line);border-radius:18px;box-shadow:0 4px 18px color-mix(in srgb,var(--color-primary) 2%,transparent)}
+.day-planner .slot-heading{padding-bottom:15px;margin-bottom:4px;border-bottom:1px solid var(--color-surface);align-items:baseline}
+.day-planner .slot-heading h3{font-size:18px;color:var(--color-ink);font-weight:700;line-height:1.7}
+.day-planner .slot-time{font-size:12px;font-weight:400;color:var(--day-muted);line-height:1.8}
+.day-planner .prayer-slot .slot-body{background:linear-gradient(100deg,var(--color-selected),var(--color-selected));border:1px solid var(--color-border-strong);border-inline-start:3px solid var(--color-warning);box-shadow:none;padding-block:19px}
+.day-planner .prayer-slot .slot-marker{background:var(--day-ink);border-color:var(--day-ink);color:var(--color-warning)}
+.day-planner .prayer-slot .slot-heading{border:0;padding:0;margin:0}
+.day-planner .prayer-slot h3{color:var(--day-ink);font-size:21px}
+.day-planner .prayer-note{color:var(--color-muted)}
+.day-planner .slot-activity{gap:10px;padding:15px 16px 11px;margin-top:12px;background:var(--color-surface);border:1px solid var(--color-border);border-inline-start:2px solid var(--color-border-strong);border-radius:12px;transition:border-color .18s,background .18s}
+.day-planner .slot-activity:hover{border-color:var(--color-border-strong);background:var(--color-surface)}
+.day-planner .slot-activity .task-main{flex:1 1 65%;align-items:flex-start;gap:13px;cursor:pointer}
+.day-planner .slot-activity .activity-title{color:var(--color-primary);font-size:18px;font-weight:600;line-height:1.8}
+.day-planner .slot-activity input[type=checkbox]{width:22px;height:22px;margin-top:7px;accent-color:var(--day-green);cursor:pointer}
+.day-planner .task-time-selects{display:inline-flex;align-items:center;gap:4px;direction:ltr}
+.day-planner .task-time-selects select{min-width:58px;padding:7px 8px;border:1px solid var(--color-border);border-radius:8px;background:var(--color-surface);color:var(--color-primary);font-variant-numeric:tabular-nums}
+.day-planner .task-time-selects .task-time-period{min-width:64px}
+.day-planner .task-time-selects select:focus-visible{outline:3px solid var(--color-border-strong);outline-offset:2px}
+.day-plan-content .half-hour-row{background:var(--color-surface);border-color:var(--color-border)}
+.day-plan-content .planned-activity-card{background:var(--color-selected);border-color:var(--color-border-strong);border-inline-start-color:var(--color-border-strong)}
+.day-plan-content .planned-activity-card:hover{background:var(--color-selected);border-color:var(--color-border-strong)}
+.day-planner .slot-activity>.icon-btn{font-size:12px;color:var(--color-muted);min-height:36px;min-width:36px}
+.day-planner .slot-activity>.icon-btn:hover{background:var(--color-selected);color:var(--day-ink)}
+.day-planner .slot-activity>.danger:hover{background:color-mix(in srgb,var(--color-error) 8%,var(--color-surface));color:var(--color-error)}
+.day-planner .activity-schedule{margin-inline-start:35px;width:calc(100% - 35px);padding:4px 0 0;gap:8px 14px;color:var(--day-muted)}
+.day-planner .activity-time{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:400;line-height:1.9;flex-wrap:wrap}
+.day-planner .activity-time svg{flex-shrink:0;color:var(--color-muted)}
+.day-planner .activity-duration{font-size:11px;color:var(--color-warning);background:color-mix(in srgb,var(--color-warning) 8%,var(--color-surface));padding:3px 9px;border-radius:20px;white-space:nowrap}
+.day-planner .activity-schedule>.icon-btn{font-size:12px;color:var(--color-muted);min-height:36px;margin-inline-start:auto;text-decoration:underline;text-underline-offset:4px}
+.day-planner .activity-duration-edit{padding-top:12px;margin-top:5px;border-top:1px solid var(--color-border)}
+.day-planner .activity-duration-edit label{color:var(--color-muted)}
+.day-planner .activity-complete{background:var(--color-selected);border-inline-start-color:var(--color-border-strong)}
+.day-planner .activity-complete .activity-title.completed{color:var(--color-muted);font-weight:600;text-decoration:line-through;text-decoration-thickness:1px}
+.day-planner .slot-add{padding-top:16px;margin-top:16px;border-top:1px dashed var(--color-border)}
+.day-planner .slot-add input{background:var(--color-surface);font-size:13px}
+.day-planner .slot-add .soft-btn{background:var(--color-selected);color:var(--day-green);font-weight:700}
+.day-planner .slot-footnote{color:var(--color-muted)}
+.day-planner .reflection-link{background:color-mix(in srgb,var(--color-warning) 8%,var(--color-surface));color:var(--color-warning);margin-top:20px}
+.day-planner :is(button,input,select,summary,a):focus-visible{outline:3px solid var(--color-gold-ink);outline-offset:3px}
+@media(max-width:750px){
+  .day-planner .day-intro h1{font-size:30px}
+  .day-planner .intention-card{padding:23px 20px}
+  .day-planner .intention-card blockquote{padding-inline-start:12px;font-size:19px}
+  .day-planner #day-timeline h2{font-size:23px}
+  .day-planner .slot-body{padding:16px 12px}
+  .day-planner .slot-heading{gap:5px}
+  .day-planner .slot-activity{padding:14px 11px 10px;gap:7px}
+  .day-planner .slot-activity .task-main{flex-basis:100%}
+  .day-planner .slot-activity .activity-title{font-size:17px}
+  .day-planner .slot-activity>.icon-btn{min-height:36px}
+  .day-planner .activity-schedule{margin-inline-start:0;width:100%;border-top:1px solid var(--color-border);padding-top:9px}
+  .day-planner .activity-time{flex-basis:100%}
+  .day-planner .slot-time{font-size:11px}
+}
+
+.prayer-timeline{align-items:start}.prayer-interval{min-width:0;margin-bottom:22px;padding:16px;border:1px solid var(--color-border);border-radius:16px;background:var(--color-panel,var(--color-surface))}.prayer-interval-heading{display:flex;align-items:center;gap:12px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--color-border)}.prayer-interval-heading h3{margin:0;color:var(--day-green,var(--color-primary));font-size:18px}.prayer-interval-heading span:not(.slot-marker){color:var(--day-muted,var(--color-muted));font-size:13px}.half-hour-slots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.half-hour-slots .day-slot{margin:0}.sunrise-marker{padding:7px 12px;border-radius:8px;background:color-mix(in srgb,var(--color-warning) 12%,var(--color-surface))}.prayer-timeline .slot-heading{align-items:flex-start}
+@media(max-width:750px){.prayer-interval{padding:12px}.half-hour-slots{grid-template-columns:1fr}.prayer-interval-heading h3{font-size:16px}}
+.day-plan-content .day-timeline.prayer-timeline{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:stretch}.day-plan-content .prayer-timeline .prayer-interval{width:100%;box-sizing:border-box;margin:0}.day-plan-content .prayer-timeline .half-hour-slots{grid-template-columns:minmax(0,1fr);gap:9px}.day-plan-content .prayer-interval-heading{justify-content:flex-start;text-align:right}.day-plan-content .prayer-interval-heading>div{display:grid;gap:3px}.day-plan-content .prayer-timeline .day-slot{display:grid;grid-template-columns:34px minmax(0,1fr);align-items:start;gap:10px}.day-plan-content .prayer-timeline .day-slot>.slot-marker{margin:12px 0 0}.day-plan-content .prayer-timeline .slot-body{width:100%;box-sizing:border-box}.day-plan-content .prayer-timeline .slot-heading{flex-direction:row;align-items:center;justify-content:space-between;gap:12px}.day-plan-content .prayer-timeline .slot-add{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}.day-plan-content .prayer-timeline .slot-add input{min-width:0;width:100%;box-sizing:border-box}.day-plan-content .prayer-timeline .slot-activity{align-items:start}.day-plan-content .prayer-timeline .activity-schedule{min-width:0;flex-wrap:wrap}.day-plan-content .prayer-timeline .activity-edit input{min-width:0;box-sizing:border-box}
+@media(max-width:750px){.day-plan-content .prayer-timeline .day-slot{grid-template-columns:29px minmax(0,1fr);gap:7px}.day-plan-content .prayer-timeline .slot-heading{align-items:flex-start;flex-direction:column}.day-plan-content .prayer-timeline .slot-add{grid-template-columns:minmax(0,1fr)}.day-plan-content .prayer-timeline .slot-add button{justify-content:center}.day-plan-content .prayer-timeline .slot-activity{flex-wrap:wrap}}
+.day-plan-content .prayer-timeline{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.day-plan-content .prayer-interval{padding:18px 20px;margin:0;border-radius:16px;background:var(--color-surface)}.day-plan-content .prayer-interval-heading{justify-content:flex-start;text-align:right;margin:10px 0 8px;padding:0;border:0}.day-plan-content .prayer-interval-heading h3{font-size:17px}.day-plan-content .prayer-interval-heading span{font-size:12px}.day-plan-content .fixed-prayer-bar{display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:12px;background:var(--color-primary);color:#fff}.day-plan-content .fixed-prayer-bar strong{font-size:17px}.day-plan-content .fixed-prayer-bar>span{font-weight:700;color:color-mix(in srgb,var(--color-warning) 18%,var(--color-surface))}.day-plan-content .fixed-prayer-bar small{margin-inline-start:auto;color:var(--color-border)}.day-plan-content .half-hour-list{display:grid;gap:8px}.day-plan-content .half-hour-row{display:grid;grid-template-columns:minmax(145px,190px) minmax(0,1fr);align-items:stretch;gap:12px;padding:10px 12px;border:1px solid var(--color-border);border-radius:12px;background:#fff}.day-plan-content .half-hour-time{display:grid;align-content:center;gap:4px;color:var(--color-primary)}.day-plan-content .half-hour-time strong{font-size:14px}.day-plan-content .half-hour-time span{font-size:11px;color:var(--color-muted)}.day-plan-content .half-hour-content{display:grid;gap:7px;min-width:0}.day-plan-content .planned-activity-card{display:grid;gap:9px;padding:10px 12px;border-inline-start:3px solid var(--color-border-strong);border-radius:9px;background:var(--color-surface)}.day-plan-content .planned-activity-main{display:flex;align-items:center;gap:9px;min-width:0}.day-plan-content .planned-activity-main>strong{font-size:15px;line-height:1.6;overflow-wrap:anywhere}.day-plan-content .schedule-badge{flex:none;padding:3px 9px;border-radius:999px;font-size:11px}.day-plan-content .schedule-badge.initial{background:color-mix(in srgb,var(--color-warning) 12%,var(--color-surface));color:var(--color-warning)}.day-plan-content .schedule-badge.confirmed{background:var(--color-selected);color:var(--color-primary)}.day-plan-content .planned-activity-controls{display:flex;align-items:end;flex-wrap:wrap;gap:7px}.day-plan-content .planned-activity-controls label,.day-plan-content .planned-activity-add label{display:grid;gap:4px;font-size:11px;color:var(--color-muted)}.day-plan-content .planned-activity-controls input[type=time],.day-plan-content .planned-activity-add input{min-height:38px;padding:6px 9px;border:1px solid var(--color-border);border-radius:8px;background:var(--color-surface);font:inherit}.day-plan-content .planned-activity-controls button{min-height:38px;font-size:12px}.day-plan-content .empty-slot-note{margin:0;color:var(--color-muted);font-size:12px}.day-plan-content .add-half-hour{justify-self:start;display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border:0;border-radius:7px;background:transparent;color:var(--color-muted);font:inherit;font-size:12px;cursor:pointer}.day-plan-content .add-half-hour:hover{background:var(--color-selected)}.day-plan-content .planned-activity-add{display:flex;align-items:end;flex-wrap:wrap;gap:8px;padding:10px;border:1px dashed var(--color-border);border-radius:9px;background:var(--color-surface)}.day-plan-content .planned-activity-add label:first-child{flex:1 1 240px}.day-plan-content .planned-activity-add input{box-sizing:border-box;width:100%;min-width:0}.day-plan-content .rename-activity{display:flex;align-items:center;gap:6px;flex:1}.day-plan-content .rename-activity input{min-width:0;width:100%;padding:7px;border:1px solid var(--color-border);border-radius:8px;font:inherit}.day-plan-content .sunrise-in-slot{margin:0;padding:6px 10px;border-radius:7px;background:color-mix(in srgb,var(--color-warning) 12%,var(--color-surface));color:var(--color-warning);font-size:12px}
+.day-plan-content .prayer-timeline{width:100%;min-width:0;grid-auto-columns:minmax(0,1fr)}.day-plan-content .prayer-timeline>.prayer-interval{width:100%;min-width:0;box-sizing:border-box;justify-self:stretch}.day-plan-content .prayer-interval>.half-hour-list{width:100%;min-width:0;grid-template-columns:minmax(0,1fr)}.day-plan-content .half-hour-list>.half-hour-row{width:100%;min-width:0;box-sizing:border-box;justify-self:stretch}.day-plan-content .half-hour-content,.day-plan-content .planned-activity-card{width:100%;min-width:0;box-sizing:border-box}.day-plan-content .fixed-prayer-bar{min-height:54px;padding:12px 18px;background:linear-gradient(90deg,var(--color-primary),var(--color-primary));border:1px solid var(--color-primary);box-shadow:0 4px 12px color-mix(in srgb,var(--color-primary) 9%,transparent)}.day-plan-content .prayer-bar-kicker{padding:4px 9px;border:1px solid color-mix(in srgb,#fff 33%,transparent);border-radius:999px;color:color-mix(in srgb,var(--color-warning) 18%,var(--color-surface));font-size:11px}.day-plan-content .fixed-prayer-bar strong{font-size:18px;white-space:nowrap}.day-plan-content .fixed-prayer-bar time{padding:6px 10px;border-radius:8px;background:color-mix(in srgb,#fff 9%,transparent);color:color-mix(in srgb,var(--color-warning) 12%,var(--color-surface));font-size:15px;font-weight:800;white-space:nowrap}.day-plan-content .prayer-bar-duration{margin-inline-start:auto;padding:5px 9px;border-radius:999px;background:var(--color-border);color:var(--color-primary);font-size:12px;font-weight:700}
+@media(max-width:700px){.day-plan-content .prayer-interval{padding:12px}.day-plan-content .fixed-prayer-bar{align-items:flex-start;flex-wrap:wrap;gap:7px 10px}.day-plan-content .fixed-prayer-bar small{width:100%;margin:0}.day-plan-content .half-hour-row{grid-template-columns:minmax(0,1fr);gap:5px}.day-plan-content .half-hour-time{display:flex;align-items:center;justify-content:space-between}.day-plan-content .planned-activity-controls{align-items:stretch}.day-plan-content .planned-activity-controls label{width:100%}.day-plan-content .planned-activity-controls input[type=time]{width:100%;box-sizing:border-box}}
+@media(max-width:700px){.day-plan-content .fixed-prayer-bar{align-items:center;gap:8px;padding:11px}.day-plan-content .prayer-bar-kicker{width:100%;text-align:center}.day-plan-content .fixed-prayer-bar strong{font-size:16px}.day-plan-content .fixed-prayer-bar time{font-size:13px}.day-plan-content .prayer-bar-duration{margin-inline-start:auto}}
+
+/* === ترتيب وتوضيح خطة اليوم === */
+/* الفاصل بين الصلاة والنافذة بعدها: خط يربط الشريط بما بعده */
+.day-plan-content .prayer-interval{--interval-accent:var(--color-primary);position:relative;padding:0 0 18px;border:1px solid var(--color-canvas);border-radius:16px;background:var(--color-surface);overflow:hidden}
+.day-plan-content .prayer-interval>.fixed-prayer-bar,.day-plan-content .prayer-interval>.prayer-interval-heading{padding-inline:20px}
+.day-plan-content .prayer-interval>.fixed-prayer-bar{margin:0;border-start-end-radius:0;border-start-start-radius:0}
+
+/* شريط الصلاة: الاسم في الصدارة والوقت في الطرف المقابل */
+.day-plan-content .fixed-prayer-bar{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;align-items:center;gap:10px;padding:14px 20px;background:linear-gradient(100deg,var(--color-primary),var(--color-primary));color:#fff}
+.day-plan-content .fixed-prayer-bar .prayer-bar-kicker{display:none}
+.day-plan-content .fixed-prayer-bar>strong{font-size:18px;font-weight:800;color:#fff;white-space:nowrap}
+.day-plan-content .fixed-prayer-bar>svg{color:color-mix(in srgb,var(--color-warning) 24%,var(--color-surface))}
+.day-plan-content .fixed-prayer-bar>time{justify-self:start;font-size:14px;font-weight:700;color:color-mix(in srgb,var(--color-warning) 20%,var(--color-surface));font-variant-numeric:tabular-nums}
+.day-plan-content .fixed-prayer-bar>.prayer-bar-duration{justify-self:end;font-size:12px;font-weight:700;color:var(--color-border);background:color-mix(in srgb,#fff 8%,transparent);border:1px solid color-mix(in srgb,#fff 15%,transparent);border-radius:999px;padding:3px 10px}
+
+/* عنوان النافذة بعد الصلاة: يظهر مباشرة تحت الشريط */
+.day-plan-content .prayer-interval-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0;padding:14px 20px 10px;background:var(--color-surface);border-bottom:1px solid var(--color-canvas)}
+.day-plan-content .prayer-interval-heading>div{display:grid;gap:2px}
+.day-plan-content .prayer-interval-heading h3{margin:0;font-size:16px;font-weight:800;color:var(--color-primary)}
+.day-plan-content .prayer-interval-heading span{font-size:12px;color:var(--color-muted)}
+
+/* خط الشارة للشروق */
+.day-plan-content .prayer-note.sunrise-marker{margin:0;padding:9px 20px;background:color-mix(in srgb,var(--color-warning) 8%,var(--color-surface));color:var(--color-warning);font-size:12px;font-weight:700;border-bottom:1px solid color-mix(in srgb,var(--color-warning) 18%,var(--color-surface))}
+
+/* صفوف الخانات: عمود الوقت كمرجع واضح */
+.day-plan-content .half-hour-list{display:grid;gap:7px;padding:12px 14px 0}
+.day-plan-content .half-hour-row{grid-template-columns:minmax(132px,168px) minmax(0,1fr);align-items:stretch;gap:12px;padding:10px 12px;border:1px solid var(--color-border);border-radius:11px;background:#fff}
+.day-plan-content .half-hour-time{display:grid;align-content:center;gap:2px;padding-inline-end:12px;border-inline-end:2px solid var(--color-border);text-align:center}
+.day-plan-content .half-hour-time strong{font-size:13px;color:var(--color-primary);font-variant-numeric:tabular-nums}
+.day-plan-content .half-hour-time span{font-size:10px;color:var(--color-muted)}
+
+/* صف فارغ: إضافة عمل */
+.day-plan-content .half-hour-row:has(.planned-activity-add){background:var(--color-surface);border-style:dashed}
+
+/* مربعات مواقيت الصلاة: الشروق مميّز */
+.day-plan-content .prayer-grid .prayer-name{font-weight:700;font-size:13px}
+.day-plan-content .prayer-grid .prayer-tag{display:inline-block;margin-inline-start:6px;font-size:10px;font-weight:700;color:var(--color-warning);background:color-mix(in srgb,var(--color-warning) 12%,var(--color-surface));border-radius:999px;padding:1px 7px}
+.day-plan-content .prayer-grid .prayer-sunrise{background:color-mix(in srgb,var(--color-warning) 8%,var(--color-surface));border-color:color-mix(in srgb,var(--color-warning) 18%,var(--color-surface))}
+.day-plan-content .prayer-grid .prayer-sunrise .prayer-name{color:var(--color-warning)}
+
+/* شريط بداية اليوم: عنوان واضح وزر واحد */
+.day-plan-content .day-start-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 0 18px;padding:14px 18px;border-radius:14px;background:var(--color-surface);border:1px solid var(--color-canvas)}
+.day-plan-content .day-start-bar>div{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.day-plan-content .day-start-bar strong{font-size:16px;color:var(--color-primary)}
+.day-plan-content .day-start-bar p{margin:0;font-size:13px;color:var(--color-muted)}
+.day-plan-content .day-start-bar label{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--color-muted)}
+
+@media(max-width:750px){
+  .day-plan-content .fixed-prayer-bar{grid-template-columns:auto minmax(0,1fr);gap:6px 10px}
+  .day-plan-content .fixed-prayer-bar>time{grid-column:1 / -1;justify-self:start}
+  .day-plan-content .fixed-prayer-bar>.prayer-bar-duration{justify-self:end}
+  .day-plan-content .half-hour-list{padding:10px 10px 0}
+  .day-plan-content .half-hour-row{grid-template-columns:1fr;gap:8px}
+  .day-plan-content .half-hour-time{display:flex;align-items:center;gap:8px;justify-content:flex-start;padding-inline-end:0;border-inline-end:0;border-bottom:1px solid var(--color-surface);padding-bottom:6px}
+  .day-plan-content .day-start-bar>div{width:100%}
+}
+
+/* أدوات النشاط: الوقت ثم مجموعة أزرار متراصّة، وبطاقة أنظف */
+.day-plan-content .planned-activity-controls{display:flex;align-items:flex-end;flex-wrap:wrap;gap:8px;padding-top:2px}
+.day-plan-content .planned-activity-controls>label{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--color-muted);white-space:nowrap}
+.day-plan-content .planned-activity-controls>label input[type=time]{min-height:36px;width:118px;padding:5px 9px;text-align:center;font-variant-numeric:tabular-nums}
+.day-plan-content .planned-activity-controls .activity-actions{display:flex;align-items:center;gap:7px;margin-inline-start:auto}
+.day-plan-content .planned-activity-controls .activity-actions button{min-height:36px}
+.day-plan-content .planned-activity-card{grid-template-areas:"main main" "controls controls";gap:8px}
+.day-plan-content .planned-activity-main{grid-area:main}
+.day-plan-content .planned-activity-controls{grid-area:controls}
+.day-plan-content .planned-activity-card>small{grid-area:main;align-self:end;margin-top:-4px}
+
+/* أزل عمود الوقت الجانبي؛ وقت النشاط يبقى مع كل بطاقة وتتمدد البطاقة بعرض الفترة */
+.day-plan-content .half-hour-row{grid-template-columns:minmax(0,1fr);width:100%;min-width:0;box-sizing:border-box}
+.day-plan-content .half-hour-content{grid-column:1 / -1;width:100%;min-width:0}
+.day-plan-content .planned-activity-card{grid-template-columns:minmax(0,1fr);width:100%;min-width:0}
+.day-plan-content .planned-activity-controls .activity-actions{flex-wrap:wrap}
+.day-plan-content .prayer-interval{padding-bottom:16px}
+.day-plan-content .prayer-interval-heading{padding:16px 20px 12px;background:var(--color-surface);border-bottom:1px solid var(--color-canvas)}
+.day-plan-content .prayer-interval-heading h3{font-size:19px}
+.day-plan-content .half-hour-list{gap:9px;padding:14px 18px 4px}
+.day-plan-content .half-hour-row{display:block;padding:0;border:0;background:transparent}
+.day-plan-content .half-hour-content{display:grid;gap:9px}
+.day-plan-content .planned-activity-card{padding:14px 16px;border:1px solid var(--color-border);border-inline-start:4px solid var(--color-border-strong);border-radius:12px;background:var(--color-surface);box-shadow:0 2px 7px color-mix(in srgb,var(--color-primary) 3%,transparent)}
+.day-plan-content .planned-activity-main{justify-content:space-between}
+.day-plan-content .planned-activity-main>strong{font-size:16px}
+.day-plan-content .planned-activity-controls{align-items:center;padding-top:4px}
+.day-plan-content .planned-activity-controls>label{flex-direction:row;align-items:center}
+.day-plan-content .group-add-trigger{margin:8px 18px 0;padding:9px 12px;border:1px dashed var(--color-border-strong);border-radius:9px;background:var(--color-surface)}
+.day-plan-content .group-activity-add{margin:10px 18px 0;align-items:end}
+.day-plan-content .group-activity-add label:first-child{flex:1 1 300px}
+.day-plan-content .group-activity-add label:nth-child(2){flex:0 0 170px}
+@media(max-width:750px){.day-plan-content .half-hour-list{padding:12px 10px 4px}.day-plan-content .planned-activity-card{padding:12px}.day-plan-content .planned-activity-main{align-items:flex-start}.day-plan-content .planned-activity-controls>label{flex-direction:column;align-items:stretch}.day-plan-content .group-add-trigger{margin-inline:10px}.day-plan-content .group-activity-add{margin-inline:10px}.day-plan-content .group-activity-add label:nth-child(2){flex:1 1 100%}}
+
+/* اسم العمل المُعادلت: صف واحد مضغوط */
+.day-plan-content .rename-activity{display:flex;align-items:center;gap:7px;flex:1;min-width:0}
+.day-plan-content .rename-activity input{flex:1;min-width:0;min-height:36px;padding:5px 9px}
+.day-plan-content .rename-activity button{min-height:36px;flex:none}
+
+@media(max-width:750px){
+  .day-plan-content .planned-activity-controls>label{width:100%}
+  .day-plan-content .planned-activity-controls>label input[type=time]{width:100%}
+  .day-plan-content .planned-activity-controls .activity-actions{margin-inline-start:0;width:100%;flex-wrap:wrap}
+  .day-plan-content .planned-activity-controls .activity-actions button{flex:1 1 auto;justify-content:center}
+}
+
+/* الوقت بالعربية بجانب منتقي الوقت، ليتسق الشكل مع شريط الصلاة */
+.day-plan-content .prayer-grid .prayer{flex-direction:column;align-items:stretch;gap:4px}
+.day-plan-content .prayer-grid .prayer-name{font-weight:700;font-size:13px;color:var(--color-primary)}
+.day-plan-content .prayer-grid .prayer input[type=time]{text-align:center;font-variant-numeric:tabular-nums}
+.day-plan-content .prayer-grid .prayer-time-text{font-size:11px;color:var(--color-muted);text-align:center;font-variant-numeric:tabular-nums}
+.day-plan-content .prayer-grid .prayer-sunrise .prayer-time-text{color:var(--color-warning)}
+.day-plan-content .planned-activity-controls>label .time-text{font-size:12px;font-weight:700;color:var(--color-primary);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* ترتيب حقل الوقت: العنوان ثم الحقل ثم الوقت العربي، قراءة من اليمين لليسار */
+.day-plan-content .planned-activity-controls>label{flex-direction:column;align-items:stretch;gap:3px}
+.day-plan-content .planned-activity-controls>label .time-label{font-size:11px;color:var(--color-muted);font-weight:600}
+.prayer-city-picker{display:grid;gap:12px;margin:0 0 16px}
+.prayer-city-picker form{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+.prayer-city-picker form label{flex:1 1 240px;display:grid;gap:6px}
+.prayer-city-results{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.prayer-city-results button{width:100%;display:flex;align-items:center;gap:8px;text-align:start;padding:10px 12px;border:1px solid var(--color-border);border-radius:12px;background:#fff;cursor:pointer}
+.prayer-city-results small{margin-inline-start:auto;color:var(--color-muted);direction:ltr}
+.prayer-city-selected{display:grid;gap:10px;padding:12px;border-radius:14px;background:var(--color-surface)}
+.prayer-city-selected p{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0}
+.day-plan-content .planned-activity-controls>label input[type=time]{text-align:center;font-variant-numeric:tabular-nums}
+.day-plan-content .planned-activity-controls>label .time-text{font-size:12px;font-weight:700;color:var(--color-primary);text-align:center}
+

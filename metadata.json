@@ -1,0 +1,6 @@
+{
+  "name": "الربانيون — المسيرة الربانية",
+  "description": "منصة وتطبيق المسيرة الربانية للتعلم والعمل بالقرآن والسنة، وتزكية النفس، ومواقيت الصلاة، واتجاه القبلة، والأذكار دون اتصال.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

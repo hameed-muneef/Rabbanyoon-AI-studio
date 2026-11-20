@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">الربانيون</string>
+    <string name="title_activity_main">الربانيون</string>
+    <string name="package_name">com.alrabbaniyoon.app</string>
+    <string name="custom_url_scheme">com.alrabbaniyoon.app</string>
+</resources>

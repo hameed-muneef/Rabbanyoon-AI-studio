@@ -1,0 +1,262 @@
+:root{
+  --color-canvas:#E5EBE3;--color-surface:#F2EFE5;--color-surface-soft:#DCE5DC;--color-ink:#263C32;--color-body:#384C40;--color-muted:#718078;--color-primary:#244638;--color-primary-hover:#1D3B2F;--color-selected:#DCE5DC;--color-border:#D4DDD3;--color-border-strong:#B9CBBE;--color-gold:#D5B77B;--color-gold-ink:#786137;--color-warning:#805A38;--color-error:#A64137;--color-success:#315E49;--color-focus:#9B7C43;
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--shadow-soft:0 8px 26px #18382e0b;
+  color:var(--color-ink);background:var(--color-canvas);font-family:Tajawal,Arial,sans-serif;
+}
+html{scroll-behavior:auto}
+body{background:var(--color-canvas);color:var(--color-body);line-height:1.7}
+button,input,select,textarea{font-family:inherit}
+button{transition:background-color .16s,border-color .16s,color .16s,transform .16s}
+button:active:not(:disabled){transform:translateY(1px)}
+button:disabled{opacity:.56;cursor:not-allowed}
+:is(button,input,select,textarea,a,summary):focus-visible{outline:3px solid var(--color-focus);outline-offset:3px}
+.app{background:var(--color-canvas)}
+.sidebar{width:250px;padding:24px 16px;background:var(--color-surface);border-left:1px solid var(--color-border);box-shadow:-2px 0 20px #263c3208}
+.brand{gap:10px;padding:3px 5px 28px;width:100%}
+.brand-mark{width:42px;height:42px;border-radius:11px;flex-shrink:0}
+.brand-mark{background:var(--color-primary);color:var(--color-gold)}
+.brand-mark img{display:block;width:28px;height:28px}
+.brand strong{font-size:21px;line-height:1.45}
+.brand small{font-size:10px;line-height:1.5;color:var(--color-muted)}
+.side-label{padding:7px 12px 10px;color:#725b2c;font-size:12px;font-weight:800}
+.sidebar nav{gap:4px}
+.sidebar nav button,.side-bottom button{min-height:49px;padding:10px 12px;gap:11px;font-size:16px;font-weight:800;line-height:1.5;border-radius:10px;color:#385849}
+.sidebar nav button svg,.side-bottom button svg{flex-shrink:0;stroke-width:2}
+.sidebar nav button.active{background:var(--color-selected);color:var(--color-ink);box-shadow:inset -4px 0 var(--color-primary)}
+.sidebar nav button:hover,.side-bottom button:hover{background:var(--color-surface-soft);color:var(--color-primary)}
+.side-bottom p{font-size:13px;line-height:1.8;padding-top:17px}
+.topbar{min-height:104px;height:auto;padding:18px clamp(24px,3vw,48px);gap:24px;border-bottom:1px solid var(--color-border);background:var(--color-surface);box-shadow:0 3px 14px #263c3208}
+.crumb{font-size:20px;color:var(--color-primary);gap:14px;line-height:1.5;font-weight:700}
+.crumb>span{font-size:20px;font-weight:700}
+.crumb strong{color:var(--color-primary);font-size:20px;font-weight:800;line-height:1.4}
+.crumb svg{width:19px;height:19px;stroke-width:2;color:#74877b}
+.top-date{color:var(--color-body);font-size:16px;font-weight:700;line-height:1.5;white-space:nowrap}
+.hijri-inline{font-size:12px;color:var(--color-muted)}
+.top-date .hijri-inline{margin-inline-start:10px}
+.hijri-date{display:block;margin-top:3px;font-size:12px;font-weight:600;color:var(--color-muted)}
+@media(max-width:750px){.top-date .hijri-inline{font-size:0;color:transparent}}
+.content{max-width:1280px;padding:28px clamp(24px,3vw,48px) 64px}
+.back{margin-bottom:18px;color:var(--color-muted);font-size:13px;min-height:36px}
+.hero{min-height:236px;padding:30px clamp(28px,4vw,48px);border-radius:var(--radius-lg);background:linear-gradient(115deg,#263c32,#244638);box-shadow:0 16px 36px #263c3220}
+.hero-pattern{opacity:.07}
+.hero h1{font-size:clamp(29px,3vw,39px);line-height:1.4;margin:10px 0 4px;color:#e1ebe1}
+.hero p{font-size:15px;line-height:1.85;margin:0;max-width:540px;color:#e1ebe1}
+.hero-btn{margin-top:20px;min-height:44px;background:#dce5dc;color:#263c32;border-radius:var(--radius-sm)}
+.hero-btn:hover{background:#f2efe5}
+.home-admin-entry{display:flex;align-items:center;gap:14px;margin-top:16px;padding:14px 18px;border:1px solid #cbded0;border-radius:var(--radius-md);background:#f0f6ef;color:#244638;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.home-admin-entry:hover{border-color:#8db69b;box-shadow:0 8px 20px #18382e12}
+.home-admin-icon{display:grid;place-items:center;width:42px;height:42px;flex:none;border-radius:12px;background:#dcebdd}
+.home-admin-entry strong,.home-admin-entry small{display:block}.home-admin-entry strong{font-size:15px}.home-admin-entry small{margin-top:3px;color:#5a7664;font-size:12px}.home-admin-entry>svg:last-child{margin-inline-start:auto}
+.hero-art{width:180px}
+.arch{width:155px;height:176px;gap:14px;box-shadow:inset 0 0 0 8px #204c3d,inset 0 0 0 9px #d8c39444}
+.arch svg{width:48px;height:48px}
+.section-title{margin:30px 0 14px}
+.section-title h2{font-size:24px;line-height:1.5;color:var(--color-ink)}
+.section-title p{color:var(--color-muted)}
+.feature-grid{gap:12px}
+.feature-card{min-height:146px;padding:18px;gap:8px;background:var(--color-surface);border-color:var(--color-border);border-radius:var(--radius-md);box-shadow:var(--shadow-soft)}
+.feature-card:hover,.wide-card:hover{transform:translateY(-2px);border-color:var(--color-border-strong);box-shadow:0 12px 26px #18382e16}
+.feature-icon{width:39px;height:39px;border-radius:10px}
+.feature-icon{background:var(--color-surface-soft);color:var(--color-primary)}
+.icon-1{background:#eae3d3;color:#786137}
+.icon-2{background:#dce5dc;color:#244638}
+.icon-3{background:#ebe8dc;color:#718078}
+.feature-icon svg{width:21px;height:21px;stroke-width:1.8}
+.feature-card strong{font-size:16px;color:var(--color-ink);line-height:1.5}
+.feature-card>span:nth-of-type(2){color:var(--color-muted);font-size:12px;line-height:1.5}
+.large-grid{gap:12px}
+.wide-card{min-height:142px;padding:20px;gap:16px;background:var(--color-surface);border-color:var(--color-border);border-radius:var(--radius-md)}
+.wide-icon{padding:12px;border-radius:10px;flex-shrink:0}
+.wide-icon{background:var(--color-surface-soft);color:var(--color-primary)}
+.wide-icon.blush{background:#eae3d3;color:#786137}
+.wide-card h3{font-size:18px;line-height:1.5;margin-bottom:4px}
+.wide-card p{font-size:13px;color:var(--color-muted);line-height:1.75;margin-bottom:8px}
+.quote{font-size:16px;color:var(--color-body)}
+.page-intro{margin-bottom:22px}
+.page-intro h1{font-size:clamp(27px,2.5vw,33px);line-height:1.45;color:var(--color-ink);margin:7px 0}
+.page-intro p{font-size:15px;color:var(--color-muted);line-height:1.8}
+.panel,.wird-card{background:var(--color-surface);border-color:var(--color-border);border-radius:var(--radius-lg);padding:22px;box-shadow:0 3px 14px #263c3208}
+.panel h3{font-size:18px;color:var(--color-ink);line-height:1.5}
+.panel-head{color:var(--color-primary)}
+.panel-head h3{color:var(--color-ink)}
+.muted{color:var(--color-muted)}
+.primary{background:var(--color-primary);color:#fff;border-radius:var(--radius-sm);min-height:42px;padding:10px 17px}
+.primary:hover{background:var(--color-primary-hover)}
+.soft-btn{background:var(--color-surface-soft);color:var(--color-primary);border-radius:var(--radius-sm);min-height:38px}
+.soft-btn:hover{background:var(--color-selected)}
+.hint{background:var(--color-surface-soft);border-color:var(--color-border);color:var(--color-muted)}
+.form-grid{gap:16px}
+.form-grid label{color:var(--color-body)}
+input:not([type=checkbox]),select,textarea{border-color:var(--color-border-strong);border-radius:var(--radius-sm);color:var(--color-ink);line-height:1.5}
+input:not([type=checkbox]):hover,select:hover,textarea:hover{border-color:#9db8a5}
+.task-main input{accent-color:var(--color-primary);width:20px;height:20px}
+.task{min-height:50px;border-color:var(--color-border)}
+.icon-btn{min-width:34px;min-height:34px;color:var(--color-muted)}
+.icon-btn:hover{background:#edf2ed;color:var(--color-primary)}
+.danger:hover{color:var(--color-error)}
+.prayer{background:#F2EFE5;border-color:var(--color-border);border-radius:var(--radius-sm)}
+.prayer{background:var(--color-surface-soft)}
+.day-planner .slot-body{background:var(--color-surface);border-color:var(--color-border)}
+.day-planner .prayer-slot .slot-body{background:var(--color-surface-soft)}
+.wird-card h3,.goal-item h4{color:var(--color-ink)}
+.progress-track{background:#e7eee6}
+.progress-track div{background:var(--color-success)}
+.lesson-banner{background:linear-gradient(115deg,#153d32,#2b5945);border-radius:var(--radius-lg);padding:25px}
+.lesson-banner h2{font-size:clamp(23px,2.3vw,29px)}
+.goal-item,.reflection-entry{border-color:var(--color-border)}
+.day-planner .intention-card{padding:24px 28px}
+.day-planner .intention-card h2{font-size:26px}
+.day-planner .slot-body{padding:18px 20px;box-shadow:none}
+.day-planner .day-slot{margin-bottom:16px}
+.day-planner .slot-heading{padding-bottom:10px}
+.day-planner .slot-activity{padding:11px 14px 9px;margin-top:10px}
+.day-planner .slot-activity .activity-title{font-size:17px}
+.day-planner .activity-schedule{padding-top:2px}
+.day-planner .slot-add{padding-top:12px;margin-top:12px}
+.day-planner .prayer-slot .slot-body{padding-block:14px}
+.day-planner .prayer-slot h3{font-size:18px}
+.day-planner .prayer-note{margin-top:3px}
+.day-planner .day-view-switch{border-radius:10px}
+.day-page-header{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;background:var(--color-surface);border:1px solid var(--color-border);border-radius:16px;padding:26px 28px;margin-bottom:24px;box-shadow:var(--shadow-soft)}
+.day-page-header .day-intro{flex:1 1 100%;margin:0;align-items:center;gap:24px}
+.day-page-header .day-intro h1{font-size:34px;line-height:1.4;margin:7px 0 4px}
+.day-page-header .day-intro p{margin:0;font-size:15px}
+.day-header-date{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#f5f7f2;border:1px solid var(--color-border);border-radius:10px;padding:10px 14px;color:var(--color-primary);font-size:13px}
+.day-header-date span{color:var(--color-muted)}
+.day-header-date strong{font-size:14px;font-weight:700}
+.day-page-header .day-view-switch{margin:0;width:100%;border:0;border-top:1px solid var(--color-border);border-radius:0;background:transparent;padding:17px 0 0;gap:8px}
+.day-page-header .day-view-switch button{min-width:150px;min-height:44px;background:#f1f4ef;color:var(--color-body)}
+.day-page-header .day-view-switch button.selected{background:var(--color-primary);color:#fff;box-shadow:0 4px 12px #24463822}
+.tracking-header{padding:18px 22px}
+.tracking-header h2{font-size:21px}
+.tracking-toolbar{justify-content:space-between;gap:8px;margin:12px 0}
+.tracking-date-nav{display:flex;align-items:center;gap:5px}
+.tracking-date-nav .soft-btn{min-width:38px;padding:8px;display:grid;place-items:center}
+.tracking-progress{padding:15px 18px;margin:14px 0}
+.tracking-list{gap:6px}
+.tracking-item{padding:11px 16px;gap:6px 12px;border-radius:10px}
+.tracking-item .task-main{flex-basis:65%;gap:10px}
+.tracking-item .task-main strong{font-size:16px;line-height:1.55}
+.tracking-item .task-main small{margin-top:1px}
+.tracking-item-footer{padding-inline-start:30px;margin-top:-2px}
+.tracking-item-footer>span{font-size:12px}
+.tracking-status{padding:3px 9px}
+.tracking-message{margin:9px 0;padding:12px 16px}
+.day-planner .tracking-header{padding:15px 18px;gap:14px;border-radius:12px}
+.day-planner .tracking-header h2{font-size:18px;line-height:1.5;margin:4px 0}
+.day-planner .tracking-header h2 svg{width:18px;height:18px}
+.day-planner .tracking-header p{font-size:12px}
+.day-planner .tracking-header label{font-size:12px;font-weight:700}
+.day-planner .tracking-header input{min-height:38px;font-size:13px}
+.day-planner .tracking-toolbar{margin:8px 0 12px}
+.day-planner .tracking-toolbar button{padding:7px 12px;font-size:12px}
+.day-planner .tracking-progress{padding:13px 16px;margin:0 0 12px;border-radius:10px}
+.day-planner .tracking-progress strong{font-size:15px}
+.day-planner .tracking-progress span,.day-planner .tracking-progress label{font-size:12px}
+.day-planner .tracking-progress progress{margin:9px 0}
+.day-planner .tracking-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 14px}
+.day-planner .tracking-item{min-width:0;padding:12px 14px;gap:7px 9px;align-content:start;border-radius:10px}
+.day-planner .tracking-item .task-main{flex:1 1 65%;gap:9px}
+.day-planner .tracking-item .task-main strong{font-size:14px;line-height:1.5;font-weight:700}
+.day-planner .tracking-item .task-main small{font-size:11px;line-height:1.4}
+.day-planner .tracking-item .task-main input{width:17px;height:17px}
+.day-planner .tracking-status{font-size:10px;padding:3px 8px}
+.day-planner .tracking-item-footer{padding-inline-start:26px;margin:0;gap:5px}
+.day-planner .tracking-item-footer>span{font-size:11px;line-height:1.5}
+.day-planner .tracking-item-footer button{font-size:11px}
+@media(max-width:1000px){.day-planner .tracking-list{grid-template-columns:1fr}}
+@media(max-width:750px){.day-planner .tracking-header{padding:14px}.day-planner .tracking-header h2{font-size:17px}.day-planner .tracking-item{padding:11px 12px}.day-planner .tracking-item-footer{padding-inline-start:0}}
+.day-plan-content .day-start-bar{padding:13px 17px;margin-bottom:16px;gap:10px}
+.day-plan-content .day-start-bar strong{font-size:14px}
+.day-plan-content .day-start-bar p{font-size:12px;line-height:1.7}
+.day-plan-content .intention-card{padding:20px 24px;margin-bottom:18px;border-radius:16px}
+.day-plan-content .intention-card h2{font-size:23px;margin:10px 0}
+.day-plan-content .intention-card blockquote{font-size:19px;line-height:1.8}
+.day-plan-content .intention-card p{font-size:13px;line-height:1.8;margin:8px 0}
+.day-plan-content .intention-prompts{margin:14px 0;gap:7px}
+.day-plan-content .intention-prompts span{font-size:12px;padding:7px 10px}
+.day-plan-content .day-settings{padding:16px 19px}
+.day-plan-content .day-settings summary{font-size:13px}
+.day-plan-content #day-timeline{margin-top:25px;margin-bottom:16px}
+.day-plan-content #day-timeline h2{font-size:22px}
+.day-plan-content #day-timeline p{font-size:13px;line-height:1.7}
+.day-plan-content .day-slot{gap:13px;margin-bottom:13px}
+.day-plan-content .day-timeline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.day-plan-content .day-timeline:before{display:none}
+.day-plan-content .day-timeline-column{display:grid;align-content:start;gap:14px;min-width:0;position:relative}
+.day-plan-content .day-timeline-column:before{content:'';position:absolute;right:15px;top:52px;bottom:20px;width:2px;background:#E5EBE3}
+.day-plan-content .day-timeline-column-heading{margin:0 0 2px;padding:8px 14px;background:#edf3eb;border:1px solid #d6e4d6;border-radius:10px;color:#244638;font-size:14px;font-weight:800}
+.day-plan-content .day-slot{min-width:0;margin:0}
+.day-plan-content .phase-before{--phase-bg:#f1f0f7;--phase-border:#dcddeb;--phase-accent:#636b88}
+.day-plan-content .phase-morning{--phase-bg:#edf5ed;--phase-border:#d4e5d4;--phase-accent:#4c7959}
+.day-plan-content .phase-midday{--phase-bg:#faf5e9;--phase-border:#ebdfc1;--phase-accent:#947439}
+.day-plan-content .phase-afternoon{--phase-bg:#edf5f2;--phase-border:#d3e6df;--phase-accent:#487c6a}
+.day-plan-content .phase-sunset{--phase-bg:#fbf1eb;--phase-border:#efdcd1;--phase-accent:#9a684e}
+.day-plan-content .phase-night{--phase-bg:#eef2f8;--phase-border:#d9e1ec;--phase-accent:#526c86}
+.day-plan-content .day-slot .slot-body{background:linear-gradient(180deg,var(--phase-bg),#fff 85%);border-color:var(--phase-border);border-inline-start:3px solid var(--phase-accent)}
+.day-plan-content .day-slot .slot-marker{background:var(--phase-bg);border-color:var(--phase-border);color:var(--phase-accent)}
+.day-plan-content .day-slot .slot-heading h3{color:var(--phase-accent)}
+.day-plan-content .day-slot.prayer-slot .slot-body{background:linear-gradient(115deg,var(--phase-bg),#fff 75%);border:1px solid var(--phase-border);border-inline-start:5px solid var(--phase-accent);box-shadow:0 5px 17px #173f3412;padding:14px 17px}
+.day-plan-content .day-slot.prayer-slot .slot-marker{background:var(--phase-accent);border-color:var(--phase-accent);color:#fff;box-shadow:0 0 0 4px #fff}
+.day-plan-content .day-slot.prayer-slot .slot-heading{align-items:center;gap:10px}
+.day-plan-content .day-slot.prayer-slot .slot-heading h3{font-size:19px;font-weight:800;color:#244638;line-height:1.35}
+.day-plan-content .prayer-kicker{display:block;color:var(--phase-accent);font-size:10px;font-weight:800;letter-spacing:.01em;margin-bottom:3px}
+.day-plan-content .day-slot.prayer-slot .slot-time{display:inline-flex;align-items:center;gap:7px;background:var(--phase-accent);color:#fff;border-radius:9px;padding:7px 11px;font-size:15px;font-weight:800;line-height:1.35;white-space:nowrap}
+.day-plan-content .day-slot.prayer-slot .slot-time svg{width:16px;height:16px;flex-shrink:0}
+.day-plan-content .day-slot.prayer-slot .prayer-note{font-size:11px;margin:4px 0 0;color:#516458}
+.day-plan-content .slot-body{min-width:0}
+.day-plan-content .slot-marker{width:31px;height:31px;margin-top:13px}
+.day-plan-content .day-timeline:before{right:15px}
+.day-plan-content .slot-body{padding:15px 17px;border-radius:13px}
+.day-plan-content .slot-heading{padding-bottom:8px;margin-bottom:2px;gap:8px}
+.day-plan-content .slot-heading h3{font-size:16px;line-height:1.55}
+.day-plan-content .slot-time{font-size:11px}
+.day-plan-content .prayer-slot .slot-body{padding-block:11px}
+.day-plan-content .prayer-slot h3{font-size:17px}
+.day-plan-content .prayer-note{font-size:11px;margin:2px 0 0}
+.day-plan-content .slot-activity{padding:9px 11px 7px;margin-top:8px;gap:7px}
+.day-plan-content .slot-activity .activity-title{font-size:15px;line-height:1.6}
+.day-plan-content .activity-schedule{padding-top:2px;gap:6px 10px}
+.day-plan-content .activity-time{font-size:11px;line-height:1.6}
+.day-plan-content .activity-duration{font-size:10px}
+.day-plan-content .slot-add{padding-top:9px;margin-top:9px}
+.day-plan-content .slot-add input{font-size:12px;padding:8px 10px}
+@media(max-width:1100px){.day-plan-content .day-timeline{grid-template-columns:1fr;gap:20px}.day-plan-content .day-slot{margin-bottom:0}}
+@media(max-width:750px){.day-plan-content .intention-card{padding:18px 16px}.day-plan-content .intention-card h2{font-size:21px}.day-plan-content .intention-card blockquote{font-size:17px}.day-plan-content .slot-body{padding:13px 11px}.day-plan-content .slot-activity{padding:9px 10px}.day-plan-content .slot-marker{width:29px;height:29px}.day-plan-content .day-timeline:before{right:14px}.day-plan-content .activity-schedule{margin-inline-start:0;width:100%}}
+.day-review{padding:20px;border-radius:var(--radius-md)}
+.day-message-dialog{border-radius:var(--radius-lg)}
+.day-message-content{font-size:16px;line-height:1.95}
+@media(max-width:1100px){.sidebar{width:226px}.content{padding-inline:26px}.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:750px){
+  .sidebar{display:none}.topbar{min-height:72px;padding:12px 16px;gap:10px}.content{padding:20px 16px 110px}
+  .top-date{font-size:13px}.crumb{font-size:16px;gap:7px}.crumb>span{font-size:16px}.crumb strong{font-size:16px}.crumb svg{width:15px;height:15px}
+  .hero{min-height:0;padding:24px 22px}.hero h1{font-size:28px}.hero p{font-size:14px}.hero-art{display:none}
+  .feature-grid,.large-grid{gap:10px}.feature-card{min-height:130px;padding:15px}.wide-card{min-height:0;padding:17px}
+  .panel,.wird-card{padding:18px}.section-title{margin:27px 0 12px}.section-title h2{font-size:22px}
+  .page-intro h1{font-size:28px}.page-intro p{font-size:14px}
+  .mobile-nav{box-shadow:0 -8px 25px #18382e0d;padding-bottom:max(8px,env(safe-area-inset-bottom))}
+  .mobile-nav button{min-height:51px;min-width:62px;color:var(--color-muted)}
+  .mobile-nav button.active{color:var(--color-primary)}
+  .day-planner .slot-body{padding:15px 13px}.day-planner .slot-activity{padding:10px 12px}
+  .day-page-header{padding:19px 17px;gap:16px}.day-page-header .day-intro{align-items:flex-start}.day-page-header .day-intro h1{font-size:29px}.day-header-date{width:100%;justify-content:flex-start}.day-page-header .day-view-switch{padding-top:14px}.day-page-header .day-view-switch button{flex:1;min-width:0}
+  .tracking-header{padding:16px}.tracking-header h2{font-size:19px}.tracking-toolbar{justify-content:flex-start}
+  .tracking-toolbar>button:last-child{margin-inline-start:auto}
+  .tracking-item{padding:11px 12px}.tracking-item .task-main{flex-basis:100%}
+  .tracking-item-footer{padding-inline-start:0;margin-top:1px}
+}
+@media(max-width:390px){.mobile-nav button{font-size:10px}.content{padding-inline:12px}.feature-card{padding:12px}.feature-card strong{font-size:15px}.tracking-toolbar>button:last-child{margin-inline-start:0}.day-planner .slot-heading h3{font-size:16px}.topbar{gap:6px}.top-date{font-size:11px}.crumb,.crumb>span,.crumb strong{font-size:14px}}
+/* Prevent horizontal overflow on small viewports. */
+html, body { overflow-x: hidden; }
+#root { max-width: 100%; overflow-x: hidden; }
+img, video, svg, canvas { max-width: 100%; height: auto; }
+.content, .main, .app { max-width: 100%; box-sizing: border-box; }
+
+@media(max-width:750px){
+  .topbar{height:auto;flex-wrap:wrap}
+  .top-actions{min-width:0;flex-wrap:wrap}
+  .top-date{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+  .mobile-nav{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+  .mobile-nav button{min-width:0;padding-inline:2px;font-size:11px;gap:3px;line-height:1.3}
+  .mobile-nav button svg{width:20px;height:20px}
+  input:not([type=checkbox]):not([type=radio]),select,textarea{max-width:100%;font-size:16px}
+}

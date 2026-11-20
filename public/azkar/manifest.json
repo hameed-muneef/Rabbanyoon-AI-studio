@@ -1,0 +1,20 @@
+{
+  "source": "YousefAsalya/Islamic-Pro-azkar-API",
+  "sourceUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API",
+  "license": "MIT",
+  "licenseUrl": "https://github.com/YousefAsalya/Islamic-Pro-azkar-API/blob/main/LICENSE",
+  "attribution": "Hisn Al-Muslim (Fortress of the Muslim) — Sheikh Sa'eed Al-Qahtani; audio by Hamad Al-Durayhim; dataset by Yousef I. M. Asalya (MIT).",
+  "originContent": "hisnmuslim.com",
+  "counts": {"categories": 132, "adhkar": 185},
+  "languages": ["ar", "en", "tr"],
+  "files": {
+    "ar": {"path": "azkar/ar.json", "bytes": 166566, "sha256": "7affdd9c1356f66f77057b631ac239cc41bde68f9bdc85d344a852a0a6ff6732"},
+    "en": {"path": "azkar/en.json", "bytes": 145287, "sha256": "49d155762b9eac1011127a3afabd4a4094206138b7c161f587b29a473f59f3f1"},
+    "tr": {"path": "azkar/tr.json", "bytes": 144559, "sha256": "48f2252b1fdb2848ff38da957926629e0409e921bfe59218f9ad941177073457"}
+  },
+  "audio": {
+    "baseUrl": "https://raw.githubusercontent.com/YousefAsalya/Islamic-Pro-azkar-API/main/audio/",
+    "note": "Audio is streamed on demand (not bundled) to keep the app bundle small; 398 MP3 files remain in the upstream repo."
+  },
+  "importedAt": "2026-11-02"
+}

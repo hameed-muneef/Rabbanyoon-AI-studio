@@ -1,0 +1,84 @@
+/* طبقة الصلابة البصرية — تُحمَّل أخيرًا. */
+html, body { max-width: 100%; }
+body { overflow-x: hidden; overflow-x: clip; }
+img, video, canvas, svg { max-width: 100%; }
+img, video { height: auto; }
+#root, .app, .main { min-width: 0; }
+.app { min-height: 100vh; min-height: 100dvh; }
+.auth-page { min-height: 100vh; min-height: 100dvh; }
+:where(p, h1, h2, h3, h4, h5, h6, li, dd, dt, figcaption, blockquote, small, strong, bdi) { overflow-wrap: anywhere; }
+
+#root .app input, #root .app select, #root .app textarea,
+.admin-page input, .admin-page select, .admin-page textarea {
+  color: var(--text, var(--color-ink));
+  caret-color: var(--primary, var(--color-primary));
+}
+#root .app ::placeholder, .admin-page ::placeholder { color: var(--text-muted, var(--color-muted)); opacity: 1; }
+
+#root .app input:-webkit-autofill,
+#root .app input:-webkit-autofill:hover,
+#root .app input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text, var(--color-ink));
+  box-shadow: 0 0 0 1000px var(--surface-2, var(--color-surface-soft)) inset;
+  transition: background-color 9999s ease-out 0s;
+}
+[data-theme="dark"] #root .app input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px var(--dark-surface-sunken, #061321) inset;
+}
+
+#root .app :is(button, input, select, textarea):disabled,
+.admin-page :is(button, input, select, textarea):disabled { opacity: .6; cursor: not-allowed; }
+
+#root .app :is(.form-grid, .profile-view) :is(input:not([type=checkbox]):not([type=radio]), select),
+.admin-page :is(.admin-users-filters, .admin-permission-select) :is(input:not([type=checkbox]):not([type=radio]), select) {
+  min-height: 44px; padding: 10px 12px; border-radius: var(--radius-control, 10px);
+  border: 1.5px solid var(--border, var(--color-border)); background: var(--surface-raised, var(--color-surface));
+  color: var(--text, var(--color-ink));
+}
+#root .app :is(.form-grid, .profile-view) :is(input, select):focus,
+.admin-page :is(.admin-users-filters, .admin-permission-select) :is(input, select):focus {
+  border-color: var(--primary, var(--color-primary));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary, var(--color-primary)) 18%, transparent);
+  outline: none;
+}
+
+:is(.country-selector-control, .country-selector-search, .quran-search label, .quran-hadith-search label, .azkar-search, .goal-search, .admin-users-search > div) {
+  border: 1.5px solid var(--border, var(--color-border));
+  border-radius: var(--radius-control, 10px);
+  background: var(--surface-raised, var(--color-surface));
+  color: var(--text-muted, var(--color-muted));
+  transition: border-color .16s ease, box-shadow .16s ease, background-color .16s ease;
+}
+:is(.country-selector-control, .country-selector-search, .quran-search label, .quran-hadith-search label, .azkar-search, .goal-search, .admin-users-search > div):focus-within {
+  border-color: var(--primary, var(--color-primary));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary, var(--color-primary)) 18%, transparent);
+}
+:is(.quran-search, .quran-hadith-search, .azkar-search, .goal-search, .admin-users-search) :is(input, textarea) {
+  border: 0 !important; background: transparent !important; box-shadow: none !important;
+  color: var(--text, var(--color-ink)); min-width: 0; min-height: 0; padding: 0; border-radius: 0;
+}
+:is(.quran-search, .quran-hadith-search, .azkar-search, .goal-search, .admin-users-search) input::placeholder { color: var(--text-muted, var(--color-muted)); opacity: 1; }
+
+#root .app :is(.panel, .feature-card, .wide-card, .wird-card, .goal-plan-card, .goal-period-card, .journey-library-card, .home-next-card, .home-today-entry) { min-width: 0; }
+#root .app :is(.feature-grid, .large-grid, .home-dashboard, .goal-period-grid, .goal-cards, .quran-section-grid) > * { min-width: 0; }
+
+@media (max-width: 750px) {
+  #root .app input:not([type=checkbox]):not([type=radio]),
+  #root .app select, #root .app textarea,
+  .admin-page input:not([type=checkbox]):not([type=radio]),
+  .admin-page select, .admin-page textarea,
+  .country-selector-control > input, .country-selector-search input {
+    font-size: 16px;
+  }
+  .mobile-nav { padding-bottom: max(8px, env(safe-area-inset-bottom)); }
+  .content { padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
+}
+@media (pointer: coarse) {
+  #root .app .topbar .icon-btn, #root .app .topbar .notif-bell,
+  #root .app .mobile-nav button, #root .app .country-selector-toggle,
+  #root .app .notif-panel button, #root .app .quran-search li button,
+  #root .app .azkar-lang button { min-height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; scroll-behavior: auto !important; }
+}

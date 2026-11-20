@@ -1,0 +1,1567 @@
+/*
+ * Al-Rabbaniyun Theme Engine
+ * --------------------------
+ * This is the single semantic theme boundary for the application. Components
+ * consume semantic tokens; only this file defines the light/dark palettes.
+ * Keep business logic and markup shared. Theme-specific visual decisions live
+ * in the two token blocks below.
+ */
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Background hierarchy */
+  --bg-app: #eeeae0;
+  --bg-page: #f5f1e8;
+  --bg-secondary: #ece8de;
+  --bg-elevated: #fbf9f2;
+  --bg-sidebar: #eee9dd;
+  --bg-header: #ebe4d5;
+  --bg-image-overlay: linear-gradient(135deg, rgba(244, 239, 225, .84), rgba(231, 228, 217, .72));
+
+  /* Surfaces */
+  --surface-card: #fbf9f2;
+  --surface-card-elevated: #fffdf8;
+  --surface-nested: #f3f0e7;
+  --surface-panel: #f9f6ee;
+  --surface-modal: #fffdf9;
+  --surface-dropdown: #fffdf9;
+  --surface-input: #fdfbf5;
+
+  /* Semantic typography: all light-theme text remains dark enough for AA */
+  --text-primary: #17313a;
+  --text-secondary: #304b50;
+  --text-muted: #52686a;
+  --text-disabled: #71807f;
+  --text-inverse: #fffaf0;
+  --text-link: #1c5965;
+  --text-on-accent: #fffaf0;
+
+  /* Accent families */
+  --accent-primary: #1d4d50;
+  --accent-primary-hover: #143b40;
+  --accent-secondary: #527b7b;
+  --accent-blue: #356a78;
+  --accent-green: #426b59;
+  --accent-sage: #718b78;
+  --accent-teal: #34737a;
+  --accent-neutral: #707c7a;
+  --accent-cream: #d7bd7c;
+  --accent-hero-start: #244f4c;
+  --accent-hero-end: #39675a;
+
+  /* Borders, elevation and focus */
+  --border-subtle: #ddd9cc;
+  --border-default: #c7c9bd;
+  --border-strong: #9baea7;
+  --border-focus: #9a742f;
+  --shadow-card: 0 2px 10px rgba(28, 49, 50, .08);
+  --shadow-elevated: 0 12px 30px rgba(28, 49, 50, .13);
+  --shadow-modal: 0 24px 70px rgba(20, 39, 40, .22);
+
+  /* States */
+  --state-hover: rgba(35, 85, 82, .08);
+  --state-active: rgba(35, 85, 82, .14);
+  --state-selected: #dce8df;
+  --state-focus: rgba(154, 116, 47, .24);
+  --state-disabled: #e2e1da;
+  --state-pressed: #cdded5;
+
+  /* Status */
+  --status-success: #28654c;
+  --status-success-bg: #e1eee6;
+  --status-warning: #765b26;
+  --status-warning-bg: #f2ead6;
+  --status-error: #8a3f39;
+  --status-error-bg: #f5e5e1;
+  --status-info: #285d72;
+  --status-info-bg: #e1edf1;
+
+  /* Shape and typography */
+  --radius-control: 10px;
+  --radius-card: 16px;
+  --radius-modal: 20px;
+  --font-ui: var(--font-body, 'IBM Plex Sans Arabic', Tajawal, Arial, sans-serif);
+
+  /* Existing image assets are not replaced; consumers can place an image
+     beneath this overlay using .theme-image-surface. */
+  --image-overlay: var(--bg-image-overlay);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Deep navy with a restrained blue-green undertone; never pure black. */
+  --bg-app: #091b2b;
+  --bg-page: #0e2538;
+  --bg-secondary: #102c40;
+  --bg-elevated: #17384d;
+  --bg-sidebar: #33281e;
+  --bg-header: #33281e;
+  --bg-image-overlay: linear-gradient(135deg, rgba(7, 27, 43, .84), rgba(19, 62, 68, .68));
+
+  --surface-card: #143247;
+  --surface-card-elevated: #1b4055;
+  --surface-nested: #193a49;
+  --surface-panel: #123044;
+  --surface-modal: #173b50;
+  --surface-dropdown: #193f52;
+  --surface-input: #102c3f;
+
+  --text-primary: #f1efe5;
+  --text-secondary: #d2ddd7;
+  --text-muted: #afc0bb;
+  --text-disabled: #809893;
+  --text-inverse: #102733;
+  --text-link: #9bc9c6;
+  --text-on-accent: #f8f4e9;
+
+  --accent-primary: #2d5a54;
+  --accent-primary-hover: #244a45;
+  --accent-secondary: #7195a3;
+  --accent-blue: #7daabd;
+  --accent-green: #86a995;
+  --accent-sage: #9eb3a0;
+  --accent-teal: #6fb1b2;
+  --accent-neutral: #9aaead;
+  --accent-cream: #d8bd79;
+  --accent-hero-start: #123a4d;
+  --accent-hero-end: #245766;
+
+  --border-subtle: #244656;
+  --border-default: #315b6d;
+  --border-strong: #517e89;
+  --border-focus: #e0c47d;
+  --shadow-card: 0 2px 12px rgba(2, 14, 24, .27);
+  --shadow-elevated: 0 14px 34px rgba(2, 14, 24, .38);
+  --shadow-modal: 0 24px 70px rgba(2, 12, 21, .55);
+
+  --state-hover: rgba(139, 192, 183, .12);
+  --state-active: rgba(139, 192, 183, .18);
+  --state-selected: #234d58;
+  --state-focus: rgba(224, 196, 125, .25);
+  --state-disabled: #203d49;
+  --state-pressed: #2c5962;
+
+  --status-success: #9bc9aa;
+  --status-success-bg: #1e4b43;
+  --status-warning: #e0c47d;
+  --status-warning-bg: #4b422b;
+  --status-error: #efaaa0;
+  --status-error-bg: #4d2f35;
+  --status-info: #a5d0e0;
+  --status-info-bg: #1d4658;
+
+  --image-overlay: var(--bg-image-overlay);
+}
+
+/* Compatibility aliases: legacy components can migrate incrementally without
+   creating a second theme implementation. */
+:root {
+  --text-body: var(--text-secondary);
+  --text-ink: var(--text-primary);
+  --text-link-color: var(--text-link);
+  --surface-page: var(--bg-page);
+  --surface: var(--surface-card);
+  --surface-raised: var(--surface-card-elevated);
+  --surface-sunken: var(--surface-nested);
+  --line-card: var(--border-default);
+  --line-soft: var(--border-subtle);
+  --color-primary: var(--accent-primary);
+  --color-primary-hover: var(--accent-primary-hover);
+  --color-ink: var(--text-primary);
+  --color-body: var(--text-secondary);
+  --color-muted: var(--text-muted);
+  --color-border: var(--border-default);
+  --color-border-strong: var(--border-strong);
+  --color-selected: var(--state-selected);
+  --color-success: var(--status-success);
+  --color-warning: var(--status-warning);
+  --color-error: var(--status-error);
+}
+
+/* Platform primitives */
+html,
+body,
+#root,
+#root .app {
+  background: var(--bg-app);
+  color: var(--text-secondary);
+}
+
+body {
+  font-family: var(--font-ui);
+}
+
+body::before {
+  opacity: .12;
+}
+
+[data-theme="dark"] body::before {
+  opacity: .16;
+  filter: saturate(.65) hue-rotate(145deg);
+}
+
+#root .app .main {
+  background: var(--bg-page);
+  color: var(--text-secondary);
+}
+
+#root .app h1,
+#root .app h2,
+#root .app h3,
+#root .app h4,
+#root .app h5,
+#root .app h6,
+#root .app strong,
+#root .app b {
+  color: var(--text-primary);
+}
+
+#root .app p,
+#root .app label,
+#root .app dt,
+#root .app dd,
+#root .app li,
+#root .app td,
+#root .app th {
+  color: var(--text-secondary);
+}
+
+#root .app small,
+#root .app .muted,
+#root .app .hint,
+#root .app .subtle,
+#root .app .metadata {
+  color: var(--text-muted);
+}
+
+#root .app a:not(.primary):not(.soft-btn) {
+  color: var(--text-link);
+}
+
+#root .app .sidebar {
+  background: var(--bg-sidebar);
+  border-color: var(--border-default);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* Light navigation is intentionally warm and pale, not the dark brand rail
+   used by the night edition. */
+html[data-theme="light"] #root .app .sidebar {
+  background: var(--bg-sidebar) !important;
+  color: var(--text-secondary) !important;
+  border-color: var(--border-subtle) !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+html[data-theme="light"] #root .app .sidebar .brand,
+html[data-theme="light"] #root .app .sidebar .brand strong,
+html[data-theme="light"] #root .app .sidebar nav button,
+html[data-theme="light"] #root .app .sidebar .side-bottom button {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="light"] #root .app .sidebar .brand small,
+html[data-theme="light"] #root .app .sidebar .side-bottom p,
+html[data-theme="light"] #root .app .sidebar .side-bottom p span {
+  color: var(--text-muted) !important;
+}
+
+html[data-theme="light"] #root .app .sidebar nav button:hover,
+html[data-theme="light"] #root .app .sidebar .side-bottom button:hover {
+  background: var(--state-hover) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="light"] #root .app .sidebar nav button.active {
+  background: var(--state-selected) !important;
+  color: var(--text-primary) !important;
+  box-shadow: inset -3px 0 var(--accent-primary);
+}
+
+/* Dark navigation shares the warm brown identity of the dark topbar, so the
+   whole right rail reads as one distinct band against the navy content. */
+html[data-theme="dark"] #root .app .sidebar {
+  background: linear-gradient(180deg, #4a3a2a 0%, #33281e 100%) !important;
+  color: var(--text-primary) !important;
+  border-color: #8b6e4e !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+html[data-theme="dark"] #root .app .sidebar .brand,
+html[data-theme="dark"] #root .app .sidebar .brand strong,
+html[data-theme="dark"] #root .app .sidebar nav button,
+html[data-theme="dark"] #root .app .sidebar .side-bottom button {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] #root .app .sidebar .brand small,
+html[data-theme="dark"] #root .app .sidebar .side-bottom p,
+html[data-theme="dark"] #root .app .sidebar .side-bottom p span {
+  color: #cdb59a !important;
+}
+
+html[data-theme="dark"] #root .app .sidebar nav button:hover,
+html[data-theme="dark"] #root .app .sidebar .side-bottom button:hover {
+  background: rgba(241, 239, 229, .08) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] #root .app .sidebar nav button.active {
+  background: rgba(241, 239, 229, .14) !important;
+  color: #244638 !important;
+  box-shadow: inset -3px 0 #cdb59a;
+}
+
+html[data-theme="dark"] #root .app .sidebar nav button:not(.active) svg {
+  color: #cdb59a !important;
+}
+
+#root .app .topbar,
+#root .app .mobile-nav {
+  background: var(--bg-header);
+  border-color: var(--border-subtle);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-card);
+}
+
+/* The primary desktop header is a full-width main-column band with a distinct
+   identity in each edition, rather than a neutral strip. */
+html[data-theme="light"] #root .app .topbar {
+  width: 100%;
+  min-height: 82px;
+  box-sizing: border-box;
+  padding: 13px clamp(24px, 4vw, 52px);
+  background: linear-gradient(180deg, #f0e9da 0%, #e8dfce 100%) !important;
+  border-bottom: 1px solid #cdbf9e !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] #root .app .topbar {
+  width: 100%;
+  min-height: 82px;
+  box-sizing: border-box;
+  padding: 13px clamp(24px, 4vw, 52px);
+  background: linear-gradient(180deg, #4a3a2a 0%, #33281e 100%) !important;
+  border-bottom: 1px solid #8b6e4e !important;
+  color: var(--text-primary) !important;
+}
+
+@media (max-width: 640px) {
+  html[data-theme="light"] #root .app .topbar,
+  html[data-theme="dark"] #root .app .topbar {
+    min-height: 60px;
+    padding: 8px 14px;
+  }
+}
+
+/* Notification popover must sit above page content, cards and dialogs. The
+   topbar creates the stacking context; the center/panel receive their own
+   higher layers so z-index cannot be defeated by later route surfaces. */
+#root .app .topbar {
+  position: relative;
+  z-index: 1000;
+}
+
+#root .app .notif-center {
+  position: relative;
+  z-index: 1100;
+}
+
+#root .app .notif-panel {
+  position: absolute;
+  z-index: 1200;
+}
+
+@media (max-width: 640px) {
+  #root .app .notif-panel {
+    position: fixed;
+    z-index: 1200;
+  }
+}
+
+#root .app .panel,
+#root .app .feature-card,
+#root .app .wide-card,
+#root .app .wird-card,
+#root .app .home-next-card,
+#root .app .journey-library-card {
+  background: var(--surface-card);
+  border-color: var(--border-default);
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-card);
+}
+
+#root .app .panel:hover,
+#root .app .feature-card:hover,
+#root .app .wide-card:hover,
+#root .app .home-next-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* Night edition: home section cards trade the uniform blue card for a calm,
+   per-section tinted surface. Each card mixes its own muted --section-accent
+   into the shared dark surface, so the grid stays quiet but no longer
+   monochrome, and stays in harmony with the navy base and warm rails. */
+html[data-theme="dark"] #root .app .feature-card[data-section],
+html[data-theme="dark"] #root .app .wide-card[data-section] {
+  background: linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--section-accent) 26%, var(--surface-card)) 0%,
+      color-mix(in srgb, var(--section-accent) 10%, var(--surface-card)) 100%
+    ) !important;
+  border-color: color-mix(in srgb, var(--section-accent) 42%, var(--border-default)) !important;
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] #root .app .feature-card[data-section] .feature-icon,
+html[data-theme="dark"] #root .app .wide-card[data-section] .wide-icon {
+  background: color-mix(in srgb, var(--section-accent) 30%, var(--surface-nested)) !important;
+  border-color: color-mix(in srgb, var(--section-accent) 38%, var(--border-subtle)) !important;
+  color: var(--section-strong) !important;
+}
+
+html[data-theme="dark"] #root .app .feature-card[data-section]:hover,
+html[data-theme="dark"] #root .app .wide-card[data-section]:hover {
+  background: linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--section-accent) 34%, var(--surface-card)) 0%,
+      color-mix(in srgb, var(--section-accent) 14%, var(--surface-card)) 100%
+    ) !important;
+  border-color: color-mix(in srgb, var(--section-accent) 55%, var(--border-default)) !important;
+}
+
+/* Home "up next" strip (next prayer, reminders, today's tasks) gets the same
+   quiet per-card tint, tied to the daily rhythm (the muted sage of the
+   «يومي مع الله» card) instead of the flat blue card. */
+html[data-theme="dark"] #root .app .home-next-card,
+html[data-theme="dark"] #root .app .home-today-entry {
+  background: linear-gradient(
+      165deg,
+      color-mix(in srgb, #8e978d 24%, var(--surface-card)) 0%,
+      color-mix(in srgb, #8e978d 8%, var(--surface-card)) 100%
+    ) !important;
+  border-color: color-mix(in srgb, #8e978d 38%, var(--border-default)) !important;
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] #root .app .home-next-card .home-next-icon,
+html[data-theme="dark"] #root .app .home-today-entry svg {
+  background: color-mix(in srgb, #8e978d 28%, var(--surface-nested)) !important;
+  border-color: color-mix(in srgb, #8e978d 36%, var(--border-subtle)) !important;
+  color: #adb3ac !important;
+}
+
+#root .app input:not([type="checkbox"]):not([type="radio"]),
+#root .app select,
+#root .app textarea {
+  background: var(--surface-input);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+
+#root .app input::placeholder,
+#root .app textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+#root .app button,
+#root .app [role="button"] {
+  color: var(--text-primary);
+}
+
+#root .app button:hover:not(:disabled),
+#root .app [role="button"]:hover {
+  background-color: var(--state-hover);
+}
+
+#root .app button:active:not(:disabled),
+#root .app [role="button"][aria-pressed="true"] {
+  background-color: var(--state-pressed);
+}
+
+#root .app button:disabled,
+#root .app [aria-disabled="true"] {
+  color: var(--text-disabled);
+  background-color: var(--state-disabled);
+}
+
+#root .app .primary,
+#root .app button.primary {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--text-on-accent);
+}
+
+#root .app .primary:hover:not(:disabled),
+#root .app button.primary:hover:not(:disabled) {
+  background: var(--accent-primary-hover);
+  border-color: var(--accent-primary-hover);
+}
+
+#root .app .soft-btn,
+#root .app button.soft-btn {
+  background: var(--surface-nested);
+  border-color: var(--border-default);
+  color: var(--text-primary);
+}
+
+#root .app table {
+  color: var(--text-secondary);
+  border-color: var(--border-subtle);
+}
+
+#root .app th {
+  background: var(--surface-nested);
+  color: var(--text-primary);
+}
+
+#root .app tr:hover td {
+  background: var(--state-hover);
+}
+
+#root .app progress,
+#root .app .progress-track {
+  background: var(--surface-nested);
+}
+
+#root .app progress::-webkit-progress-value,
+#root .app .progress-track > div {
+  background: var(--accent-green);
+}
+
+#root .app .status-success { color: var(--status-success); background: var(--status-success-bg); }
+#root .app .status-warning { color: var(--status-warning); background: var(--status-warning-bg); }
+#root .app .status-error { color: var(--status-error); background: var(--status-error-bg); }
+#root .app .status-info { color: var(--status-info); background: var(--status-info-bg); }
+
+/* Reading, library and resource surfaces are shared across several routes. */
+.book-chapters button,
+.book-page-heading,
+.book-controls,
+.station-book,
+.learning-inline-reader,
+.fullscreen-book-header,
+.fullscreen-book-reader .pdf-reading-footer {
+  border-color: var(--border-subtle);
+}
+
+.book-chapters button,
+.fullscreen-book-close,
+.pdf-reading-tools input,
+.book-jump input {
+  background: var(--surface-input);
+  border-color: var(--border-default);
+  color: var(--text-primary);
+}
+
+.book-chapters button,
+.book-page-heading a,
+.book-page,
+.learning-resource .resource-read,
+.reading-resume,
+.pdf-open-link,
+.fullscreen-book-heading,
+.fullscreen-book-close,
+.pdf-reading-tools input,
+.book-jump input {
+  color: var(--text-primary);
+}
+
+.book-chapters button:hover,
+.fullscreen-book-close:hover {
+  background: var(--state-hover);
+}
+
+.book-chapters button.selected {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--text-on-accent);
+}
+
+.learning-inline-reader,
+.fullscreen-book-header,
+.fullscreen-book-reader .pdf-reading-footer,
+.managed-resources li,
+.resource-dialog {
+  background: var(--surface-card);
+}
+
+.fullscreen-book-reader {
+  background: var(--bg-page);
+  color: var(--text-secondary);
+}
+
+.fullscreen-pdf-frame {
+  background: var(--bg-secondary);
+}
+
+.book-controls span,
+.book-upload small,
+.resource-dialog small,
+.pdf-reading-tools > span,
+.pdf-reading-hint,
+.book-jump {
+  color: var(--text-muted);
+}
+
+.book-upload-label {
+  background: var(--status-success-bg);
+  border-color: var(--accent-green);
+  color: var(--status-success);
+}
+
+.book-upload-label:hover { background: var(--state-hover); }
+.book-upload-status { color: var(--text-primary); }
+.learning-resource .resource-progress,
+.reading-save-status { color: var(--status-success); }
+
+.resource-dialog {
+  border-color: var(--border-default);
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-modal);
+}
+
+.resource-dialog::backdrop { background: rgba(5, 24, 31, .68); }
+.resource-dialog input,
+.resource-dialog select { background: var(--surface-input); border-color: var(--border-default); color: var(--text-primary); }
+.admin-cleanup-warning { background: var(--status-warning-bg); border-color: var(--accent-cream); color: var(--text-secondary); }
+
+/* Daily planning: preserve its visual hierarchy while removing its separate
+   light-only palette. */
+.day-planner {
+  --day-ink: var(--text-primary);
+  --day-green: var(--accent-green);
+  --day-gold: var(--accent-cream);
+  --day-muted: var(--text-muted);
+  --day-line: var(--border-subtle);
+  --day-ivory: var(--surface-panel);
+}
+
+.day-planner .intention-card {
+  background: linear-gradient(120deg, var(--accent-hero-start), var(--accent-hero-end));
+  color: var(--text-on-accent);
+}
+
+.day-planner .intention-card h2,
+.day-planner .intention-card blockquote,
+.day-planner .intention-card p,
+.day-planner .intention-card small,
+.day-planner .intention-card .verse-source {
+  color: var(--text-on-accent);
+}
+
+.day-planner .day-settings,
+.day-planner .day-start-bar,
+.day-planner .prayer-interval-heading {
+  background: var(--surface-panel);
+  border-color: var(--border-subtle);
+}
+
+.day-planner .slot-body,
+.day-planner .day-review,
+.day-planner .tracking-message,
+.day-planner .prayer-log,
+.day-planner .tracking-progress,
+.day-planner .day-message-dialog,
+.day-plan-content .prayer-interval {
+  background: var(--surface-card);
+  border-color: var(--border-default);
+  color: var(--text-secondary);
+}
+
+.day-planner .slot-heading h3,
+.day-planner .day-review-heading h3,
+.day-planner .tracking-header h2,
+.day-planner .prayer-log h3,
+.day-planner .tracking-progress strong,
+.day-plan-content .prayer-interval-heading h3,
+.day-plan-content .day-start-bar strong {
+  color: var(--text-primary);
+}
+
+.day-planner .slot-activity,
+.day-plan-content .half-hour-row,
+.day-plan-content .planned-activity-card,
+.day-planner .tracking-item,
+.day-planner .prayer-log-row {
+  background: var(--surface-nested);
+  border-color: var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.day-planner .slot-activity:hover,
+.day-plan-content .planned-activity-card:hover {
+  background: var(--state-hover);
+  border-color: var(--border-strong);
+}
+
+.day-planner .fixed-prayer-bar {
+  background: linear-gradient(100deg, var(--accent-primary), var(--accent-hero-end));
+  color: var(--text-on-accent);
+}
+
+.day-planner .fixed-prayer-bar strong,
+.day-planner .fixed-prayer-bar time,
+.day-planner .fixed-prayer-bar > svg { color: var(--text-on-accent); }
+.day-planner .prayer-chip { background: var(--surface-input); border-color: var(--border-default); color: var(--text-secondary); }
+.day-planner .prayer-chip.selected { background: var(--accent-green); border-color: var(--accent-green); color: var(--text-on-accent); }
+.day-planner .tracking-status { background: var(--surface-nested); color: var(--text-muted); }
+.day-planner .tracking-done { background: var(--status-success-bg); }
+.day-planner .tracking-empty { background: var(--surface-panel); border-color: var(--border-default); color: var(--text-secondary); }
+
+/* Administration uses the same semantic contract, including dense tables and
+   permission states. */
+.admin-page {
+  background: var(--bg-page) !important;
+  color: var(--text-secondary) !important;
+}
+
+.admin-header,
+.admin-users,
+.admin-content-archive,
+.admin-user-permissions {
+  background: var(--surface-card) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-secondary);
+}
+
+.admin-header-actions a,
+.admin-header-actions button,
+.admin-save-controls button,
+.admin-users-refresh,
+.admin-users-pagination button,
+.admin-user-manage,
+.admin-permissions-close,
+.admin-permission-revoke,
+.admin-permission-reset,
+.admin-content-archive-pagination button {
+  background: var(--surface-input) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-primary) !important;
+}
+
+.admin-identity small,
+.admin-intro p,
+.admin-users-heading p,
+.admin-users-filters label,
+.admin-users-privacy,
+.admin-users-pagination,
+.admin-content-archive-heading p,
+.admin-content-archive-toolbar > label,
+.admin-content-archive-pagination,
+.admin-user-email,
+.admin-user-id {
+  color: var(--text-muted) !important;
+}
+
+.admin-intro h1,
+.admin-users-heading h2,
+.admin-content-archive-heading h2,
+.admin-user-stats strong,
+.admin-user-permissions h3,
+.admin-user-permissions h4,
+.admin-permission-current-heading strong,
+.admin-content-archive-item > strong {
+  color: var(--text-primary) !important;
+}
+
+.admin-user-stats > div,
+.admin-users-table th,
+.admin-content-archive-tabs,
+.admin-content-archive-tags span {
+  background: var(--surface-nested) !important;
+  color: var(--text-secondary) !important;
+}
+
+.admin-users-table-wrap,
+.admin-content-archive-list > li,
+.admin-permission-current,
+.admin-permission-history li {
+  background: var(--surface-card-elevated) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+.admin-users-table td { border-color: var(--border-subtle) !important; color: var(--text-secondary); }
+.admin-users-search > div { background: var(--surface-input); border-color: var(--border-default); color: var(--text-muted); }
+.admin-users-search-button { background: var(--accent-primary); border-color: var(--accent-primary); color: var(--text-on-accent); }
+.admin-users-error { background: var(--status-error-bg); color: var(--status-error); }
+.admin-user-state.confirmed,
+.admin-permission-current.is-available { background: var(--status-success-bg); color: var(--status-success); }
+.admin-user-role.admin { background: var(--status-info-bg); color: var(--status-info); }
+.admin-permission-current.is-unavailable { background: var(--status-error-bg); border-inline-start-color: var(--status-error); }
+
+/* Goals and progress cards */
+.goal-period-card,
+.goal-plan-card,
+.goal-history,
+.goal-period-icon,
+.goal-period-count,
+.goal-plan-body,
+.goal-step-edit,
+.goal-edit-form,
+.goal-history-period-picker {
+  background: var(--surface-card) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-secondary);
+}
+
+.goal-period-card-head,
+.goal-action-row,
+.goal-meta { border-color: var(--border-subtle); }
+.goal-period-card-head h3,
+.goal-plan-head h3,
+.goal-history-heading h2,
+.goal-action-row label,
+.goal-period-item strong { color: var(--text-primary); }
+.goal-period-card-head small,
+.goal-period-count span,
+.goal-period-empty,
+.goal-period-item small,
+.goal-plan-head p,
+.goal-history-heading p,
+.goal-history-note { color: var(--text-muted); }
+.goal-meta span,
+.goal-period-badge,
+.goal-history-total,
+.goal-history-empty,
+.goal-history-list li { background: var(--surface-nested); color: var(--text-secondary); }
+.goal-history-filters button,
+.goal-history-period-picker input,
+.goal-history-period-picker select { background: var(--surface-input); color: var(--text-primary); border-color: var(--border-default); }
+
+/* Quran/Sunnah discovery pages and Azkar. The reader itself is intentionally
+   handled separately above as a light paper surface. */
+.quran-page,
+.azkar-page {
+  color: var(--text-secondary);
+}
+
+.quran-page .quran-intro,
+.quran-page .quran-section-grid button,
+.quran-page .quran-hadith-list li,
+.quran-page .quran-hadith-book-grid button,
+.quran-page .quran-today-list li,
+.quran-page .quran-journey,
+.azkar-category,
+.azkar-items li {
+  background: var(--surface-card);
+  border-color: var(--border-default);
+  color: var(--text-secondary);
+}
+
+.quran-page .quran-section-grid button:hover,
+.quran-page .quran-section-grid button.active,
+.quran-page .quran-hadith-book-grid button:hover,
+.azkar-category-head:hover,
+.azkar-items li:hover {
+  background: var(--state-hover);
+  border-color: var(--border-strong);
+}
+
+.quran-page .quran-section-grid strong,
+.quran-page .quran-section-grid small,
+.quran-page .quran-hadith-list strong,
+.quran-page .quran-hadith-book-grid button strong,
+.quran-page .quran-journey h2,
+.azkar-category-head strong,
+.azkar-text {
+  color: var(--text-primary);
+}
+
+.quran-page .quran-section-grid small,
+.quran-page .quran-hadith-list p,
+.quran-page .quran-hadith-book-grid button small,
+.quran-page .quran-journey p,
+.azkar-head p,
+.azkar-translit,
+.azkar-done,
+.azkar-footnote p {
+  color: var(--text-muted);
+}
+
+.quran-page .quran-hadith-book-grid button span,
+.quran-page .quran-hadith-list li,
+.quran-page .quran-today-list li,
+.azkar-category-head {
+  color: var(--text-secondary);
+}
+
+.quran-page .quran-search ul,
+.quran-page .quran-scroll-menu,
+.quran-page .quran-mini-list li,
+.quran-page .quran-notes-list li,
+.quran-page .quran-plan-list li,
+.quran-page .quran-passage-list li,
+.quran-page .quran-reflection-list li,
+.quran-page .quran-practice,
+.quran-page .quran-side > .panel {
+  background: var(--surface-card);
+  border-color: var(--border-default);
+}
+
+.quran-page .quran-search li button,
+.quran-page .quran-scroll-menu button,
+.quran-page .quran-mini-list button,
+.quran-page .quran-practice-head h3,
+.quran-page .quran-side h3 {
+  color: var(--text-primary);
+}
+
+.quran-page .quran-search li button:hover,
+.quran-page .quran-scroll-menu button:hover,
+.quran-page .quran-scroll-menu button.active,
+.quran-page .quran-mini-list button:hover {
+  background: var(--state-hover);
+}
+
+.azkar-lang button,
+.azkar-search,
+.azkar-items li,
+.quran-page .quran-hadith-search input,
+.quran-page .quran-form-row input,
+.quran-page .quran-form-row select {
+  background: var(--surface-input);
+  border-color: var(--border-default);
+  color: var(--text-primary);
+}
+
+.azkar-lang button.selected {
+  background: var(--state-selected);
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+.azkar-items li.done { background: var(--status-success-bg); border-color: var(--status-success); }
+.azkar-count { background: var(--surface-nested); color: var(--accent-primary); }
+.azkar-repeat { background: var(--status-warning-bg); color: var(--status-warning); }
+.azkar-progress { background: var(--surface-nested); }
+.azkar-complete { color: var(--status-success); }
+
+.quran-journey {
+  background: var(--surface-panel) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-secondary) !important;
+}
+
+.quran-journey-icon { background: var(--state-selected); color: var(--accent-primary); }
+.quran-journey-cta { background: var(--accent-primary); color: var(--text-on-accent); }
+.quran-journey-stats > div { background: var(--surface-card); border-color: var(--border-subtle); }
+.quran-journey-stats dt { color: var(--text-muted); }
+.quran-journey-backlog { background: var(--state-selected); color: var(--text-secondary); }
+
+/* quran.css is loaded by the Quran route after the application bundle. These
+   theme-qualified selectors keep its Azkar controls from reverting to the
+   light palette when the route chunk arrives. */
+html[data-theme="dark"] #root .app .azkar-page .azkar-lang button,
+html[data-theme="dark"] #root .app .azkar-page .azkar-search,
+html[data-theme="dark"] #root .app .azkar-page .azkar-items li,
+html[data-theme="dark"] #root .app .azkar-page .azkar-category,
+html[data-theme="dark"] #root .app .azkar-page .azkar-count,
+html[data-theme="dark"] #root .app .azkar-page .azkar-repeat {
+  background: var(--surface-input) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] #root .app .azkar-page .azkar-category-head,
+html[data-theme="dark"] #root .app .azkar-page .azkar-category-head strong,
+html[data-theme="dark"] #root .app .azkar-page .azkar-text {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] #root .app .azkar-page .azkar-category-head:hover,
+html[data-theme="dark"] #root .app .azkar-page .azkar-items li:hover {
+  background: var(--state-hover) !important;
+}
+
+html[data-theme="dark"] #root .app .azkar-page .azkar-items li.done {
+  background: var(--status-success-bg) !important;
+  border-color: var(--status-success) !important;
+}
+
+html[data-theme="dark"] #root .app .azkar-page .azkar-lang button.selected {
+  background: var(--state-selected) !important;
+  border-color: var(--accent-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="light"] #root .app .azkar-page .azkar-lang button,
+html[data-theme="light"] #root .app .azkar-page .azkar-search,
+html[data-theme="light"] #root .app .azkar-page .azkar-items li,
+html[data-theme="light"] #root .app .azkar-page .azkar-category,
+html[data-theme="light"] #root .app .azkar-page .azkar-count,
+html[data-theme="light"] #root .app .azkar-page .azkar-repeat {
+  background: var(--surface-input) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="light"] #root .app .azkar-page .azkar-category-head,
+html[data-theme="light"] #root .app .azkar-page .azkar-category-head strong,
+html[data-theme="light"] #root .app .azkar-page .azkar-text {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="light"] #root .app .azkar-page .azkar-lang button.selected {
+  background: var(--state-selected) !important;
+  border-color: var(--accent-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Learning journey route: route CSS is loaded lazily, so its major surfaces
+   are explicitly theme-qualified here to prevent the old ivory palette from
+   bleeding into dark mode. */
+html[data-theme="dark"] #root .app .main-learning,
+html[data-theme="dark"] #root .app .learning-journey,
+html[data-theme="dark"] #root .app .path-roadmap,
+html[data-theme="dark"] #root .app .learning-stations,
+html[data-theme="dark"] #root .app .learning-article,
+html[data-theme="dark"] #root .app .journey-library-card,
+html[data-theme="dark"] #root .app .station-sources,
+html[data-theme="dark"] #root .app .station-video-groups,
+html[data-theme="dark"] #root .app .station-video-group,
+html[data-theme="dark"] #root .app .learning-inline-reader {
+  background: var(--surface-card) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] #root .app .learning-overview {
+  background: linear-gradient(115deg, var(--accent-hero-start), var(--accent-hero-end)) !important;
+  border-color: var(--border-strong) !important;
+  color: var(--text-on-accent) !important;
+}
+
+html[data-theme="dark"] #root .app .learning-overview h1,
+html[data-theme="dark"] #root .app .learning-overview p,
+html[data-theme="dark"] #root .app .learning-overview .eyebrow,
+html[data-theme="dark"] #root .app .learning-overview button,
+html[data-theme="dark"] #root .app .learning-overview a {
+  color: var(--text-on-accent) !important;
+}
+
+html[data-theme="dark"] #root .app .path-station,
+html[data-theme="dark"] #root .app .learning-stations button,
+html[data-theme="dark"] #root .app .resource-symbol,
+html[data-theme="dark"] #root .app .learning-hero,
+html[data-theme="dark"] #root .app .station-video-group > summary {
+  background: var(--surface-nested) !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] #root .app .path-station.selected,
+html[data-theme="dark"] #root .app .learning-stations button.selected {
+  background: var(--state-selected) !important;
+  border-color: var(--border-strong) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] #root .app .learning-journey h2,
+html[data-theme="dark"] #root .app .learning-journey h3,
+html[data-theme="dark"] #root .app .learning-journey h4,
+html[data-theme="dark"] #root .app .learning-journey .path-station-name,
+html[data-theme="dark"] #root .app .learning-journey .lesson-prose,
+html[data-theme="dark"] #root .app .learning-journey a,
+html[data-theme="dark"] #root .app .learning-journey .resource-read {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] #root .app .learning-journey p,
+html[data-theme="dark"] #root .app .learning-journey small,
+html[data-theme="dark"] #root .app .learning-journey .muted,
+html[data-theme="dark"] #root .app .learning-journey .path-station-focus,
+html[data-theme="dark"] #root .app .learning-journey .path-station-summary {
+  color: var(--text-muted) !important;
+}
+
+html[data-theme="light"] #root .app .main-learning,
+html[data-theme="light"] #root .app .learning-journey,
+html[data-theme="light"] #root .app .path-roadmap,
+html[data-theme="light"] #root .app .learning-stations,
+html[data-theme="light"] #root .app .learning-article,
+html[data-theme="light"] #root .app .journey-library-card,
+html[data-theme="light"] #root .app .station-sources,
+html[data-theme="light"] #root .app .station-video-groups,
+html[data-theme="light"] #root .app .station-video-group,
+html[data-theme="light"] #root .app .learning-inline-reader {
+  background: var(--surface-card) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] #root .app .day-page-header,
+html[data-theme="dark"] #root .app .day-view-switch,
+html[data-theme="dark"] #root .app .day-start-bar,
+html[data-theme="dark"] #root .app .tracking-header,
+html[data-theme="dark"] #root .app .prayer-log,
+html[data-theme="dark"] #root .app .tracking-progress {
+  background: var(--surface-card) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] #root .app .day-page-header h1,
+html[data-theme="dark"] #root .app .day-page-header h2,
+html[data-theme="dark"] #root .app .day-page-header h3,
+html[data-theme="dark"] #root .app .day-page-header p,
+html[data-theme="dark"] #root .app .day-view-switch button,
+html[data-theme="dark"] #root .app .day-start-bar p,
+html[data-theme="dark"] #root .app .tracking-header p,
+html[data-theme="dark"] #root .app .tracking-header label {
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] #root .app .day-view-switch button.selected {
+  background: var(--accent-primary) !important;
+  color: var(--text-on-accent) !important;
+}
+
+html[data-theme="light"] #root .app .day-page-header,
+html[data-theme="light"] #root .app .day-view-switch,
+html[data-theme="light"] #root .app .day-start-bar,
+html[data-theme="light"] #root .app .tracking-header,
+html[data-theme="light"] #root .app .prayer-log,
+html[data-theme="light"] #root .app .tracking-progress {
+  background: var(--surface-card) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* Admin route controls: override the legacy brown dark-mode form palette. */
+html[data-theme="dark"] #root .app .admin-page input,
+html[data-theme="dark"] #root .app .admin-page select,
+html[data-theme="dark"] #root .app .admin-page textarea,
+html[data-theme="dark"] #root .app .admin-page .admin-users-search > div {
+  background: var(--surface-input) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-default) !important;
+}
+
+html[data-theme="dark"] #root .app .admin-page input::placeholder,
+html[data-theme="dark"] #root .app .admin-page textarea::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 1;
+}
+
+html[data-theme="dark"] #root .app .admin-page .admin-users-table-wrap,
+html[data-theme="dark"] #root .app .admin-page .admin-content-archive-list > li,
+html[data-theme="dark"] #root .app .admin-page .admin-permission-current,
+html[data-theme="dark"] #root .app .admin-page .admin-permission-history li {
+  background: var(--surface-card-elevated) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+html[data-theme="light"] #root .app .admin-page input,
+html[data-theme="light"] #root .app .admin-page select,
+html[data-theme="light"] #root .app .admin-page textarea,
+html[data-theme="light"] #root .app .admin-page .admin-users-search > div {
+  background: var(--surface-input) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-default) !important;
+}
+
+/* AdminDashboard is intentionally rendered outside the member `.app` shell. */
+html[data-theme="dark"] .admin-page input,
+html[data-theme="dark"] .admin-page select,
+html[data-theme="dark"] .admin-page textarea,
+html[data-theme="dark"] .admin-page .admin-users-search > div {
+  background: var(--surface-input) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-default) !important;
+}
+
+html[data-theme="dark"] .admin-page .admin-users-table-wrap,
+html[data-theme="dark"] .admin-page .admin-content-archive-list > li,
+html[data-theme="dark"] .admin-page .admin-permission-current,
+html[data-theme="dark"] .admin-page .admin-permission-history li {
+  background: var(--surface-card-elevated) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+html[data-theme="light"] .admin-page input,
+html[data-theme="light"] .admin-page select,
+html[data-theme="light"] .admin-page textarea,
+html[data-theme="light"] .admin-page .admin-users-search > div {
+  background: var(--surface-input) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-default) !important;
+}
+
+/* The learning hero has its own dark banner. Do not apply the generic
+   page-intro title ribbon inside it; that ribbon caused the visible rectangle
+   behind the title and collided with the eyebrow on narrow widths. */
+#root .app .learning-journey .learning-intro h1 {
+  display: block !important;
+  margin: 6px 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#root .app .learning-journey .learning-intro h1::after {
+  display: none !important;
+}
+
+/* Authentication is a route, not a separate theme. It keeps its split layout
+   and existing illustration while consuming the same independent palettes. */
+.auth-page {
+  background: var(--bg-app) !important;
+  color: var(--text-secondary);
+}
+
+.auth-shell,
+.admin-access-card {
+  background: var(--surface-card) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-elevated) !important;
+}
+
+.auth-form-side,
+.auth-profile-fields,
+.auth-tabs {
+  background: var(--surface-panel) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+.auth-form-side h1,
+.auth-form-side h2,
+.auth-form-side h3,
+.auth-form-side label,
+.auth-form-wrap h1,
+.auth-form-wrap h2,
+.auth-form-wrap h3,
+.auth-seo h2 {
+  color: var(--text-primary) !important;
+}
+
+.auth-lead,
+.auth-hint,
+.auth-logo small,
+.auth-seo,
+.auth-form-wrap p {
+  color: var(--text-muted) !important;
+}
+
+.auth-input,
+.auth-input input,
+.auth-input select,
+.auth-profile-fields {
+  background: var(--surface-input) !important;
+  border-color: var(--border-default) !important;
+  color: var(--text-primary) !important;
+}
+
+.auth-input input::placeholder { color: var(--text-muted) !important; opacity: 1; }
+.auth-tabs button { color: var(--text-secondary) !important; }
+.auth-tabs button.selected { background: var(--state-selected) !important; color: var(--text-primary) !important; }
+.auth-text-action,
+.auth-role-switch a,
+.auth-demo { color: var(--text-link) !important; }
+.auth-role-switch a { background: var(--surface-input) !important; border-color: var(--border-default) !important; }
+.auth-error { background: var(--status-error-bg) !important; border-color: var(--status-error) !important; color: var(--status-error) !important; }
+.auth-success { background: var(--status-success-bg) !important; border-color: var(--status-success) !important; color: var(--status-success) !important; }
+.auth-setup { background: var(--status-warning-bg) !important; border-color: var(--accent-cream) !important; color: var(--text-secondary) !important; }
+.auth-submit { background: var(--accent-primary) !important; color: var(--text-on-accent) !important; }
+
+.auth-story {
+  background: var(--accent-primary) !important;
+  color: var(--text-on-accent) !important;
+}
+
+.auth-story p,
+.auth-story h1,
+.auth-story h2,
+.auth-story h3,
+.auth-story span,
+.auth-story small { color: var(--text-on-accent) !important; }
+
+:where(button, input, select, textarea, a, summary):focus-visible {
+  outline-color: var(--border-focus);
+  box-shadow: 0 0 0 4px var(--state-focus);
+}
+
+/* Preserve existing image assets. Consumers add the asset as a background and
+   receive only a theme-specific readability treatment from this layer. */
+.theme-image-surface {
+  position: relative;
+  isolation: isolate;
+  background-image: var(--theme-image), var(--image-overlay);
+  background-position: center;
+  background-size: cover;
+}
+
+.theme-image-surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--image-overlay);
+}
+
+/* The Quran is an intentional paper-reading surface. It stays light even
+   when the platform chrome uses the dark theme, as requested by the product. */
+#root .app .quran-reader,
+#root .app .quran-reader .quran-reader-toolbar,
+#root .app .quran-reader .quran-mushaf,
+#root .app .quran-reader .quran-surah-list,
+#root .app .quran-reader .quran-surah-scroll,
+#root .app .quran-reader .quran-surah-number,
+#root .app .quran-reader .panel {
+  --reader-bg: #f4f1e7;
+  --reader-surface: #fffdf7;
+  --reader-text: #27332e;
+  --reader-muted: #52605a;
+  --reader-border: #d4ddd3;
+  --reader-hover: #e9eee5;
+  background: var(--reader-surface) !important;
+  border-color: var(--reader-border) !important;
+  color: var(--reader-text) !important;
+}
+
+#root .app .quran-reader .quran-mushaf {
+  background: linear-gradient(165deg, #fdfcf7, var(--reader-bg)) !important;
+}
+
+#root .app .quran-reader .quran-mushaf,
+#root .app .quran-reader .quran-mushaf *:not(svg):not(path) {
+  color: var(--reader-text) !important;
+}
+
+#root .app .quran-reader .quran-verse:hover,
+#root .app .quran-reader .quran-verse.focused {
+  background: var(--reader-hover) !important;
+}
+
+#root .app .quran-reader .quran-content-panel {
+  background: var(--reader-surface) !important;
+  color: var(--reader-text) !important;
+  border-color: var(--reader-border) !important;
+}
+
+#root .app .quran-reader .quran-content-text {
+  color: var(--reader-text) !important;
+}
+
+/* Highest-priority reader isolation. Older premium/quran rules include
+   [data-theme] selectors with !important; match that specificity here so
+   dark chrome can never recolor paper text. */
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf,
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf *,
+[data-theme="light"] #root .app .quran-reader .quran-mushaf,
+[data-theme="light"] #root .app .quran-reader .quran-mushaf * {
+  color: #27332e !important;
+}
+
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf h1,
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf h2,
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf h3,
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf p,
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf .quran-verse,
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf .quran-verse-text,
+[data-theme="light"] #root .app .quran-reader .quran-mushaf h1,
+[data-theme="light"] #root .app .quran-reader .quran-mushaf h2,
+[data-theme="light"] #root .app .quran-reader .quran-mushaf h3,
+[data-theme="light"] #root .app .quran-reader .quran-mushaf p,
+[data-theme="light"] #root .app .quran-reader .quran-mushaf .quran-verse,
+[data-theme="light"] #root .app .quran-reader .quran-mushaf .quran-verse-text {
+  color: #27332e !important;
+}
+
+html[data-theme="dark"] #root .app .quran-reader .quran-mushaf h1,
+html[data-theme="dark"] #root .app .quran-reader .quran-mushaf h2,
+html[data-theme="dark"] #root .app .quran-reader .quran-mushaf h3,
+html[data-theme="dark"] #root .app .quran-reader .quran-mushaf p,
+html[data-theme="dark"] #root .app .quran-reader .quran-mushaf .quran-verse,
+html[data-theme="dark"] #root .app .quran-reader .quran-mushaf .quran-verse-text,
+html[data-theme="light"] #root .app .quran-reader .quran-mushaf h1,
+html[data-theme="light"] #root .app .quran-reader .quran-mushaf h2,
+html[data-theme="light"] #root .app .quran-reader .quran-mushaf h3,
+html[data-theme="light"] #root .app .quran-reader .quran-mushaf p,
+html[data-theme="light"] #root .app .quran-reader .quran-mushaf .quran-verse,
+html[data-theme="light"] #root .app .quran-reader .quran-mushaf .quran-verse-text {
+  color: #27332e !important;
+}
+
+/* Include both document roots to outrank the historical premium selector
+   that also uses !important for these exact headings. */
+html[data-theme="dark"] body #root .app .quran-reader .quran-mushaf h2,
+html[data-theme="dark"] body #root .app .quran-reader .quran-mushaf .quran-verse,
+html[data-theme="dark"] body #root .app .quran-reader .quran-mushaf .quran-verse-text,
+html[data-theme="dark"] body #root .app .quran-reader .quran-mushaf p,
+html[data-theme="light"] body #root .app .quran-reader .quran-mushaf h2,
+html[data-theme="light"] body #root .app .quran-reader .quran-mushaf .quran-verse,
+html[data-theme="light"] body #root .app .quran-reader .quran-mushaf .quran-verse-text,
+html[data-theme="light"] body #root .app .quran-reader .quran-mushaf p {
+  color: #27332e !important;
+}
+
+/* Native Quran controls must use the same paper color. Without this explicit
+   color-scheme, Chromium can keep the dark native select popup while the
+   reader text is light-paper/dark-ink. */
+html[data-theme="dark"] #root .app .quran-reader select,
+html[data-theme="dark"] #root .app .quran-reader option,
+html[data-theme="light"] #root .app .quran-reader select,
+html[data-theme="light"] #root .app .quran-reader option {
+  appearance: auto;
+  color-scheme: light;
+  background: #fffdf7 !important;
+  color: #27332e !important;
+  border-color: #d4ddd3 !important;
+}
+
+html[data-theme="dark"] #root .app .quran-reader input,
+html[data-theme="dark"] #root .app .quran-reader textarea,
+html[data-theme="light"] #root .app .quran-reader input,
+html[data-theme="light"] #root .app .quran-reader textarea {
+  color-scheme: light;
+  background: #fffdf7 !important;
+  color: #27332e !important;
+  border-color: #d4ddd3 !important;
+}
+
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf,
+[data-theme="light"] #root .app .quran-reader .quran-mushaf {
+  background: linear-gradient(165deg, #fdfcf7, #f4f1e7) !important;
+}
+
+/* --- Reader paper chrome. The app-wide typography rules
+   (#root .app h1..h6/label/small/button) match elements INSIDE the reader's
+   paper panels directly and beat inheritance, so the night palette leaked
+   onto the paper (light headings, gold labels, muted list hints) and the
+   dark chip rules leaked onto reader buttons. Pin the paper palette to every
+   text and control level in BOTH application themes. */
+html[data-theme="dark"] #root .app .quran-reader,
+html[data-theme="light"] #root .app .quran-reader {
+  --color-ink: #27332e;
+  --color-body: #27332e;
+  --color-muted: #52605a;
+  --color-selected: #dde5df;
+  --color-border: #d4ddd3;
+  --color-border-strong: #b9cbbe;
+  --color-surface: #fffdf7;
+  --color-surface-warm: #fffdf7;
+  --color-gold-ink: #8a6a38;
+  --state-hover: rgba(39, 51, 46, .06);
+  --state-selected: #dde5df;
+  --text-primary: #27332e;
+  --text-secondary: #27332e;
+  --text-muted: #52605a;
+}
+
+#root .app .quran-reader h1,
+#root .app .quran-reader h2,
+#root .app .quran-reader h3,
+#root .app .quran-reader h4,
+#root .app .quran-reader h5,
+#root .app .quran-reader h6,
+#root .app .quran-reader strong,
+#root .app .quran-reader b {
+  color: var(--reader-text) !important;
+}
+
+#root .app .quran-reader label,
+#root .app .quran-reader p,
+#root .app .quran-reader li,
+#root .app .quran-reader dt,
+#root .app .quran-reader dd {
+  color: var(--reader-text) !important;
+}
+
+#root .app .quran-reader small,
+#root .app .quran-reader .muted,
+#root .app .quran-reader .hint,
+#root .app .quran-reader .subtle,
+#root .app .quran-reader .metadata,
+#root .app .quran-reader .quran-list-head span {
+  color: var(--reader-muted) !important;
+}
+
+#root .app .quran-reader .quran-section-label {
+  color: var(--color-gold-ink) !important;
+  border-color: var(--reader-border) !important;
+}
+
+/* Reader buttons are paper chips in both app themes; the dark chip rules
+   must not recolor them. Primary-action keeps its own green paper style. */
+#root .app .quran-reader .soft-btn:not(.primary-action),
+#root .app .quran-reader .icon-btn,
+#root .app .quran-reader .quran-font-step {
+  background: #e1d9c9 !important;
+  border-color: #b9ad98 !important;
+  color: #29463b !important;
+}
+
+#root .app .quran-reader .soft-btn:not(.primary-action):hover,
+#root .app .quran-reader .icon-btn:hover,
+#root .app .quran-reader .quran-font-step:hover {
+  background: #d5ccba !important;
+  color: #1d382f !important;
+}
+
+#root .app .quran-reader .soft-btn.selected,
+#root .app .quran-reader .quran-reading-mode button.selected {
+  background: #dde5df !important;
+  border-color: #527f8b !important;
+  color: #27332e !important;
+}
+
+/* Hifz (memorization) mode steppers stay paper chips; its primary recite
+   button keeps the green paper-primary style instead of the night chip. */
+#root .app .quran-reader .quran-memo-controls button {
+  background: #e1d9c9 !important;
+  border-color: #b9ad98 !important;
+  color: #29463b !important;
+}
+
+#root .app .quran-reader .quran-memo-controls button:hover {
+  background: #d5ccba !important;
+  color: #1d382f !important;
+}
+
+#root .app .quran-reader .quran-memo-controls button.primary {
+  background: #244638 !important;
+  border-color: transparent !important;
+  color: #fff !important;
+}
+
+#root .app .quran-reader .quran-memo-controls button.primary:hover {
+  background: #1d3b2f !important;
+}
+
+/* Saved-progress / marks / notes lists inside the reader stay on paper; the
+   app's dark card token must not replace the reader surface under them. */
+#root .app .quran-reader .quran-mini-list li,
+#root .app .quran-reader .quran-notes-list li,
+#root .app .quran-reader .quran-plan-list li,
+#root .app .quran-reader .quran-passage-list li,
+#root .app .quran-reader .quran-routine-list > li,
+#root .app .quran-reader .quran-today-list li {
+  background: var(--reader-surface) !important;
+  border-color: var(--reader-border) !important;
+  color: var(--reader-text) !important;
+}
+
+#root .app .quran-reader .quran-mushaf .quran-reference,
+#root .app .quran-reader .quran-reference {
+  background: #eef2e8 !important;
+  color: #8a6a38 !important;
+}
+
+#root .app .quran-reader .quran-reading-mode button:not(.selected) {
+  background: transparent !important;
+  color: var(--reader-text) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}

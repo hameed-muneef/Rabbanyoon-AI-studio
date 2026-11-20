@@ -1,0 +1,42 @@
+/* هوية ألوان الأقسام. القيم الفعلية مولَّدة من src/section-theme.ts (لا ألوان أقسام مكتوبة هنا). */
+:root{
+  --color-canvas:#F4F0E6;
+  --section-accent:#244638;--section-soft:#E6EEE6;--section-strong:#244638;--section-strong-hover:#1D3B2F;--section-on-strong:#FFFFFF;
+  --section-ease:cubic-bezier(.2,.7,.2,1);--section-time:.22s;
+}
+[data-theme="dark"]{--color-canvas:var(--surface-canvas)}
+
+#root .app [data-section],#root .app [data-section] *{transition-property:background-color,border-color,color,box-shadow,transform,width;transition-duration:var(--section-time);transition-timing-function:var(--section-ease)}
+
+/* الأيقونات والبطاقات */
+#root .app .feature-icon,#root .app .wide-icon,#root .app [data-section] .feature-icon,#root .app [data-section] .wide-icon{background:var(--section-soft);color:var(--section-strong)}
+#root .app .feature-card[data-section],#root .app .wide-card[data-section]{background-color:color-mix(in srgb,var(--section-soft) 38%,var(--color-surface));border-color:color-mix(in srgb,var(--section-accent) 22%,var(--color-border))}
+#root .app .feature-card[data-section]:hover,#root .app .wide-card[data-section]:hover{border-color:var(--section-accent);background-color:color-mix(in srgb,var(--section-soft) 65%,var(--color-surface));box-shadow:0 12px 26px color-mix(in srgb,var(--section-accent) 18%,transparent)}
+#root .app [data-section] .inline-link,#root .app [data-section] .feature-arrow{color:var(--section-strong)}
+
+/* الأزرار الرئيسية والتقدم والتحديد داخل القسم */
+#root .app main[data-section] .primary,#root .app main[data-section] button.primary{background:var(--section-strong);color:var(--section-on-strong)}
+#root .app main[data-section] .primary:hover,#root .app main[data-section] button.primary:hover{background:var(--section-strong-hover)}
+#root .app main[data-section] .soft-btn{background:var(--section-soft);color:var(--section-strong)}
+#root .app main[data-section] .progress-track{background:color-mix(in srgb,var(--section-soft) 80%,var(--color-surface))}
+#root .app main[data-section] .progress-track div{background:var(--section-accent);transition:width .45s var(--section-ease),background-color var(--section-time) var(--section-ease)}
+#root .app main[data-section] .crumb strong{color:var(--section-strong)}
+#root .app main[data-section] .topbar{border-bottom-color:color-mix(in srgb,var(--section-accent) 28%,var(--color-border))}
+#root .app main[data-section] ::selection{background:var(--section-soft)}
+#root .app main[data-section] :focus-visible{outline:2px solid var(--section-strong);outline-offset:2px}
+
+/* التنقل: الحالة النشطة بلون القسم */
+#root .app .sidebar nav button[data-section].active{background:var(--section-soft);color:var(--section-strong);box-shadow:inset -3px 0 var(--section-accent)}
+/* داكن: النص ظاهر على سطح اللوح الداكن (القيمة الداكنة للقسم غير ظاهرة علىه). */
+[data-theme="dark"] #root .app .sidebar nav button[data-section].active{background:var(--dark-surface)!important;color:var(--text-primary)!important;}
+[data-theme="dark"] #root .app .sidebar nav button[data-section].active svg{color:var(--text-primary);}
+[data-theme="dark"] #root .app .sidebar nav button[data-section].active svg{color:var(--text-primary);}
+#root .app .sidebar nav button[data-section]:not(.active):hover svg{color:var(--section-accent)}
+#root .app .mobile-nav button[data-section].active{color:var(--section-strong)}
+/* 다크: 모바일 내비 활성 버튼 텍스트가 유휴색(--section-strong)으로 가시성 저하됨 — 어두운 표면에 명확한 텍스트. */
+[data-theme="dark"] #root .app .mobile-nav button[data-section].active{background:var(--dark-surface);color:var(--text-primary);}
+#root .app .mobile-nav button[data-section].active svg{color:var(--section-accent)}
+
+@media (prefers-reduced-motion:reduce){
+  #root .app [data-section],#root .app [data-section] *{transition-duration:.01ms!important}
+}

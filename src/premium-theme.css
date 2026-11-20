@@ -1,0 +1,886 @@
+/* ============ الطبقة الراقية (Premium layer) — تحمل أخيرًا فوق كل الأنماط ============
+   الألوان الجديدة تُبنى على الرموز فقط: هويات الأقسام من section-theme، والأسطح من
+   brand-identity. لا قيم hex مستقلة هنا إلا داخل كتلة الوضع الداكن للأغراض ذاتها. */
+
+/* ---------- 1) الخلفيات: عاج دافئ + شبشة هندسية خافتة + طبقات ---------- */
+body{
+  background:
+    radial-gradient(1100px 500px at 85% -8%, rgba(182,154,92,.07), transparent 60%),
+    radial-gradient(900px 420px at 8% 108%, rgba(23,63,53,.05), transparent 60%),
+    var(--grad-canvas);
+  background-attachment:fixed;
+}
+[data-theme="dark"] body{
+  background:
+    radial-gradient(1100px 500px at 85% -8%, rgba(122,105,66,.10), transparent 60%),
+    radial-gradient(900px 420px at 8% 108%, rgba(140,100,70,.12), transparent 60%),
+    var(--grad-canvas);
+}
+/* الشبشة الهندسية: على طبقة مستقلة خلف المحتوى، تختفي خلف الصفحات النصية */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:var(--pattern-geometry);background-size:72px 72px;opacity:.12;
+  mask-image:radial-gradient(1200px 800px at 50% 0%, black, transparent 92%);
+  -webkit-mask-image:radial-gradient(1200px 800px at 50% 0%, black, transparent 92%);
+}
+[data-theme="dark"] body::before{
+  background-image:var(--pattern-geometry);
+  opacity:.22;
+  mask-image:radial-gradient(1200px 800px at 50% 0%, rgba(255,255,255,.4), transparent 90%);
+  -webkit-mask-image:radial-gradient(1200px 800px at 50% 0%, rgba(255,255,255,.4), transparent 90%);
+}
+/* منع النمط خلف النص الطويل والآيات: القارئ ومحرراته تُزيح الزخرفة */
+body:has(.quran-reader) body::before,
+body:has(.learning-content) body::before{opacity:.18}
+[data-theme="dark"] body:has(.quran-reader) body::before{opacity:.14}
+
+#root .app{background:transparent}
+#root .app .main{background:transparent}
+
+/* ---------- 2) القشرة: الشريط الجانبي والعلوي ---------- */
+#root .app .sidebar{
+  background:var(--surface-glass);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-inline-start:1px solid var(--line-card);
+  box-shadow:var(--shadow-1);
+}
+#root .app .brand-mark{
+  background:linear-gradient(150deg,var(--color-primary),#0E3229 78%);
+  box-shadow:inset 0 0 0 1px rgba(214,183,123,.35),var(--shadow-1);
+}
+#root .app .topbar{
+  background:linear-gradient(180deg,color-mix(in srgb,var(--section-accent,var(--color-primary)) 7%,var(--surface-glass)),var(--surface-glass) 70%);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-card);
+  box-shadow:var(--shadow-1);
+}
+#root .app .topbar::after{
+  content:"";display:block;height:2px;margin-top:auto;
+  background:linear-gradient(to left,color-mix(in srgb,var(--section-accent,var(--color-primary)) 55%,transparent) 0%,transparent 34%);
+}
+[data-theme="dark"] #root .app main[data-section] .topbar{
+  background:linear-gradient(180deg,color-mix(in srgb,var(--section-accent) 9%,var(--dark-surface) 90%),var(--dark-surface) 72%);
+}
+#root .app .crumb{color:var(--color-muted)}
+#root .app .crumb strong{color:var(--color-ink)}
+#root .app .top-reminder{
+  border:1px solid var(--line-soft);
+  background:linear-gradient(150deg,color-mix(in srgb,var(--color-gold) 9%,var(--surface)),var(--surface));
+  border-radius:14px;padding:8px 14px;
+}
+
+/* ---------- 3) البطاقات: سطح مرتفع + خط جانبي بلون القسم + تاج زخرفي ---------- */
+#root .app .panel{
+  background:var(--grad-surface);
+  border:1px solid var(--line-card);
+  border-radius:var(--radius-card);
+  box-shadow:var(--shadow-1);
+  position:relative;
+  padding:28px;
+}
+#root .app .panel::before{
+  content:"";position:absolute;inset-inline-start:0;top:14px;bottom:14px;width:3px;border-radius:3px;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--section-accent,var(--color-primary)) 75%,transparent),transparent 92%);
+  opacity:.85;pointer-events:none;
+}
+#root .app .panel::after{
+  content:"";position:absolute;inset-inline-end:16px;top:16px;width:26px;height:26px;pointer-events:none;opacity:.55;
+  background:var(--pattern-geometry);background-size:26px 26px;
+  -webkit-mask-image:radial-gradient(circle at 100% 0%, black 55%, transparent 72%);
+  mask-image:radial-gradient(circle at 100% 0%, black 55%, transparent 72%);
+  border-top:0;border-inline-end:0;
+}
+#root .app .panel:hover{box-shadow:var(--shadow-2)}
+#root .app .panel h3{font-family:var(--font-heading);letter-spacing:-.2px}
+#root .app .panel h3::after{
+  content:"";display:block;height:1px;width:64px;margin-top:8px;border-radius:1px;
+  background:linear-gradient(to left,var(--line-ornament),transparent);
+}
+#root .app .feature-card,#root .app .wide-card,#root .app .wird-card{
+  background:var(--grad-surface);
+  border:1px solid var(--line-card);
+  border-radius:var(--radius-card);
+  box-shadow:var(--shadow-1);
+}
+#root .app .feature-card:hover,#root .app .wide-card:hover,#root .app .wird-card:hover{
+  transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:color-mix(in srgb,var(--section-accent,var(--color-primary)) 45%,var(--line-card));
+}
+#root .app .feature-icon,#root .app .wide-icon{
+  background:color-mix(in srgb,var(--section-soft,var(--color-selected)) 88%,var(--surface-raised));
+  color:var(--section-strong,var(--color-primary));
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--section-accent,var(--color-primary)) 18%,transparent);
+}
+
+/* ---------- 4) الأزرار والحقول ---------- */
+#root .app button.primary{
+  border-radius:var(--radius-control);
+  background:linear-gradient(160deg,var(--section-strong,var(--color-primary)),color-mix(in srgb,var(--section-strong,var(--color-primary)) 82%,#0A2119));
+  color:var(--section-on-strong,#fff);
+  box-shadow:var(--shadow-1),inset 0 1px 0 rgba(255,255,255,.14);
+  transition:transform .16s var(--section-ease),box-shadow .16s var(--section-ease),background-color .16s var(--section-ease);
+}
+#root .app button.primary:hover{box-shadow:var(--shadow-2);transform:translateY(-1px)}
+#root .app button.primary:active{transform:translateY(0);box-shadow:var(--shadow-1)}
+#root .app button.primary:disabled{transform:none;box-shadow:none}
+#root .app .soft-btn,#root .app .appearance-seg button{
+  border-radius:var(--radius-control);
+  border:1px solid color-mix(in srgb,var(--section-accent,var(--color-primary)) 20%,var(--line-card));
+  background:color-mix(in srgb,var(--section-soft,var(--color-selected)) 30%,var(--surface));
+  color:var(--section-strong,var(--color-primary));
+}
+#root .app .soft-btn:hover{background:var(--section-soft,var(--color-selected))}
+#root .app button.primary,#root .app .soft-btn{min-height:42px}
+#root .app .outline-danger{background:color-mix(in srgb,#A64137 7%,var(--surface-raised));border:1px solid color-mix(in srgb,#A64137 34%,transparent)}
+[data-theme="dark"] #root .app .outline-danger{background:color-mix(in srgb,#E07A6C 10%,var(--dark-surface-raised));border-color:color-mix(in srgb,#E07A6C 38%,transparent)}
+#root .app .icon-btn{border-radius:9px;transition:background-color .16s,transform .16s}
+#root .app .icon-btn:hover{background:var(--surface-sunken);transform:translateY(-1px)}
+#root .app input:not([type=checkbox]),#root .app select,#root .app textarea{
+  background:var(--surface-raised);
+  border:1px solid var(--line-card);
+  border-radius:10px;
+  transition:border-color .16s,box-shadow .16s;
+}
+#root .app input:not([type=checkbox]):hover,#root .app select:hover,#root .app textarea:hover{border-color:var(--color-border-strong)}
+[data-theme="light"] #root .app input:not([type=checkbox]),
+[data-theme="light"] #root .app select,
+[data-theme="light"] #root .app textarea{background:#FFFFFF;color:#172921;border-color:#527F8B;border-width:1.5px;box-shadow:0 1px 3px rgba(27,44,45,.08)}
+[data-theme="light"] #root .app input:not([type=checkbox]):hover,
+[data-theme="light"] #root .app select:hover,
+[data-theme="light"] #root .app textarea:hover{border-color:#3D6B7A}
+[data-theme="light"] #root .app input::placeholder,[data-theme="light"] #root .app textarea::placeholder{color:#3B4A50;opacity:1}
+#root .app input:not([type=checkbox]):focus,#root .app select:focus,#root .app textarea:focus{
+  outline:none;border-color:color-mix(in srgb,var(--section-accent,var(--color-primary)) 55%,transparent);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--section-accent,var(--color-primary)) 16%,transparent);
+}
+
+/* ---------- 5) الفواصل والزخرفة الصغيرة ---------- */
+#root .app .section-rule{
+  display:flex;align-items:center;gap:12px;margin:34px 0 20px;color:var(--color-muted);font-size:13px;font-weight:700;
+}
+/* نصوص ثانوية كانت أرقامًا صلبة في styles.css — تُوحَّد على الرمز المركزي (AA) */
+#root .app .muted,#root .app .page-intro p,#root .app .section-title p{color:var(--color-muted)}
+#root .app .section-rule::before,#root .app .section-rule::after{
+  content:"";height:1px;flex:1;
+  background:linear-gradient(to left,transparent,var(--line-ornament) 30%,var(--line-ornament) 70%,transparent);
+}
+#root .app .goal-item>.ornament,.ornament-separator{display:none}
+
+/* ---------- 6) مبدّل المظهر والسبانكت ---------- */
+#root .app .appearance-seg{display:inline-flex;gap:6px;flex-wrap:wrap}
+#root .app .appearance-seg button{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;font-weight:700}
+#root .app .appearance-seg button.selected{
+  background:linear-gradient(160deg,var(--section-strong,var(--color-primary)),color-mix(in srgb,var(--section-strong,var(--color-primary)) 82%,#0A2119));
+  color:var(--section-on-strong,#fff);border-color:transparent;box-shadow:var(--shadow-1);
+}
+
+/* ---------- 7) الشبادات والصغيرة: toast، mobile nav، footer، details ---------- */
+#root .app .toast{
+  background:linear-gradient(160deg,#1E5B47,#0E3229);
+  color:#F2F7F4;
+  border:1px solid rgba(214,183,123,.35);
+  box-shadow:var(--shadow-3);
+  border-radius:12px;
+}
+#root .app .mobile-nav{
+  background:var(--surface-glass);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-top:1px solid var(--line-card);
+  box-shadow:0 -6px 22px rgba(28,42,36,.10);
+}
+[data-theme="light"] #root .app .mobile-nav,
+:root:not([data-theme="dark"]) #root .app .mobile-nav{
+  background:#F8F6EF;
+  -webkit-backdrop-filter:none;backdrop-filter:none;
+  border-top-color:var(--color-border);
+  box-shadow:0 -8px 24px rgba(24,55,43,.16);
+}
+[data-theme="light"] #root .app .mobile-nav button,
+:root:not([data-theme="dark"]) #root .app .mobile-nav button{color:#5E7166}
+[data-theme="light"] #root .app .mobile-nav button.active,
+:root:not([data-theme="dark"]) #root .app .mobile-nav button.active{color:#1F5140;font-weight:800}
+[data-theme="dark"] #root .app .mobile-nav{box-shadow:0 -6px 22px rgba(0,0,0,.45)}
+@media(min-width:1201px){
+  #root .app .topbar{position:relative}
+  #root .app .topbar>.top-reminder{
+    position:absolute;left:50%;transform:translateX(-50%);width:min(52vw,640px);max-width:640px;margin:0;z-index:0
+  }
+  #root .app .topbar>.crumb,#root .app .topbar>.top-actions{position:relative;z-index:1}
+}
+
+/* The reader may stay in its own light theme while the application is dark.
+   Give its controls the same warm paper language as the mushaf instead of
+   inheriting navy app controls. */
+#root .app .quran-reader:not(.theme-dark) .quran-reader-toolbar,
+#root .app .quran-reader:not(.theme-dark) .quran-surah-list,
+#root .app .quran-reader:not(.theme-dark) .quran-surah-scroll,
+#root .app .quran-reader:not(.theme-dark) .quran-reader-grid > .panel{
+  background:linear-gradient(165deg,#F8F5EC,#EEE8DA);
+  color:#27332E;
+  border-color:#CFC5B2;
+  box-shadow:0 8px 24px rgba(19,39,52,.16);
+}
+#root .app .quran-reader:not(.theme-dark) .quran-reader-toolbar select,
+#root .app .quran-reader:not(.theme-dark) .quran-reader-toolbar input,
+ #root .app .quran-reader:not(.theme-dark) .quran-surah-filter,
+#root .app .quran-reader:not(.theme-dark) .quran-surah-filter input,
+#root .app .quran-reader:not(.theme-dark) .quran-search input,
+#root .app .quran-reader:not(.theme-dark) .quran-hadith-search input{
+  background:#E8E0D1;
+  color:#27332E;
+  border-color:#BFB29D;
+}
+#root .app .quran-reader:not(.theme-dark) .quran-surah-filter input::placeholder,
+#root .app .quran-reader:not(.theme-dark) .quran-search input::placeholder{color:#766F64;opacity:1}
+#root .app .quran-reader:not(.theme-dark) .quran-surah-scroll button:hover{background:#E6DECF}
+#root .app .quran-reader:not(.theme-dark) .quran-surah-scroll button.active{background:#DDE5DF;box-shadow:inset -3px 0 #527F8B}
+#root .app .quran-reader:not(.theme-dark) .quran-surah-scroll strong,
+#root .app .quran-reader:not(.theme-dark) .quran-surah-scroll button{color:#27332E}
+#root .app .quran-reader:not(.theme-dark) .quran-reader-toolbar .soft-btn,
+#root .app .quran-reader:not(.theme-dark) .quran-reader-toolbar .icon-btn,
+#root .app .quran-reader:not(.theme-dark) .quran-memo-controls .soft-btn{
+  background:#E1D9C9;
+  border:1px solid #B9AD98;
+  color:#29463B;
+  box-shadow:0 2px 5px rgba(30,50,42,.12);
+}
+#root .app .quran-reader:not(.theme-dark) .quran-reader-toolbar .soft-btn:hover,
+#root .app .quran-reader:not(.theme-dark) .quran-reader-toolbar .icon-btn:hover,
+#root .app .quran-reader:not(.theme-dark) .quran-memo-controls .soft-btn:hover{
+  background:#D5CCBA;
+  color:#1D382F;
+}
+#root .app .quran-reader:not(.theme-dark) .quran-reader-toolbar label,
+#root .app .quran-reader:not(.theme-dark) .quran-reader-toolbar .muted{color:#6B756C}
+
+/* Softer green card family for the dark application theme. */
+[data-theme="dark"] #root .app .feature-card,
+[data-theme="dark"] #root .app .wide-card,
+[data-theme="dark"] #root .app .wird-card,
+[data-theme="dark"] #root .app .journey-library-card,
+[data-theme="dark"] #root .app .home-next-card{
+  background:linear-gradient(145deg,#29483B 0%,#213A32 100%);
+  border-color:#527C6A;
+  color:#EDEDED;
+}
+[data-theme="dark"] #root .app main:not(:has(.quran-reader)) .panel{
+  background:linear-gradient(145deg,#29483B 0%,#213A32 100%);
+  border-color:#527C6A;
+}
+[data-theme="dark"] #root .app .feature-card:hover,
+[data-theme="dark"] #root .app .wide-card:hover,
+[data-theme="dark"] #root .app .wird-card:hover,
+[data-theme="dark"] #root .app .journey-library-card:hover,
+[data-theme="dark"] #root .app .home-next-card:hover{
+  background:linear-gradient(145deg,#315744 0%,#27463A 100%);
+  border-color:#79A98F;
+}
+[data-theme="dark"] #root .app .feature-card p,
+[data-theme="dark"] #root .app .wide-card p,
+[data-theme="dark"] #root .app .wird-card p,
+[data-theme="dark"] #root .app .journey-library-card p{color:#C8D8CE}
+
+/* Match Quran/Sunnah cards to the soft green dark-mode card family. */
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-intro,
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-section-grid button,
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-hadith-list li,
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-hadith-book-grid button,
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-today-list li,
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-journey-stats>div{
+  background:linear-gradient(145deg,#29483B 0%,#213A32 100%);
+  border-color:#527C6A;
+  color:#EDEDED;
+}
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-section-grid button:hover,
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-section-grid button.active,
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-hadith-book-grid button:hover{
+  background:linear-gradient(145deg,#315744 0%,#27463A 100%);
+  border-color:#79A98F;
+}
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-section-grid strong,
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-section-grid small,
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-hadith-list li strong,
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-hadith-list li p,
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-hadith-book-grid button strong,
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-hadith-book-grid button span,
+[data-theme="dark"] #root .app main[data-section="quran"] .quran-journey-stats>div{color:#EDEDED}
+#root .app footer{border-top:1px solid var(--line-card);color:var(--color-muted)}
+#root .app .crumb-home{border:0;background:transparent;color:var(--color-muted);font:inherit;font-weight:700;padding:4px 6px;border-radius:7px;cursor:pointer}
+#root .app .crumb-home:hover,#root .app .crumb-home:focus-visible{color:var(--color-ink);background:color-mix(in srgb,var(--section-accent,var(--color-primary)) 12%,transparent);outline:2px solid var(--color-focus);outline-offset:2px}
+#root .app details summary{
+  border-radius:10px;transition:background-color .16s;
+}
+#root .app details summary:hover{background:color-mix(in srgb,var(--section-accent,var(--color-primary)) 6%,transparent)}
+#root .app details[open]>summary{margin-bottom:14px}
+
+/* ---------- 8) الوضع الداكن: تغطية الأسطح الصلبة القديمة ---------- */
+[data-theme="dark"]{
+  color:var(--dark-ink);
+}
+[data-theme="dark"] #root .app .sidebar,
+[data-theme="dark"] #root .app .panel,
+[data-theme="dark"] #root .app .feature-card,
+[data-theme="dark"] #root .app .wide-card,
+[data-theme="dark"] #root .app .wird-card{
+  background:var(--grad-surface);
+  border-color:var(--dark-line-card);
+  box-shadow:var(--shadow-1);
+  --color-surface:var(--dark-surface);
+}
+[data-theme="dark"] #root .app .panel{
+  background:linear-gradient(165deg,var(--dark-surface-raised) 0%,var(--dark-surface) 70%);
+  border:1px solid color-mix(in srgb,var(--section-accent,var(--color-primary)) 28%,var(--dark-line-card));
+  box-shadow:0 10px 28px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.04);
+}
+[data-theme="dark"] #root .app .panel:hover{
+  border-color:color-mix(in srgb,var(--section-accent,var(--color-primary)) 46%,var(--dark-line-card));
+  box-shadow:0 16px 36px rgba(0,0,0,.42);
+}
+[data-theme="dark"] #root .app .feature-card,
+[data-theme="dark"] #root .app .wide-card,
+[data-theme="dark"] #root .app .wird-card{
+  border:1px solid color-mix(in srgb,var(--section-accent,var(--color-primary)) 30%,var(--dark-line-card));
+  box-shadow:0 8px 22px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.05);
+}
+[data-theme="dark"] #root .app .feature-card:hover,
+[data-theme="dark"] #root .app .wide-card:hover,
+[data-theme="dark"] #root .app .wird-card:hover{
+  border-color:color-mix(in srgb,var(--section-accent,var(--color-primary)) 52%,var(--dark-line-card));
+  box-shadow:0 14px 32px rgba(0,0,0,.4);
+}
+[data-theme="dark"] #root .app .feature-card[data-section],
+[data-theme="dark"] #root .app .wide-card[data-section]{
+  background-color:color-mix(in srgb,var(--section-soft) 26%,var(--dark-surface));
+}
+[data-theme="dark"] #root .app .feature-icon,
+[data-theme="dark"] #root .app .wide-icon{
+  background:color-mix(in srgb,var(--section-accent) 26%,var(--dark-surface-raised));
+  color:var(--section-strong);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--section-accent) 40%,transparent);
+}
+[data-theme="dark"] #root .app .panel-head h3,
+[data-theme="dark"] #root .app .crumb strong{color:var(--dark-ink)}
+[data-theme="dark"] #root .app .muted{color:var(--dark-muted)}
+[data-theme="dark"] #root .app .prayer{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] #root .app .task{border-bottom-color:var(--dark-line-soft)}
+[data-theme="dark"] #root .app .hint{
+  background:color-mix(in srgb,var(--color-gold) 8%,var(--dark-surface));
+  border:1px solid color-mix(in srgb,var(--color-gold) 26%,transparent);
+  color:var(--dark-body);
+}
+[data-theme="dark"] #root .app .goal-item{border-top-color:var(--dark-line-soft)}
+[data-theme="dark"] #root .app .station{border-color:var(--dark-line-soft);color:var(--dark-muted)}
+[data-theme="dark"] #root .app .station.current{background:color-mix(in srgb,var(--section-accent) 22%,var(--dark-surface));border-color:color-mix(in srgb,var(--section-accent) 45%,transparent);color:var(--section-strong)}
+[data-theme="dark"] #root .app input:not([type=checkbox]),
+[data-theme="dark"] #root .app select,
+[data-theme="dark"] #root .app textarea{
+  background:var(--dark-surface-sunken);border-color:var(--dark-line-card);color:var(--dark-ink);
+}
+[data-theme="dark"] #root .app .switch-row button{background:var(--dark-surface);border-color:var(--dark-line-card);color:var(--dark-body)}
+[data-theme="dark"] #root .app details summary{color:var(--dark-ink)}
+[data-theme="dark"] #root .app .counter-actions button{background:color-mix(in srgb,var(--section-accent) 14%,var(--dark-surface));border-color:var(--dark-line-card);color:var(--section-strong)}
+[data-theme="dark"] #root .app .subtle-tag{background:color-mix(in srgb,var(--section-accent) 16%,var(--dark-surface));color:var(--dark-muted)}
+/* أسطح محددة من الملفات القديمة (أرقام صلبة) — تُغطّى بالرموز الداكنة */
+[data-theme="dark"] #root .app .home-next-card{background:var(--dark-surface-raised);border-color:var(--dark-line-card);color:var(--dark-ink)}
+[data-theme="dark"] #root .app .home-next-card:hover{background:color-mix(in srgb,var(--section-accent,var(--color-primary)) 10%,var(--dark-surface-raised))}
+[data-theme="dark"] #root .app .hint,
+[data-theme="dark"] #root .app .home-today-entry{background:color-mix(in srgb,var(--section-accent,var(--color-primary)) 14%,var(--dark-surface));border-color:var(--dark-line-card);color:var(--dark-ink)}
+[data-theme="dark"] #root .app .home-admin-entry{
+  background:color-mix(in srgb,var(--color-gold) 10%,var(--dark-surface));
+  border-color:color-mix(in srgb,var(--color-gold) 30%,transparent);color:var(--dark-ink);
+}
+[data-theme="dark"] #root .app .home-admin-entry strong{color:var(--dark-ink)}
+[data-theme="dark"] #root .app .home-admin-entry small{color:var(--dark-muted)}
+[data-theme="dark"] #root .app .home-admin-entry:hover{border-color:color-mix(in srgb,var(--color-gold) 55%,transparent)}
+[data-theme="dark"] .day-header-date{background:var(--dark-surface-raised);border-color:var(--dark-line-card);color:var(--section-strong)}
+[data-theme="dark"] .day-page-header .day-view-switch button{background:var(--dark-surface-raised);color:var(--dark-body);box-shadow:inset 0 0 0 1px var(--dark-line-card)}
+[data-theme="dark"] .auth-loading{background:var(--dark-surface-canvas);color:var(--dark-body)}
+/* وحدة السير إلى الله: متغيراتها محصورة في .learning-journey — تُعاد تعريفها للداكن */
+[data-theme="dark"] .learning-journey{
+  --learn-bg:#171D1A;--learn-surface:#1E2621;--learn-overview:#0E2019;--learn-hero:#252A21;
+  --learn-navigation:#1C2A26;--learn-stations:#20281F;--learn-green:#D6DEDA;--learn-green-soft:#9DC9B4;
+  --learn-gold:#D9C08C;--learn-text:#D6DEDA;--learn-muted:#B3BFB7;--learn-border:#2F3A34;
+  --learn-tint:#222C26;--learn-reading:#1E2621;--learn-sources:#1D2A22;--learn-videos:#1C2A2A;
+}
+[data-theme="dark"] .path-station{background:#202B25;color:var(--dark-body)}
+[data-theme="dark"] .path-station.locked{background:#1C2420}
+[data-theme="dark"] .station-video-groups{border-color:var(--dark-line-card)}
+[data-theme="dark"] .station-video-group{background:#212A24;border-color:var(--dark-line-card)}
+[data-theme="dark"] .learning-journey .learning-inline-reader{background:var(--dark-surface-raised)}
+[data-theme="dark"] .learning-journey .hint{background:#20261F;border-color:var(--dark-line-card);color:var(--dark-body)}
+[data-theme="dark"] .journey-library-card{background:var(--dark-surface-raised);border-color:var(--dark-line-card);box-shadow:var(--shadow-1)}
+[data-theme="dark"] .journey-library-jump{background:#20261F;color:var(--section-strong);border-color:var(--dark-line-card)}
+[data-theme="dark"] .curriculum-archive-actions{background:var(--dark-surface);border-color:var(--dark-line-card);color:var(--dark-muted)}
+[data-theme="dark"] .curriculum-archive-actions button,[data-theme="dark"] .curriculum-archive-list button{background:var(--dark-surface-raised);border-color:var(--dark-line-card);color:var(--section-strong)}
+[data-theme="dark"] .resource-editor{background:var(--dark-surface);border-color:var(--dark-line-card)}
+[data-theme="dark"] .learning-journey .learning-hero{border-color:color-mix(in srgb,var(--color-gold) 40%,transparent);box-shadow:var(--shadow-1)}
+/* وحدة القرآن والسنة: متغيرات .quran-journey المحلية */
+[data-theme="dark"] .quran-journey{
+  --q-ivory:#1E2621;--q-sand:#333A2E;--q-charcoal:#E7ECE8;--q-pale:#22302A;
+  --q-gold:#D9C08C;--q-forest:#7FB39B;--q-emerald-ink:#7FBFA0;
+  border-color:var(--dark-line-card);box-shadow:var(--shadow-1);
+}
+[data-theme="dark"] .quran-journey-stats>div{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .quran-journey-stats dt{color:var(--dark-muted)}
+[data-theme="dark"] .quran-journey-stats small{color:var(--color-gold)}
+[data-theme="dark"] .quran-journey-head h2{color:var(--q-emerald-ink)}
+[data-theme="dark"] .quran-journey-head p{color:var(--dark-muted)}
+[data-theme="dark"] .quran-surah-filter{background:var(--dark-surface-raised);border-color:var(--dark-line-card);color:var(--dark-muted)}
+[data-theme="dark"] .quran-hadith-number{background:var(--color-selected);color:var(--dark-body)}
+/* dark: the arch is a dark circle with readable light text */
+[data-theme="dark"] #root .app .arch{background:var(--dark-surface);color:var(--text-primary);box-shadow:inset 0 0 0 9px var(--dark-surface-raised),inset 0 0 0 10px color-mix(in srgb,var(--color-gold) 30%,transparent)}
+
+/* ---------- 9) الحركة: الالتزام prefs ---------- */
+@media (prefers-reduced-motion:reduce){
+  body,body::before{background-attachment:scroll}
+  #root .app .panel::before,#root .app .panel::after{display:none}
+}
+
+/* ---------- 10) RTL/LTR: خصائص منطقية عند التخصيص أعلاه (inline-start/End مستخدمة) ---------- */
+[dir="ltr"] #root .app .panel::after{
+  -webkit-mask-image:radial-gradient(circle at 0% 0%, black 55%, transparent 72%);
+  mask-image:radial-gradient(circle at 0% 0%, black 55%, transparent 72%);
+}
+
+/* ---------- 21) عناوين المحتوى (الجانب الأيمن): شرائط واضحة وخلفيات متمايزة ---------- */
+#root .app main .page-intro h1{
+  display:inline-block;margin:8px 0 10px;padding:8px 18px 10px;
+  border-inline-start:4px solid var(--section-accent,var(--color-primary));
+  border-radius:0 12px 12px 0;
+  background:linear-gradient(100deg,
+    color-mix(in srgb,var(--section-soft,var(--color-selected)) 85%,var(--surface)) 0%,
+    transparent 88%);
+  box-shadow:inset 0 -1px 0 color-mix(in srgb,var(--section-accent,var(--color-primary)) 18%,transparent);
+}
+#root .app main .page-intro h1::after{
+  content:"";display:block;height:2px;width:56px;margin-top:6px;border-radius:2px;
+  background:linear-gradient(to left,var(--section-accent,var(--color-primary)),transparent);
+}
+#root .app main .section-title h2{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:6px 14px 6px 10px;margin:0;
+  border-radius:10px;
+  background:linear-gradient(100deg,
+    color-mix(in srgb,var(--section-soft,var(--color-selected)) 70%,transparent) 0%,
+    transparent 95%);
+  border-inline-start:3px solid var(--section-accent,var(--color-primary));
+}
+#root .app main .section-title p{margin-top:8px;padding-inline-start:13px;border-inline-start:2px solid var(--line-ornament)}
+#root .app main .hero h1{
+  color:#EDEDED;
+  text-shadow:0 3px 14px rgba(0,0,0,.45),0 1px 0 rgba(0,0,0,.25);
+  letter-spacing:-.3px;
+}
+#root .app main .hero .hero-tag{
+  font-size:16px;font-weight:800;letter-spacing:.3px;
+  padding:0;margin:0 0 10px;
+  background:transparent;border:0;backdrop-filter:none;
+  color:#E3C991;
+  text-shadow:0 2px 8px rgba(0,0,0,.5);
+}
+[data-theme="dark"] #root .app main .page-intro h1{
+  background:linear-gradient(100deg,
+    color-mix(in srgb,var(--section-soft) 55%,var(--dark-surface)) 0%,
+    transparent 88%);
+  color:var(--dark-ink);
+}
+[data-theme="dark"] #root .app main .section-title h2{
+  background:linear-gradient(100deg,
+    color-mix(in srgb,var(--section-soft) 40%,var(--dark-surface)) 0%,
+    transparent 95%);
+  color:var(--dark-ink);
+}
+@media(max-width:750px){
+  #root .app main .page-intro h1{padding:6px 12px;font-size:clamp(24px,6vw,28px)}
+  #root .app main .section-title h2{font-size:20px}
+}
+#root .app .topbar{
+  display:flex;align-items:center;justify-content:flex-start;gap:14px;
+  min-height:68px;padding:11px clamp(18px,3vw,40px);
+}
+#root .app .topbar>.crumb{flex:none;min-width:0}
+#root .app .topbar>.top-reminder{
+  flex:0 1 auto;min-width:0;max-width:640px;margin:0;justify-content:center;
+  overflow:hidden;white-space:nowrap;position:relative;z-index:0;
+  inset:auto;transform:none;
+  background:var(--surface-glass);border:1px solid var(--line-card);
+}
+#root .app .topbar .top-actions{
+  display:flex;align-items:center;gap:9px;flex-wrap:nowrap;
+  margin-inline-start:auto;flex:none;min-width:0;position:relative;z-index:1;
+}
+#root .app .topbar .top-actions .top-date{flex:none;white-space:nowrap}
+#root .app .topbar .top-actions .top-clock{font-size:13px;font-weight:700;color:var(--color-body);font-variant-numeric:tabular-nums;font-feature-settings:'tnum';white-space:nowrap;padding:0 4px;margin-inline:6px;display:inline-block;width:6.5em;text-align:center}
+/* الآية الزخرفية تُخفى قبل أن تضيق — لا فيض ولا ازدحام */
+@media(max-width:1200px){#root .app .topbar>.top-reminder{display:none}}
+@media(max-width:1100px){#root .app .topbar .top-actions .top-date{display:none;visibility:hidden;overflow:hidden;height:0;width:0}}
+#root .app .topbar .top-actions .top-clock{margin-inline-start:8px;margin-inline-end:8px}
+/* عروض متوسطة: تخفيف حجم المحتوى بدل التفاف الرأس */
+@media(max-width:975px){
+  #root .app .topbar>.crumb>span:first-child,
+  #root .app .topbar>.crumb svg{display:none}
+  #root .app .topbar .top-actions{gap:6px}
+  #root .app .topbar .user-chip-name{max-width:96px}
+}
+/* ---------- 17) إصلاحات مقيسة: ثيمة القارئ + شريط السير + تفاصيل نهارية ---------- */
+/* قواعد premium بطبيعتها id-أعلى فتطغى على ثيمة القارئ المظلمة — تُعاد هُنا بمستوى id */
+#root .app .quran-reader.theme-dark .quran-mushaf{background:linear-gradient(165deg,#25332C,#1C2821);color:#EDEDED;border-color:#35473D}
+#root .app .quran-reader.theme-dark .quran-mushaf h2,
+#root .app .quran-reader.theme-dark .quran-mushaf .quran-verse,
+#root .app .quran-reader.theme-dark .quran-mushaf .eyebrow{color:#EDEDED}
+#root .app .quran-reader.theme-dark .quran-mushaf .muted,
+#root .app .quran-reader.theme-dark .quran-source-note,
+#root .app .quran-reader.theme-dark .quran-surah-header p{color:#A7B8AC}
+#root .app .quran-reader.theme-dark .quran-surah-header{color:#EDEDED}
+#root .app .quran-reader.theme-dark .quran-verses,
+#root .app .quran-reader.theme-dark .quran-verse-text,
+#root .app .quran-reader.theme-dark .quran-basmala{color:#EDEDED}
+/* أزرار الآية وشريط الأدوات داخل الوضع الليلي */
+#root .app .quran-reader.theme-dark .icon-btn,
+#root .app .quran-reader.theme-dark .quran-verse-actions button{color:#A7B8AC}
+/* زر القسم النشط: صغير مربّع 4.43 — بلون أساسي يتكيّف مع الوضعين */
+#root .app .quran-section-grid button.active{color:var(--dark-ink,var(--color-ink))}
+#root .app .quran-section-grid button.active small,
+#root .app .quran-section-grid button.active .muted,
+#root .app .quran-surah-scroll button.active small{color:var(--dark-muted)}
+/* القارئ يملك ثيمته (نهاري/ليلي) — must not follow app theme's colors */
+#root .app .quran-reader{--color-ink:#27332E;--color-body:#27332E}
+[data-theme="dark"] #root .app .quran-reader{--color-ink:#EDEDED;--color-body:#EDEDED}
+#root .app .quran-reader.theme-dark{--color-ink:#EDEDED;--color-body:#EDEDED}
+/* ورقة المصحف النهارية داخل التطبيق الداكن تتبع ثيمة القارئ لا سطح اللوحة */
+[data-theme="light"] #root .app .quran-mushaf{background:linear-gradient(165deg,#FDFCF7,#F4F1E7);color:#27332E}
+[data-theme="light"] #root .app .quran-reader.theme-dark .quran-mushaf,
+[data-theme="dark"] #root .app .quran-reader.theme-dark .quran-mushaf{background:linear-gradient(165deg,#25332C,#1C2821);color:#EDEDED}
+/* القارئ يملك surfaces وtext مستقلة عن تطبيق (لا تُجبرها قاعدة .panel الداكنة) */
+#root .app .quran-reader .panel,#root .app .quran-reader .quran-surah-list,#root .app .quran-reader .quran-surah-scroll,#root .app .quran-reader .quran-mushaf,#root .app .quran-reader .quran-surah-number{
+  background:linear-gradient(165deg,#FDFCF7,#F4F1E7);color:#27332E;border-color:var(--color-border);
+}
+[data-theme="dark"] #root .app .quran-reader .panel,[data-theme="dark"] #root .app .quran-reader .quran-surah-list,[data-theme="dark"] #root .app .quran-reader .quran-surah-scroll,[data-theme="dark"] #root .app .quran-reader .quran-mushaf,[data-theme="dark"] #root .app .quran-reader .quran-surah-number{
+  background:linear-gradient(165deg,#1B3A56,#132D46);color:#EDEDED;border-color:#35473D;
+}
+/* The Quran reader is an intentional light paper surface in both app themes. */
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf { color: #27332E !important; }
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf .quran-verse,
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf h2,
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf .eyebrow,
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf p { color: #27332E !important; }
+
+/* Fallback: also match when theme-dark class is present on quran-reader */
+.quran-reader.theme-dark .quran-mushaf { color: #27332E !important; }
+.quran-reader.theme-dark .quran-mushaf .quran-verse,
+.quran-reader.theme-dark .quran-mushaf h2,
+.quran-reader.theme-dark .quran-mushaf .eyebrow,
+.quran-reader.theme-dark .quran-mushaf p { color: #27332E !important; }
+
+/* **Force Quran to light mode** – always use cream paper background + dark ink,
+    regardless of overall app theme. This respects the user's preference for
+    readable Quran text in all themes. */
+[data-theme="dark"] #root .app .quran-reader .quran-mushaf,
+[data-theme="light"] #root .app .quran-reader .quran-mushaf {
+  /* Force light-mode (cream) background and dark ink; do NOT switch to navy */
+  background: linear-gradient(165deg, #FDFCF7, #F4F1E7) !important;
+  color: #27332E !important;
+}
+#root .app .quran-reader.theme-dark .panel,#root .app .quran-reader.theme-dark .quran-surah-list,#root .app .quran-reader.theme-dark .quran-surah-scroll,#root .app .quran-reader.theme-dark .quran-mushaf,#root .app .quran-reader.theme-dark .quran-surah-number{
+  background:linear-gradient(165deg,#25332C,#1C2821);color:#EDEDED;border-color:#35473D;
+}
+/* عنوان شريط «السير إلى الله» الداكن يبقى فاتحًا في الوضعين (page-intro h1 يلوّنه primary) */
+#root .app .learning-overview{color:var(--color-surface)}
+#root .app .learning-overview .learning-intro h1{color:var(--color-surface)}
+#root .app .learning-overview .learning-intro p{color:#DCE5DC}
+#root .app .learning-overview .eyebrow{color:#D9C08C}
+/* زر الهيرو: ذهب + أخضر داكن = 4.2 فقط — يُعمَّق النص */
+#root .app .hero-btn{color:#0F2A21}
+/* نسبة الاقتباس ثانوية: كانت #a4ada6 = 2.1 */
+#root .app .quote span{color:var(--color-muted)}
+
+/* ---------- 15) لوح الإشعارات: بلا تجاوز أفقي عند الفتح في الموبايل ---------- */
+@media(max-width:640px){
+  #root .app .notif-panel{inset-inline:auto;left:10px;right:10px;width:auto}
+}
+/* ---------- 16) أحجام موحّدة: أيقونات الشريط + مربعات الاختيار ---------- */
+#root .app .top-actions svg{width:18px;height:18px;stroke-width:2}
+#root .app .topbar .icon-btn{min-width:40px;min-height:40px;place-content:center}
+#root .app input[type="checkbox"]{width:18px;height:18px;accent-color:var(--section-strong,var(--color-primary))}
+@media(max-width:750px){
+  #root .app .topbar{min-height:58px;padding:8px 14px;gap:9px}
+  #root .app .topbar>.top-reminder{display:none}
+  #root .app .topbar .top-actions{gap:6px}
+  #root .app .topbar .admin-entry{padding:6px 8px;font-size:12px}
+  #root .app .topbar .admin-entry svg{display:none}
+}
+@media(max-width:420px){#root .app .topbar .admin-entry{display:none}}
+
+/* ---------- 12) الشريط الجانبي: تباين غير النشط + أيقونات بلون القسم (S5/S6) ---------- */
+#root .app .sidebar nav button:not(.active),#root .app .side-bottom button{
+  color:#C9D4E2; /* نهاري: تباين ~8:1 trên nền navy */
+}
+/* آية أسفل الشريط: كانت أرقامًا صلبة (#668071/#9ca8a0) وتفشل AA — تُوحَّد على الرمز */
+#root .app .side-bottom p{color:var(--color-muted)}
+#root .app .side-bottom p span{color:var(--color-muted);opacity:.85}
+#root .app .sidebar nav button[data-section]:not(.active) svg{
+  color:color-mix(in srgb,var(--section-accent) 55%,var(--color-muted));
+}
+#root .app .sidebar nav button[data-section].active svg{color:var(--section-strong)}
+[data-theme="dark"] #root .app .sidebar nav button:not(.active),
+[data-theme="dark"] #root .app .side-bottom button{color:#AEBFB5} /* داكن: ~7.5:1 */
+[data-theme="dark"] #root .app .sidebar nav button:not(.active):hover{color:#D8E4DD}
+[data-theme="dark"] #root .app .sidebar nav button[data-section].active{
+  background:var(--section-soft);color:var(--section-strong);
+}
+[data-theme="dark"] #root .app .sidebar nav button.active{color:var(--section-strong)}
+/* أقسام افتراضية للعناصر بلا data-section في الداكن (منها active الرئيسية) */
+[data-theme="dark"]{
+  --section-accent:#7FB39B;--section-soft:#2A352F;--section-strong:#A3D3BC;
+  --section-strong-hover:#B8E0CB;--section-on-strong:#14201A;
+}
+
+/* ---------- 13) شل الداكن: الأصناف الصغيرة المتبقية (S4) ---------- */
+[data-theme="dark"] #root .app .admin-entry{
+  background:color-mix(in srgb,var(--section-accent,#7FB39B) 14%,var(--dark-surface));
+  border-color:color-mix(in srgb,var(--section-accent,#7FB39B) 34%,transparent);
+  color:var(--section-strong,#8FC7AC);
+}
+[data-theme="dark"] #root .app .home-next-icon,
+[data-theme="dark"] #root .app .home-admin-icon{
+  background:color-mix(in srgb,var(--section-accent,#7FB39B) 20%,var(--dark-surface-raised));
+  color:var(--section-strong,#8FC7AC);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--section-accent,#7FB39B) 30%,transparent);
+}
+[data-theme="dark"] #root .app .cloud-status{
+  background:color-mix(in srgb,var(--color-gold) 16%,var(--dark-surface));
+  color:var(--color-gold-ink);border-color:color-mix(in srgb,var(--color-gold) 30%,transparent);
+}
+[data-theme="dark"] #root .app .user-chip{
+  background:var(--dark-surface-raised);border-color:var(--dark-line-card);color:var(--dark-ink);
+}
+[data-theme="dark"] #root .app .user-chip:hover{background:var(--color-selected);border-color:var(--dark-line-ornament)}
+[data-theme="dark"] #root .app .user-chip-avatar{background:var(--section-strong);color:var(--dark-surface-sunken)}
+/* زر المظهر والجرس والأزرار الأيقونية في الشريط العلوي */
+[data-theme="dark"] #root .app .topbar .icon-btn,
+[data-theme="dark"] #root .app .topbar .notif-trigger,
+[data-theme="dark"] #root .app .topbar button[aria-label^="الإشعارات"]{
+  color:var(--dark-body);
+}
+[data-theme="dark"] #root .app .topbar .icon-btn:hover{background:color-mix(in srgb,var(--section-accent) 16%,transparent)}
+
+/* ---------- 14) تسريبات صفحات القرآن والسيرة في الداكن (تدقيق C) ---------- */
+[data-theme="dark"] .quran-surah-number{
+  background:var(--dark-surface-sunken);color:var(--dark-ink);
+  box-shadow:inset 0 0 0 1px var(--dark-line-card);
+}
+[data-theme="dark"] .quran-surah-scroll button.active .quran-surah-number{
+  background:var(--section-strong);color:var(--dark-surface-sunken);
+}
+/* السيرة إلى الله */
+[data-theme="dark"] .learning-stations{border-color:var(--dark-line-card);box-shadow:var(--shadow-1)}
+[data-theme="dark"] .learning-stations button.selected{
+  background:color-mix(in srgb,var(--learn-green) 16%,var(--learn-surface));
+  border-color:color-mix(in srgb,var(--learn-green) 34%,transparent);color:var(--learn-green);
+}
+[data-theme="dark"] .learning-stations button:hover:not(:disabled){color:var(--learn-green)}
+[data-theme="dark"] .learning-stations button>span:first-child{
+  background:var(--dark-surface-raised);color:var(--learn-muted);
+  box-shadow:inset 0 0 0 1px var(--dark-line-card);
+}
+[data-theme="dark"] .learning-stations button.selected>span:first-child,
+[data-theme="dark"] .learning-stations button.finished>span:first-child{
+  background:var(--learn-green-soft);color:var(--dark-surface-sunken);box-shadow:none;
+}
+[data-theme="dark"] .path-station.selected{
+  background:color-mix(in srgb,var(--learn-green) 14%,var(--learn-surface));
+  border-color:color-mix(in srgb,var(--learn-green) 30%,transparent);
+  box-shadow:inset -3px 0 var(--learn-green);
+}
+[data-theme="dark"] .path-station-icon{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .path-station.open .path-station-icon{
+  background:color-mix(in srgb,var(--learn-gold) 14%,var(--dark-surface-raised));
+  border-color:var(--learn-gold);color:var(--learn-gold);
+}
+[data-theme="dark"] .path-station.locked .path-station-icon{
+  background:var(--dark-surface);border-color:var(--dark-line-card);color:var(--learn-muted);
+}
+[data-theme="dark"] .path-station.done .path-station-icon{
+  background:var(--learn-green-soft);color:var(--dark-surface-sunken);border-color:transparent;
+}
+[data-theme="dark"] .resource-symbol{
+  background:color-mix(in srgb,var(--learn-green) 14%,var(--learn-surface));color:var(--learn-green);
+}
+[data-theme="dark"] .learning-meter progress,
+[data-theme="dark"] .learning-meter progress::-webkit-progress-bar{background:var(--dark-surface-raised)}
+[data-theme="dark"] .station-sources{border-color:var(--dark-line-card)}
+[data-theme="dark"] .station-video-groups,
+[data-theme="dark"] .station-video-group{background:var(--dark-surface-raised);border-color:var(--dark-line-card)}
+[data-theme="dark"] .station-sources h3,
+[data-theme="dark"] .station-video-groups h3,
+[data-theme="dark"] .learning-article h2{color:var(--learn-green)}
+[data-theme="dark"] .learning-journey .lesson-prose{color:var(--dark-body)}
+[data-theme="dark"] .learning-journey .learning-resource small{color:var(--dark-muted)}
+[data-theme="dark"] .station-source-list li::marker{color:var(--learn-green)}
+[data-theme="dark"] .editor-unit>button.selected{
+  background:color-mix(in srgb,var(--learn-green) 14%,var(--learn-surface));color:var(--learn-green);
+}
+
+/* ---------- 18) الهوية الهندسية (Islamic Geometric) — رموز + طبقات خلفية عامة ---------- */
+:root{
+  --art-turquoise:#55B8C5;--art-turquoise-light:#A4D5D4;
+  --art-deep-teal:#164F59;--art-navy:#172C45;--art-royal-blue:#344C83;
+  --art-gold:#C5A45F;--art-ivory:#F2EBD9;--art-stone:#D8D0BB;
+  --art-bg:url('/backgrounds/zakhareph-bg.jpg');
+  --art-hero:url('/backgrounds/zakhareph-hero.jpg');
+  --art-opacity:.07;
+}
+[data-theme="dark"]{--art-opacity:.08}
+/* طبقة خلفية عامة: artwork + قناع تلاشي */
+body::after{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:var(--art-bg) center/cover no-repeat;
+  opacity:var(--art-opacity);
+  filter:saturate(.85) brightness(.95);
+  mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.6) 55%,transparent 100%);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.6) 55%,transparent 100%);
+}
+[data-theme="dark"] body::after{
+  background-image:linear-gradient(180deg,rgba(3,14,28,.70),rgba(5,20,36,.82)),url('/backgrounds/2026.jpg');
+  background-position:center top;
+  background-size:cover;
+  opacity:.72;
+  filter:none;
+}
+/* hero: artwork + تدرج forest (نص readable) */
+#root .app .hero{
+  background:
+    linear-gradient(115deg,rgba(18,48,39,.92) 0%,rgba(24,40,33,.78) 55%,rgba(38,30,20,.55) 100%),
+    var(--art-hero) center/cover no-repeat;
+  border:1px solid rgba(197,164,95,.34);
+  box-shadow:0 22px 48px rgba(12,20,16,.35),inset 0 0 0 1px rgba(255,255,255,.04);
+}
+#root .app .hero p{color:var(--color-surface);text-shadow:0 1px 6px rgba(0,0,0,.4)}
+/* dark: hero copy is readable on the dark artwork (light copy) */
+[data-theme="dark"] #root .app .hero p{color:#e1ebe1;}
+[data-theme="dark"] #root .app .hero-btn{color:#e1ebe1;}
+[data-theme="dark"] #root .app .hero-btn:hover{color:#d4e1d8;}
+#root .app .hero-btn{background:linear-gradient(160deg,var(--art-gold),#A08448);color:#0F2A21;box-shadow:0 8px 20px rgba(197,164,95,.35)}
+/* sidebar: deep navy + gold accents */
+#root .app .sidebar{
+  background:linear-gradient(180deg,var(--art-navy) 0%,var(--art-deep-teal) 100%);
+}
+#root .app .sidebar .brand strong,#root .app .sidebar .side-label{color:#7A5A12}
+[data-theme="dark"] #root .app .sidebar .side-label{color:#E3C98F}
+#root .app .sidebar nav button.active{box-shadow:inset -3px 0 0 var(--art-gold),0 6px 18px rgba(0,0,0,.22)}
+/* header glass */
+#root .app .topbar{
+  background:linear-gradient(180deg,color-mix(in srgb,var(--art-navy) 72%,var(--surface-glass)),var(--surface-glass) 70%);
+  border-bottom:1px solid color-mix(in srgb,var(--art-gold) 28%,var(--line-card));
+}
+/* cards: gold side-line + teal accent */
+#root .app .panel,#root .app .feature-card,#root .app .wide-card,#root .app .wird-card{
+  border-inline-start:3px solid color-mix(in srgb,var(--section-accent,var(--art-deep-teal)) 55%,transparent);
+  box-shadow:var(--shadow-1),inset 0 0 0 1px color-mix(in srgb,var(--art-gold) 6%,transparent);
+}
+#root .app .panel::before{background:linear-gradient(180deg,color-mix(in srgb,var(--art-gold) 70%,transparent),transparent 92%);opacity:.5}
+/* progress bars: turquoise + gold head */
+#root .app main[data-section] .progress-track div{background:linear-gradient(90deg,var(--art-deep-teal),var(--art-turquoise))}
+/* icon containers: turquoise tint */
+#root .app .feature-icon,#root .app .wide-icon{
+  background:color-mix(in srgb,var(--art-turquoise) 14%,var(--surface-raised));
+  color:var(--art-deep-teal);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--art-turquoise) 28%,transparent);
+}
+/* focus: gold */
+#root .app :is(button,input,select,textarea,a,summary):focus-visible{outline-color:var(--art-gold)}
+/* dialogs/dropdowns: solid readable surfaces */
+#root .app .notif-panel{border:1px solid color-mix(in srgb,var(--art-gold) 30%,var(--line-card))}
+@media (prefers-reduced-motion:reduce){body::after{transition:none}}
+
+/* ---------- 20) عناوين المحتوى (الجانب الأيمن): شرائط واضحة وخلفيات متمايزة ---------- */
+#root .app main .page-intro h1{
+  display:inline-block;margin:8px 0 10px;padding:8px 18px 10px;
+  border-inline-start:4px solid var(--section-accent,var(--art-deep-teal));
+  border-radius:0 12px 12px 0;
+  background:linear-gradient(100deg,
+    color-mix(in srgb,var(--section-soft,var(--color-selected)) 85%,var(--surface)) 0%,
+    transparent 88%);
+  box-shadow:inset 0 -1px 0 color-mix(in srgb,var(--section-accent,var(--art-deep-teal)) 18%,transparent);
+}
+#root .app main .page-intro h1::after{
+  content:"";display:block;height:2px;width:56px;margin-top:6px;border-radius:2px;
+  background:linear-gradient(to left,var(--section-accent,var(--art-deep-teal)),transparent);
+}
+#root .app main .section-title h2{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:6px 14px 6px 10px;margin:0;
+  border-radius:10px;
+  background:linear-gradient(100deg,
+    color-mix(in srgb,var(--section-soft,var(--color-selected)) 70%,transparent) 0%,
+    transparent 95%);
+  border-inline-start:3px solid var(--section-accent,var(--art-deep-teal));
+}
+#root .app main .section-title p{margin-top:8px;padding-inline-start:13px;border-inline-start:2px solid var(--line-ornament)}
+#root .app main .hero h1{
+  color:#EDEDED;
+  text-shadow:0 3px 14px rgba(0,0,0,.45),0 1px 0 rgba(0,0,0,.25);
+  letter-spacing:-.3px;
+}
+#root .app main .hero .hero-tag{
+  font-size:16px;font-weight:800;letter-spacing:.3px;
+  padding:0;margin:0 0 10px;
+  background:transparent;border:0;backdrop-filter:none;
+  color:#E3C991;
+  text-shadow:0 2px 8px rgba(0,0,0,.5);
+}
+[data-theme="dark"] #root .app main .page-intro h1{
+  background:linear-gradient(100deg,
+    color-mix(in srgb,var(--section-soft) 55%,var(--dark-surface)) 0%,
+    transparent 88%);
+  color:var(--dark-ink);
+}
+[data-theme="dark"] #root .app main .section-title h2{
+  background:linear-gradient(100deg,
+    color-mix(in srgb,var(--section-soft) 40%,var(--dark-surface)) 0%,
+    transparent 95%);
+  color:var(--dark-ink);
+}
+@media(max-width:750px){
+  #root .app main .page-intro h1{padding:6px 12px;font-size:clamp(24px,6vw,28px)}
+  #root .app main .section-title h2{font-size:20px}
+}
+html #root .app .sidebar{
+  background:linear-gradient(180deg,#1E3146 0%,#162538 100%);
+  border-inline-start:1px solid rgba(214,183,123,.22);
+  box-shadow:-12px 0 32px rgba(8,14,26,.32);
+  color:#E8EDF5;
+}
+html #root .app .sidebar .brand,
+html #root .app .sidebar .brand strong{color:#EDEDED}
+html #root .app .sidebar .brand strong{font-size:26px}
+html #root .app .sidebar .brand small{color:#A9B7C9;font-size:13px}
+html #root .app .sidebar .side-label{color:#7A5A12;font-size:15px;letter-spacing:.3px}
+html #root .app .sidebar nav button,
+html #root .app .sidebar .side-bottom button{
+  color:#C9D4E2;font-size:17px;font-weight:700;min-height:54px;
+  background:transparent;border-radius:12px;
+  transition:background-color .18s,color .18s,transform .18s;
+}
+html #root .app .sidebar nav button:hover,
+html #root .app .sidebar .side-bottom button:hover{
+  background:rgba(214,183,123,.12);color:#EDEDED;transform:translateX(-2px);
+}
+html #root .app .sidebar nav button svg,
+html #root .app .sidebar .side-bottom button svg{color:#7A5A12;width:20px;height:20px}
+[data-theme="dark"] #root .app .sidebar .side-bottom button svg{color:#D9B777}
+html #root .app .sidebar nav button.active{
+  background:linear-gradient(90deg,rgba(214,183,123,.24),rgba(214,183,123,.08));
+  color:#EDEDED;box-shadow:inset -3px 0 0 #D9B777,0 6px 18px rgba(0,0,0,.22);
+}
+html #root .app .sidebar nav button.active svg{color:#F3D48E}
+html #root .app .sidebar .side-bottom p{color:#A9B7C9;font-size:14px;border-top-color:rgba(214,183,123,.2)}
+html #root .app .sidebar .side-bottom p span{color:#8C9BB0;font-size:12px}
+@media (prefers-reduced-motion:reduce){html #root .app .sidebar nav button{transition:none;transform:none}}
+@media(min-width:1201px){
+  #root .app .topbar{position:relative}
+  #root .app .topbar>.top-reminder{position:absolute;left:50%;transform:translateX(-50%);width:min(52vw,640px);max-width:640px;margin:0;z-index:0}
+  #root .app .topbar>.crumb,#root .app .topbar>.top-actions{position:relative;z-index:1}
+}
+#
+#root .app .primary{color:#fff}
+#root .app .switch-row button.selected{color:#fff}

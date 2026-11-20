@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 150" fill="none" role="img" aria-label="الربانيون — علم نافع، وعمل صالح، وقلب خاشع — على هدي الكتاب والسنة">
+  <g transform="translate(640 28)">
+    <path d="M38 19c-8-6.8-18.9-9.1-30.5-7v45.6C19.1 55.5 30 57.8 38 64c8-6.2 18.9-8.5 30.5-6.3V12C56.9 9.9 46 12.2 38 19Z" stroke="#B69A5C" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M38 19.3v44" stroke="#B69A5C" stroke-width="4.5" stroke-linecap="round"/>
+  </g>
+  <text x="610" y="66" text-anchor="start" direction="rtl" fill="#173F35" font-family="Tajawal,Arial,sans-serif" font-size="38" font-weight="800">الرَّبَّانِيُّون</text>
+  <text x="610" y="102" text-anchor="start" direction="rtl" fill="#263C32" font-family="Tajawal,Arial,sans-serif" font-size="22" font-weight="700">علمٌ نافع، وعملٌ صالح، وقلبٌ خاشع.</text>
+  <text x="610" y="130" text-anchor="start" direction="rtl" fill="#718078" font-family="Tajawal,Arial,sans-serif" font-size="16" font-weight="500">على هدي الكتاب والسنة</text>
+</svg>

@@ -1,0 +1,110 @@
+.strong-goals{max-width:none}
+.strong-goals-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+.strong-goals-main,.strong-goals-aside{min-width:0}
+.strong-goals-aside .goal-period-grid{grid-template-columns:1fr}
+.strong-goals-aside .goal-period-section{margin:0}
+.goal-period-section{margin:0 0 28px}
+.goal-period-heading{margin-bottom:14px}
+.goal-period-heading h2{font-size:22px;line-height:1.5;color:var(--color-ink);margin:4px 0}
+.goal-period-heading p{font-size:13px;color:var(--color-muted);margin:0;line-height:1.8}
+.goal-period-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.goal-period-card{--period-accent:#244638;--period-tint:#dce5dc;--period-border:#c5d4c7;min-width:0;background:linear-gradient(180deg,var(--period-tint),#f2efe5 130px);border:1px solid var(--period-border);border-inline-start:4px solid var(--period-accent);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow-soft)}
+.goal-period-card-weekly{--period-accent:#4e6953;--period-tint:#e2e9dc;--period-border:#cbd8c8}
+.goal-period-card-monthly{--period-accent:#786137;--period-tint:#eee9da;--period-border:#ded2ba}
+.goal-period-card-yearly{--period-accent:#718078;--period-tint:#e5ebe3;--period-border:#cbd8cd}
+.goal-period-card-head{display:flex;align-items:center;gap:12px;padding-bottom:15px;border-bottom:1px solid var(--period-border)}
+.goal-period-icon{display:grid;place-items:center;width:44px;height:44px;flex-shrink:0;background:#f2efe5;color:var(--period-accent);border:1px solid var(--period-border);border-radius:12px}
+.goal-period-title{min-width:0}
+.goal-period-card-head h3{font-size:19px;font-weight:800;line-height:1.4;color:var(--period-accent);margin:0}
+.goal-period-card-head small{display:block;color:#66766a;font-size:12px;font-weight:600;line-height:1.5;margin-top:3px}
+.goal-period-count{margin-inline-start:auto;color:var(--period-accent);background:#f2efe5;border:1px solid var(--period-border);border-radius:20px;padding:5px 11px;font-size:14px;font-weight:800;white-space:nowrap}
+.goal-period-count span{font-size:11px;font-weight:600;color:#68776c}
+.goal-period-card-list{max-height:280px;overflow:auto;scrollbar-color:#c6d5c6 transparent}
+.goal-period-empty{font-size:14px;color:#67746b;line-height:1.8;margin:15px 0 2px}
+.goal-period-item{display:flex;align-items:flex-start;gap:11px;border-bottom:1px solid #edf0ea;padding:12px 1px;cursor:pointer}
+.goal-period-item:last-child{border:0}
+.goal-period-item input{width:20px;height:20px;flex-shrink:0;margin-top:3px;accent-color:var(--period-accent)}
+.goal-period-item span{min-width:0}
+.goal-period-item strong{display:block;color:var(--color-ink);font-size:15px;line-height:1.65;font-weight:700;overflow-wrap:anywhere}
+.goal-period-item small{display:block;color:#657469;font-size:12px;line-height:1.6;margin-top:3px;overflow-wrap:anywhere}
+.goal-section-heading{display:flex;align-items:center;gap:12px;margin-bottom:19px}
+.goal-section-heading h2{margin:0;color:var(--color-ink);font-size:21px;line-height:1.5}
+.goal-section-heading p{margin:3px 0 0;color:var(--color-muted);font-size:13px;line-height:1.8}
+.goal-step-number{width:36px;height:36px;display:grid;place-items:center;flex-shrink:0;background:#e8efe8;color:#245747;border-radius:10px;font-weight:800}
+.goal-create{background:var(--color-surface)}
+.goal-create-form{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;align-items:end}
+.goal-create-form label,.goal-edit-form label{display:flex;flex-direction:column;gap:7px;color:var(--color-body);font-weight:700;font-size:13px}
+.goal-create-form label:nth-child(2){grid-column:1/-1;grid-row:2}
+.goal-create-form button{justify-self:start}
+.goal-list-heading{margin:30px 0 16px}
+.goal-empty{display:grid;justify-items:center;gap:8px;background:var(--color-surface);border:1px dashed var(--color-border-strong);border-radius:14px;padding:30px;color:var(--color-primary);text-align:center}
+.goal-empty p{font-size:13px;color:var(--color-muted);margin:0}
+.goal-cards{display:grid;gap:18px;margin-bottom:20px}
+.goal-search{display:flex;align-items:center;gap:10px;background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:5px 12px;margin-bottom:16px;color:var(--color-primary)}
+.goal-search input{flex:1;min-width:0;border:0!important;box-shadow:none!important;background:transparent!important}
+.goal-search span{font-size:12px;color:var(--color-muted);white-space:nowrap}
+.goal-plan-card{background:var(--color-surface);border:1px solid var(--color-border);border-inline-start:4px solid #a58b5e;border-radius:16px;padding:17px 20px;box-shadow:var(--shadow-soft)}
+.goal-plan-card.is-expanded{border-inline-start-color:var(--color-primary)}
+.goal-plan-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px}
+.goal-plan-identity{min-width:0}
+.goal-plan-head h3{font-size:22px;line-height:1.45;color:var(--color-ink);margin:5px 0}
+.goal-plan-head p{color:var(--color-body);line-height:1.8;margin:0;font-size:14px}
+.goal-plan-head p strong{color:var(--color-primary)}
+.goal-summary-count{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:#7b683d;background:#f8f3e7;border-radius:20px;padding:4px 10px}
+.goal-head-actions{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.goal-head-actions .soft-btn{font-size:12px}
+.goal-expand-btn{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.goal-plan-card.is-expanded .goal-expand-btn svg{transform:rotate(180deg)}
+.goal-details{margin-top:16px;border-top:1px solid var(--color-border);padding-top:15px}
+.goal-detail-actions{display:flex;align-items:center;justify-content:flex-end;gap:6px}
+.goal-meta{display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap;border-bottom:1px solid var(--color-border);padding:14px 0;margin-bottom:14px}
+.goal-meta span{display:inline-flex;align-items:center;gap:6px;background:#f4f6f1;color:#506a56;border-radius:20px;padding:5px 11px;font-size:12px}
+.goal-meta span:last-child{background:#f4efdf;color:#6f5a2d}
+.goal-plan-body{background:#F2EFE5;border:1px solid #e5ece2;border-radius:12px;padding:14px;margin-top:14px}
+.goal-plan-body h4{color:var(--color-primary);font-size:16px;margin:0 0 8px}
+.goal-action-row{display:flex;align-items:center;gap:10px;min-height:52px;padding:7px 0;border-bottom:1px solid #edf0ea}
+.goal-action-row label{display:flex;align-items:center;gap:10px;flex:1;min-width:0;cursor:pointer;color:var(--color-ink);font-weight:600;line-height:1.6}
+.goal-action-row label span{overflow-wrap:anywhere}
+.goal-action-row input{accent-color:#245747;width:19px;height:19px;flex-shrink:0}
+.goal-period-badge{font-size:11px;color:#5f735d;background:#edf3eb;border-radius:20px;padding:4px 10px;white-space:nowrap}
+.goal-add-step{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:16px}
+.goal-add-step input{flex:1;min-width:180px}
+.goal-add-step select{min-width:115px}
+.goal-add-step button{display:flex;align-items:center;gap:5px;white-space:nowrap}
+.goal-step-edit{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px;background:#F2EFE5;border-radius:8px}
+.goal-step-edit input{flex:1;min-width:160px}
+.goal-step-edit select{min-width:110px}
+.goal-custom-date{display:flex;align-items:center;gap:8px;color:var(--color-ink,#244638);font-size:13px}.goal-custom-date input{min-width:150px}.goal-period-card-custom{--period-accent:#786137;--period-tint:#eee9da;--period-border:#ded2ba}
+.goal-step-history{padding:5px 29px 9px;color:#5e735f;font-size:12px}
+.goal-step-history summary{cursor:pointer;width:fit-content}
+.goal-step-history ul{margin:7px 0;padding-inline-start:21px;line-height:1.9}
+.goal-edit-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:#F2EFE5;padding:16px;border-radius:10px;margin-top:15px}
+.goal-edit-form label:nth-child(2){grid-column:1/-1;grid-row:2}
+.goal-edit-form>div{display:flex;gap:8px;align-items:end}
+.goal-history{background:#F8F6EF;border:1px solid var(--color-border);border-radius:18px;padding:24px;margin:8px 0 20px;box-shadow:var(--shadow-soft)}
+.goal-history-heading{display:flex;align-items:center;gap:13px}
+.goal-history-icon{display:grid;place-items:center;width:44px;height:44px;flex-shrink:0;background:#e8f0e8;color:var(--color-primary);border-radius:12px}
+.goal-history-heading h2{margin:0;color:var(--color-ink);font-size:22px}
+.goal-history-heading p{margin:3px 0 0;color:var(--color-muted);font-size:13px;line-height:1.7}
+.goal-history-total{margin-inline-start:auto;background:#eef4ec;color:var(--color-primary);border-radius:20px;padding:6px 12px;font-weight:800;font-size:13px;white-space:nowrap}
+.goal-history-filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 12px}
+.goal-history-filters button{border:1px solid var(--color-border);background:#f8faf7;color:var(--color-body);border-radius:20px;padding:7px 15px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.goal-history-filters button.active{background:var(--color-primary);color:#fff;border-color:var(--color-primary)}
+.goal-history-period-picker{display:flex;align-items:end;gap:12px;flex-wrap:wrap;background:#F2EFE5;border:1px solid #e5ece2;border-radius:12px;padding:12px 14px;margin-bottom:16px}
+.goal-history-period-picker label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:800;color:var(--color-ink)}
+.goal-history-period-picker input,.goal-history-period-picker select{min-height:40px;min-width:150px;border:1px solid var(--color-border);border-radius:8px;background:#F8F6EF;color:var(--color-ink);padding:5px 9px;font:inherit}
+.goal-history-selected{margin-inline-start:auto;align-self:center;color:var(--color-primary);font-size:14px;line-height:1.6}
+.goal-history-empty{color:var(--color-muted);font-size:14px;background:#f8faf7;padding:18px;border-radius:10px;line-height:1.8}
+.goal-history-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.goal-history-list li{display:flex;align-items:flex-start;gap:11px;background:#f8faf7;border:1px solid #e9eee6;border-radius:10px;padding:11px 14px}
+.goal-history-list li>svg{color:var(--color-primary);flex-shrink:0;margin-top:3px}
+.goal-history-list li>div{min-width:0;flex:1}
+.goal-history-list strong{display:block;color:var(--color-ink);font-size:15px;line-height:1.6;overflow-wrap:anywhere}
+.goal-history-list small{display:block;color:var(--color-muted);font-size:12px;line-height:1.5;margin-top:2px}
+.goal-history-list li>span{font-size:12px;font-weight:700;color:#66745d;white-space:nowrap}
+.goal-history-more{margin-top:14px}
+.goal-history-note{color:var(--color-muted);font-size:12px;line-height:1.7;margin:15px 0 0}
+@media(max-width:1100px){.strong-goals-layout{grid-template-columns:1fr}.strong-goals-aside .goal-period-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:750px){.goal-period-grid{grid-template-columns:1fr}.goal-period-card{padding:15px}.goal-create-form,.goal-edit-form{grid-template-columns:1fr}.goal-create-form label:nth-child(2),.goal-edit-form label:nth-child(2){grid-column:auto;grid-row:auto}.goal-plan-card{padding:18px 16px}.goal-plan-head{flex-wrap:wrap}.goal-head-actions{width:100%}.goal-add-step>*{flex:1}.goal-add-step button{justify-content:center}.goal-meta{gap:7px}.goal-meta span{font-size:11px}}
+@media(max-width:750px){.strong-goals-aside .goal-period-grid{grid-template-columns:1fr}.goal-plan-head{align-items:stretch}.goal-head-actions{justify-content:flex-start}.goal-search span{display:none}}
+@media(max-width:750px){.goal-history{padding:18px 15px}.goal-history-heading{flex-wrap:wrap}.goal-history-total{margin-inline-start:0}.goal-history-list li{flex-wrap:wrap}.goal-history-list li>span{width:100%;padding-inline-start:30px}}
